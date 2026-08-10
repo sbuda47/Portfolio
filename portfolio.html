@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio — Sibusiso M. Mpofu</title>
+    <meta name="description" content="Portfolio — select projects and case studies by Sibusiso M. Mpofu, mechatronics engineer and systems architect.">
+    <meta property="og:title" content="Portfolio — Sibusiso M. Mpofu">
+    <meta property="og:description" content="Select project case studies showcasing embedded systems, edge ML, and resilient product design.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-username.github.io/your-repo/portfolio.html">
+    <meta property="og:image" content="/assets/images/mpofu.png">
+    <meta name="theme-color" content="#1E1E1D">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Black+Ops+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="icon" href="/favicon.ico">
+    <link rel="manifest" href="/manifest.json">
+</head>
+<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack">
+    <!-- Shared header start -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="text-2xl font-gothic tracking-tighter text-brandOffwhite">Sibusiso M. Mpofu</div>
+            <button id="navToggle" class="mobile-nav-toggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Menu</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 6h18M3 12h18M3 18h18"></path>
+                </svg>
+            </button>
+            <ul id="primaryNav" class="flex space-x-8 font-poppins tracking-widest uppercase text-sm">
+                <li><a href="index.html" class="hover:text-brandYellow transition-colors">Home</a></li>
+                <li><a href="about.html" class="hover:text-brandYellow transition-colors">About</a></li>
+                <li><a href="skills.html" class="hover:text-brandYellow transition-colors">Skills</a></li>
+                <li><a href="portfolio.html" class="hover:text-brandYellow transition-colors">Portfolio</a></li>
+                <li><a href="contact.html" class="hover:text-brandYellow transition-colors">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Shared header end -->
+
+    <main class="pt-28">
+        <section class="py-22 px-6 max-w-7xl mx-auto">
+            <div class="page-intro">
+                <h1 class="text-5xl font-gothic mb-6 uppercase tracking-tighter">Portfolio</h1>
+                <p class="text-xl text-brandOffwhite/80 max-w-3xl leading-relaxed mb-12">Select projects from the portfolio below. Each entry links to a dedicated page with detailed outcomes, roles, and technology stacks.</p>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <a href="projects/project-cnc-simulator.html" class="group block overflow-hidden border border-brandSlate/20 hover:border-brandYellow transition-all duration-500 rounded-sm">
+                    <div class="aspect-video bg-brandSlate/10 relative overflow-hidden"><div class="absolute inset-0 flex items-center justify-center text-brandSlate/20 font-gothic uppercase tracking-[0.5em]">CNC</div></div>
+                    <div class="p-6 space-y-3"><h3 class="text-xl font-gothic group-hover:text-brandYellow transition-colors">CNC Simulator & Visualizer</h3><p class="text-sm text-brandOffwhite/60 line-clamp-2">Parse and preview G-code toolpaths with simulation and diagnostics.</p></div>
+                </a>
+                <a href="projects/project-md-hi.html" class="group block overflow-hidden border border-brandSlate/20 hover:border-brandYellow transition-all duration-500 rounded-sm">
+                    <div class="aspect-video bg-brandSlate/10 relative overflow-hidden"><div class="absolute inset-0 flex items-center justify-center text-brandSlate/20 font-gothic uppercase tracking-[0.5em]">MD-HI</div></div>
+                    <div class="p-6 space-y-3"><h3 class="text-xl font-gothic group-hover:text-brandYellow transition-colors">Mahalanobis Health Index</h3><p class="text-sm text-brandOffwhite/60 line-clamp-2">Multivariate fault-detection framework for industrial condition monitoring.</p></div>
+                </a>
+                <a href="projects/project-qcar.html" class="group block overflow-hidden border border-brandSlate/20 hover:border-brandYellow transition-all duration-500 rounded-sm">
+                    <div class="aspect-video bg-brandSlate/10 relative overflow-hidden"><div class="absolute inset-0 flex items-center justify-center text-brandSlate/20 font-gothic uppercase tracking-[0.5em]">QCar</div></div>
+                    <div class="p-6 space-y-3"><h3 class="text-xl font-gothic group-hover:text-brandYellow transition-colors">QCar2 Taxi Mission</h3><p class="text-sm text-brandOffwhite/60 line-clamp-2">ROS2 control stack for autonomous taxi missions and safe actuator authority.</p></div>
+                </a>
+                <a href="projects/project-telemetry.html" class="group block overflow-hidden border border-brandSlate/20 hover:border-brandYellow transition-all duration-500 rounded-sm">
+                    <div class="aspect-video bg-brandSlate/10 relative overflow-hidden"><div class="absolute inset-0 flex items-center justify-center text-brandSlate/20 font-gothic uppercase tracking-[0.5em]">Telemetry</div></div>
+                    <div class="p-6 space-y-3"><h3 class="text-xl font-gothic group-hover:text-brandYellow transition-colors">Environmental Telemetry</h3><p class="text-sm text-brandOffwhite/60 line-clamp-2">Telemetry pipeline for urban air-quality data, simulation, and monitoring.</p></div>
+                </a>
+                <a href="projects/project-bible-quest.html" class="group block overflow-hidden border border-brandSlate/20 hover:border-brandYellow transition-all duration-500 rounded-sm">
+                    <div class="aspect-video bg-brandSlate/10 relative overflow-hidden"><div class="absolute inset-0 flex items-center justify-center text-brandSlate/20 font-gothic uppercase tracking-[0.5em]">Game</div></div>
+                    <div class="p-6 space-y-3"><h3 class="text-xl font-gothic group-hover:text-brandYellow transition-colors">Bible Quest (PWA)</h3><p class="text-sm text-brandOffwhite/60 line-clamp-2">30-seconds style card game PWA with offline support and printable assets.</p></div>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-brandSlate/20 py-8 text-center text-sm text-brandSlate">
+        <div class="max-w-7xl mx-auto px-6 space-y-4">
+            <p>&copy; 2026 Sibusiso M. Mpofu. Engineered with precision.</p>
+            <div class="flex justify-center gap-6">
+                <a href="mailto:s.mpofu.m.01@gmail.com" class="text-brandOffwhite hover:text-brandYellow">Email</a>
+                <a href="https://www.linkedin.com/in/sibusiso-mpofu-595b492bb" target="_blank" rel="noopener noreferrer" class="text-brandOffwhite hover:text-brandYellow">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

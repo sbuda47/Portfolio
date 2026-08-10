@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact — Sibusiso M. Mpofu</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Black+Ops+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack">
+    <!-- Shared header start -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
+        <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+            <div class="text-2xl font-gothic tracking-tighter text-brandOffwhite">Sibusiso M. Mpofu</div>
+            <button id="navToggle" class="mobile-nav-toggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="sr-only">Menu</span>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M3 6h18M3 12h18M3 18h18"></path>
+                </svg>
+            </button>
+            <ul id="primaryNav" class="flex space-x-8 font-poppins tracking-widest uppercase text-sm">
+                <li><a href="index.html" class="hover:text-brandYellow transition-colors">Home</a></li>
+                <li><a href="about.html" class="hover:text-brandYellow transition-colors">About</a></li>
+                <li><a href="skills.html" class="hover:text-brandYellow transition-colors">Skills</a></li>
+                <li><a href="portfolio.html" class="hover:text-brandYellow transition-colors">Portfolio</a></li>
+                <li><a href="contact.html" class="hover:text-brandYellow transition-colors">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- Shared header end -->
+
+    <main class="pt-28">
+        <section class="py-22 px-6 max-w-7xl mx-auto">
+            <div class="page-intro">
+                <h1 class="text-5xl font-gothic mb-6 uppercase tracking-tighter">Contact</h1>
+                <p class="text-xl text-brandOffwhite/80 max-w-3xl leading-relaxed mb-12">Reach out for collaborations, consulting, or project work. I’m available for engineering, system design, and intelligent systems opportunities.</p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-10">
+                <div class="p-8 border border-brandSlate/30 rounded-sm bg-brandBlack/50">
+                    <h2 class="text-2xl font-gothic text-brandYellow mb-4">Get in Touch</h2>
+                    <p class="text-brandOffwhite/80 mb-4"><strong>Email:</strong> <a href="mailto:s.mpofu.m.01@gmail.com" class="text-brandYellow">s.mpofu.m.01@gmail.com</a></p>
+                    <p class="text-brandOffwhite/80 mb-4"><strong>Phone:</strong> <a href="tel:+26775365156" class="text-brandYellow">+267 75 365 156</a></p>
+                    <p class="text-brandOffwhite/80"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sibusiso-mpofu-595b492bb" target="_blank" rel="noopener noreferrer" class="text-brandYellow">sibusiso-mpofu-595b492bb</a></p>
+                </div>
+                <form id="contactForm" class="contact-form p-8 border border-brandSlate/30 rounded-sm bg-brandBlack/50" novalidate>
+                    <div class="grid grid-cols-1 gap-6">
+                        <label class="block"><span class="text-sm text-brandSlate">Name</span><input type="text" name="name" id="cf-name" class="input p-3 mt-2 w-full" required aria-required="true"></label>
+                        <label class="block"><span class="text-sm text-brandSlate">Email</span><input type="email" name="email" id="cf-email" class="input p-3 mt-2 w-full" required aria-required="true"></label>
+                        <label class="block"><span class="text-sm text-brandSlate">Message</span><textarea name="message" id="cf-message" class="input p-3 mt-2 w-full" rows="6" required aria-required="true"></textarea></label>
+                        <div class="flex items-center gap-4"><button type="submit" class="bg-brandYellow text-brandBlack px-6 py-3 font-bold">Send Message</button><div id="contactFormMessage" class="text-sm text-brandOffwhite/80" aria-live="polite"></div></div>
+                    </div>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer class="border-t border-brandSlate/20 py-8 text-center text-sm text-brandSlate">
+        <div class="max-w-7xl mx-auto px-6 space-y-4">
+            <p>&copy; 2026 Sibusiso M. Mpofu. Engineered with precision.</p>
+            <div class="flex justify-center gap-6">
+                <a href="mailto:s.mpofu.m.01@gmail.com" class="text-brandOffwhite hover:text-brandYellow">Email</a>
+                <a href="https://www.linkedin.com/in/sibusiso-mpofu-595b492bb" target="_blank" rel="noopener noreferrer" class="text-brandOffwhite hover:text-brandYellow">LinkedIn</a>
+            </div>
+        </div>
+    </footer>
+    <script src="js/main.js"></script>
+</body>
+</html>

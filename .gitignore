@@ -1,0 +1,17 @@
+.env
+config.json
+aws-credentials
+google-services.json
+*.log
+*.py[cod]
+__pycache__/
+.venv/
+venv/
+node_modules/
+.vscode/
+.idea/
+.DS_Store
+assets/docs/
+.agents/
+*.sqlite
+*.db

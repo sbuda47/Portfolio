@@ -1,0 +1,21 @@
+{
+  "name": "Sibusiso M. Mpofu — Portfolio",
+  "short_name": "S. Mpofu",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "scope": "/",
+  "background_color": "#1E1E1D",
+  "theme_color": "#FF8C00",
+  "icons": [
+    {
+      "src": "/favicon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/favicon-32.png",
+      "sizes": "32x32",
+      "type": "image/png"
+    }
+  ]
+}

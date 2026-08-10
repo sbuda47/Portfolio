@@ -1,0 +1,73 @@
+﻿<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>QCar2 Taxi Mission (ROS) â€” Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack px-12 pb-12">
+  <!-- Shared header start -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
+    <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="text-2xl font-gothic tracking-tighter text-brandOffwhite">Sibusiso M. Mpofu</div>
+      <button id="navToggle" class="mobile-nav-toggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Menu</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
+      <ul id="primaryNav" class="flex space-x-8 font-poppins tracking-widest uppercase text-sm">
+        <li><a href="../index.html" class="hover:text-brandYellow transition-colors">Home</a></li>
+        <li><a href="../about.html" class="hover:text-brandYellow transition-colors">About</a></li>
+        <li><a href="../skills.html" class="hover:text-brandYellow transition-colors">Skills</a></li>
+        <li><a href="../portfolio.html" class="hover:text-brandYellow transition-colors">Portfolio</a></li>
+        <li><a href="../contact.html" class="hover:text-brandYellow transition-colors">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Shared header end -->
+
+  <main class="pt-28 max-w-6xl mx-auto">
+    <div class="max-w-7xl mx-auto mb-12">
+      <a href="../portfolio.html" class="text-brandYellow font-gothic text-sm tracking-widest">← Back to Portfolio</a>
+    </div>
+    <h1 class="text-5xl font-gothic mb-4">QCar2 Taxi Mission (ROS)</h1>
+    <p class="text-lg text-brandOffwhite/80 mb-6">A ROS2-based control stack for autonomous taxi missions in the Quanser QCar2 virtual environment, focused on safe actuator authority and deterministic control.</p>
+
+    <div class="grid grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-xl font-gothic text-brandYellow mb-2">Summary</h3>
+        <p class="text-brandOffwhite/70">Runs perception, mission planning, and a single-authority main controller to publish safe motor commands and follow mission waypoints with lane and traffic-rule awareness.</p>
+
+        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">My Role</h3>
+        <ul class="list-disc list-inside text-brandOffwhite/80">
+          <li>Designed mission planner and main controller node</li>
+          <li>Integrated YOLO-based traffic detections and rule handling</li>
+          <li>Defined safety checks to prevent actuator contention</li>
+        </ul>
+
+        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">Tech</h3>
+        <p class="text-brandOffwhite/80">ROS2 (Humble), Python, Docker, Isaac/Quanser virtual environments, YOLO inference</p>
+      </div>
+
+      <div>
+        <div class="aspect-video bg-brandSlate/10 overflow-hidden rounded-sm mb-6">
+          <picture>
+            <source type="image/webp" srcset="../assets/images/image_995dff.webp">
+            <img src="../assets/images/normal-images/style_examples/image_995dff.png" alt="QCar simulation interface preview" class="w-full h-full" style="object-fit: cover;" loading="lazy" width="685" height="222">
+          </picture>
+        </div>
+        <div class="bg-brandBlack/60 p-6 border border-brandSlate/20">
+          <h4 class="font-gothic text-brandYellow mb-2">Notes</h4>
+          <p class="text-brandOffwhite/80">Designed for repeatable, safe experiments across virtual containers; emphasizes single-authority motor command publication.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="max-w-7xl mx-auto mt-16 text-sm text-brandSlate">Â© 2026 Sibusiso M. Mpofu</footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>

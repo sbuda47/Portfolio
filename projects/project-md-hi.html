@@ -1,0 +1,77 @@
+﻿<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Mahalanobis Distance Health Index â€” Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/style.css">
+</head>
+<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack px-12 pb-12">
+  <!-- Shared header start -->
+  <header class="fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
+    <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="text-2xl font-gothic tracking-tighter text-brandOffwhite">Sibusiso M. Mpofu</div>
+      <button id="navToggle" class="mobile-nav-toggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Menu</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
+      <ul id="primaryNav" class="flex space-x-8 font-poppins tracking-widest uppercase text-sm">
+        <li><a href="../index.html" class="hover:text-brandYellow transition-colors">Home</a></li>
+        <li><a href="../about.html" class="hover:text-brandYellow transition-colors">About</a></li>
+        <li><a href="../skills.html" class="hover:text-brandYellow transition-colors">Skills</a></li>
+        <li><a href="../portfolio.html" class="hover:text-brandYellow transition-colors">Portfolio</a></li>
+        <li><a href="../contact.html" class="hover:text-brandYellow transition-colors">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Shared header end -->
+
+  <main class="pt-28 max-w-6xl mx-auto">
+    <div class="max-w-7xl mx-auto mb-12">
+      <a href="../portfolio.html" class="text-brandYellow font-gothic text-sm tracking-widest">← Back to Portfolio</a>
+    </div>
+    <h1 class="text-5xl font-gothic mb-4">Mahalanobis Distance Health Index (MD-HI)</h1>
+    <p class="text-lg text-brandOffwhite/80 mb-6">A statistical fault-detection framework used for conveyor and machinery health monitoring, validated against MATLAB references.</p>
+
+    <div class="grid grid-cols-2 gap-8">
+      <div>
+        <h3 class="text-xl font-gothic text-brandYellow mb-2">Summary</h3>
+        <p class="text-brandOffwhite/70">Computes a multivariate Mahalanobis-based health index with EWMA smoothing and per-load calibration to detect faults across sensor feature vectors.</p>
+
+        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">My Role</h3>
+        <ul class="list-disc list-inside text-brandOffwhite/80">
+          <li>Reimplemented MATLAB reference in Python with numerical parity</li>
+          <li>Built streaming and UART tools to relay HI values to embedded controllers</li>
+          <li>Prepared validation and figures for a journal submission</li>
+        </ul>
+
+        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">Tech</h3>
+        <p class="text-brandOffwhite/80">Python, NumPy, SciPy, UART streaming</p>
+      </div>
+
+      <div>
+        <div class="aspect-video bg-brandSlate/10 overflow-hidden rounded-sm mb-6">
+          <picture>
+            <source type="image/webp" srcset="../assets/images/image_990026.webp">
+            <img src="../assets/images/normal-images/style_examples/image_990026.png" alt="Mahalanobis Distance Health Index visualization" class="w-full h-full" style="object-fit: cover;" loading="lazy" width="1024" height="768">
+          </picture>
+        </div>
+        <div class="bg-brandBlack/60 p-6 border border-brandSlate/20">
+          <h4 class="font-gothic text-brandYellow mb-2">Results</h4>
+          <ul class="list-disc list-inside text-brandOffwhite/80">
+            <li>High detection rates for coil/bearing faults</li>
+            <li>Per-load thresholding to reduce false positives</li>
+            <li>Validated against MATLAB implementation across thousands of windows</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="max-w-7xl mx-auto mt-16 text-sm text-brandSlate">Â© 2026 Sibusiso M. Mpofu</footer>
+  <script src="../js/main.js"></script>
+</body>
+</html>
