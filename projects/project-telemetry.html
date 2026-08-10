@@ -1,13 +1,14 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Environmental Telemetry System â€” Project</title>
+  <title>Environmental Telemetry System — Project</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
 <body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack px-12 pb-12" data-gallery="telemetry">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Shared header start -->
   <header class="fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
     <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -19,22 +20,22 @@
         </svg>
       </button>
       <ul id="primaryNav" class="flex space-x-8 font-poppins tracking-widest uppercase text-sm">
-        <li><a href="../index.html" class="hover:text-brandYellow transition-colors">Home</a></li>
-        <li><a href="../about.html" class="hover:text-brandYellow transition-colors">About</a></li>
-        <li><a href="../skills.html" class="hover:text-brandYellow transition-colors">Skills</a></li>
-        <li><a href="../portfolio.html" class="hover:text-brandYellow transition-colors">Portfolio</a></li>
-        <li><a href="../contact.html" class="hover:text-brandYellow transition-colors">Contact</a></li>
+        <li><a href="../index.html" class="nav-link transition-colors">Home</a></li>
+        <li><a href="../about.html" class="nav-link transition-colors">About</a></li>
+        <li><a href="../skills.html" class="nav-link transition-colors">Skills</a></li>
+        <li><a href="../portfolio.html" class="nav-link transition-colors" aria-current="page">Portfolio</a></li>
+        <li><a href="../contact.html" class="nav-link transition-colors">Contact</a></li>
       </ul>
     </nav>
   </header>
   <!-- Shared header end -->
 
-  <main class="pt-28 max-w-6xl mx-auto">
+  <main id="main-content" class="pt-28 max-w-6xl mx-auto">
     <div class="max-w-7xl mx-auto mb-12">
-      <a href="../portfolio.html" class="text-brandYellow font-gothic text-sm tracking-widest">← Back to Portfolio</a>
+      <a href="../portfolio.html" class="btn btn-outline">? Back to Portfolio</a>
     </div>
-    <h1 class="text-5xl font-gothic mb-4">Environmental Telemetry Monitoring</h1>
-    <p class="text-lg text-brandOffwhite/80 mb-6">A Python-based telemetry pipeline for urban air-quality data covering preprocessing, modulation, channel simulation, and monitoring outputs.</p>
+    <h1 class="section-heading font-gothic mb-4">Environmental Telemetry Monitoring</h1>
+    <p class="text-lg text-copy mb-6">A Python-based telemetry pipeline for urban air-quality data covering preprocessing, modulation, channel simulation, and monitoring outputs.</p>
 
     <div class="grid grid-cols-2 gap-8">
       <div>
@@ -69,8 +70,8 @@
 
         <div class="gallery-modal" role="dialog" aria-modal="true" aria-hidden="true">
           <div class="gallery-modal-overlay"></div>
-          <button type="button" class="gallery-close" aria-label="Close gallery">×</button>
-          <button type="button" class="gallery-prev" aria-label="Previous image">‹</button>
+          <button type="button" class="gallery-close" aria-label="Close gallery">�</button>
+          <button type="button" class="gallery-prev" aria-label="Previous image">�</button>
           <div class="gallery-viewer">
             <picture>
               <source type="image/webp" srcset="../assets/images/tele_1.webp">
@@ -79,13 +80,14 @@
             <video class="gallery-current-video" controls preload="metadata"></video>
             <div class="gallery-caption"></div>
           </div>
-          <button type="button" class="gallery-next" aria-label="Next image">›</button>
+          <button type="button" class="gallery-next" aria-label="Next image">�</button>
         </div>
       </div>
     </div>
   </main>
 
-  <footer class="max-w-7xl mx-auto mt-16 text-sm text-brandSlate">Â© 2026 Sibusiso M. Mpofu</footer>
+  <footer class="max-w-7xl mx-auto mt-16 text-sm text-brandSlate">© 2026 Sibusiso M. Mpofu</footer>
   <script src="../js/main.js"></script>
 </body>
 </html>
+

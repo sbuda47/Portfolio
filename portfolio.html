@@ -18,6 +18,7 @@
     <link rel="manifest" href="/manifest.json">
 </head>
 <body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
     <!-- Shared header start -->
     <header class="fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
         <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -29,21 +30,21 @@
                 </svg>
             </button>
             <ul id="primaryNav" class="flex space-x-8 font-poppins tracking-widest uppercase text-sm">
-                <li><a href="index.html" class="hover:text-brandYellow transition-colors">Home</a></li>
-                <li><a href="about.html" class="hover:text-brandYellow transition-colors">About</a></li>
-                <li><a href="skills.html" class="hover:text-brandYellow transition-colors">Skills</a></li>
-                <li><a href="portfolio.html" class="hover:text-brandYellow transition-colors">Portfolio</a></li>
-                <li><a href="contact.html" class="hover:text-brandYellow transition-colors">Contact</a></li>
+                <li><a href="index.html" class="nav-link transition-colors">Home</a></li>
+                <li><a href="about.html" class="nav-link transition-colors">About</a></li>
+                <li><a href="skills.html" class="nav-link transition-colors">Skills</a></li>
+                <li><a href="portfolio.html" class="nav-link transition-colors" aria-current="page">Portfolio</a></li>
+                <li><a href="contact.html" class="nav-link transition-colors">Contact</a></li>
             </ul>
         </nav>
     </header>
     <!-- Shared header end -->
 
-    <main class="pt-28">
+    <main id="main-content" class="pt-28">
         <section class="py-22 px-6 max-w-7xl mx-auto">
             <div class="page-intro">
-                <h1 class="text-5xl font-gothic mb-6 uppercase tracking-tighter">Portfolio</h1>
-                <p class="text-xl text-brandOffwhite/80 max-w-3xl leading-relaxed mb-12">Select projects from the portfolio below. Each entry links to a dedicated page with detailed outcomes, roles, and technology stacks.</p>
+                <h1 class="section-heading font-gothic uppercase tracking-tighter">Portfolio</h1>
+                <p class="text-xl text-copy leading-relaxed mb-12">Select projects from the portfolio below. Each entry links to a dedicated page with detailed outcomes, roles, and technology stacks.</p>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
                 <a href="projects/project-cnc-simulator.html" class="group block overflow-hidden border border-brandSlate/20 hover:border-brandYellow transition-all duration-500 rounded-sm">
@@ -82,3 +83,4 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+

@@ -18,6 +18,7 @@
     <link rel="manifest" href="/manifest.json">
 </head>
 <body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack">
+    <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Shared header start -->
     <header class="fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
@@ -30,32 +31,32 @@
                 </svg>
             </button>
             <ul id="primaryNav" class="flex space-x-8 font-poppins tracking-widest uppercase text-sm">
-                <li><a href="index.html" class="hover:text-brandYellow transition-colors">Home</a></li>
-                <li><a href="about.html" class="hover:text-brandYellow transition-colors">About</a></li>
-                <li><a href="skills.html" class="hover:text-brandYellow transition-colors">Skills</a></li>
-                <li><a href="portfolio.html" class="hover:text-brandYellow transition-colors">Portfolio</a></li>
-                <li><a href="contact.html" class="hover:text-brandYellow transition-colors">Contact</a></li>
+                <li><a href="index.html" class="nav-link transition-colors" aria-current="page">Home</a></li>
+                <li><a href="about.html" class="nav-link transition-colors">About</a></li>
+                <li><a href="skills.html" class="nav-link transition-colors">Skills</a></li>
+                <li><a href="portfolio.html" class="nav-link transition-colors">Portfolio</a></li>
+                <li><a href="contact.html" class="nav-link transition-colors">Contact</a></li>
             </ul>
         </nav>
     </header>
     <!-- Shared header end -->
 
-    <main class="pt-28">
-        <section class="min-h-screen flex items-center px-6 max-w-7xl mx-auto">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-center">
-                <div class="space-y-8">
-                    <h1 class="text-7xl font-gothic leading-tight text-brandOffwhite uppercase">Hi, I'm Sibusiso M. Mpofu</h1>
+    <main id="main-content" class="pt-28">
+        <section id="home" class="min-h-screen flex items-center px-6 max-w-7xl mx-auto">
+            <div class="hero-grid grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-center">
+                <div class="hero-left space-y-8">
+                    <h1 class="section-heading font-gothic leading-tight text-brandOffwhite uppercase">Hi, I'm Sibusiso M. Mpofu</h1>
                     <p class="text-xl text-brandOffwhite/80 max-w-3xl leading-relaxed">Mechatronics engineer and systems architect focused on embedded intelligence, edge-aware ML, and resilient product design for real-world applications.</p>
-                    <div class="flex flex-wrap gap-4 pt-4">
-                        <a href="portfolio.html" class="bg-brandYellow text-brandBlack px-8 py-4 font-bold uppercase tracking-widest hover:scale-105 transition-transform duration-300">View Portfolio</a>
-                        <a href="about.html" class="border border-brandYellow text-brandYellow px-8 py-4 font-bold uppercase tracking-widest hover:bg-brandYellow hover:text-brandBlack transition-all duration-300">About Me</a>
+                    <div class="hero-actions pt-4">
+                        <a href="portfolio.html" class="btn btn-primary">View Portfolio</a>
+                        <a href="about.html" class="btn btn-secondary">About Me</a>
                     </div>
                 </div>
                 <div class="relative flex justify-center items-center">
-                    <div class="hero-panel w-full max-w-xl bg-brandSlate/10 border border-brandSlate/20 rounded-sm overflow-hidden relative group" style="aspect-ratio: 4 / 5;">
+                    <div class="hero-panel w-full max-w-xl bg-brandSlate/10 border border-brandSlate/20 rounded-sm overflow-hidden relative group">
                         <picture>
                             <source type="image/webp" srcset="assets/images/mpofu-640.webp 640w, assets/images/mpofu-1280.webp 1280w" sizes="(max-width: 768px) 90vw, (max-width: 1024px) 50vw, 40vw">
-                            <img src="assets/images/normal-images/mpofu.png" alt="Portrait of Sibusiso M. Mpofu" class="w-full h-full" style="object-fit: cover;" width="937" height="1171" loading="eager">
+                            <img src="assets/images/normal-images/mpofu.png" alt="Portrait of Sibusiso M. Mpofu" class="w-full h-full" width="937" height="1171" loading="eager">
                         </picture>
                     </div>
                 </div>
@@ -64,15 +65,15 @@
 
         <section class="py-24 px-6 bg-brandBlack/50">
             <div class="max-w-7xl mx-auto text-center">
-                <h2 class="text-5xl font-gothic mb-8 uppercase tracking-tighter">What I build</h2>
+                <h2 class="section-heading font-gothic mb-8 uppercase tracking-tighter">What I build</h2>
                 <p class="text-xl text-brandOffwhite/80 max-w-3xl mx-auto leading-relaxed mb-8">I craft systems that combine hardware, control, and data intelligence into dependable solutions for engineering teams and research initiatives.</p>
-                <a href="about.html" class="inline-flex items-center justify-center bg-brandYellow text-brandBlack px-8 py-4 font-bold uppercase tracking-widest hover:scale-105 transition-transform duration-300">Learn More</a>
+                <a href="about.html" class="btn btn-primary">Learn More</a>
             </div>
         </section>
 
         <section class="py-24 px-6 max-w-7xl mx-auto">
             <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-12">
-                <h2 class="text-7xl font-gothic uppercase tracking-tighter">Selected Projects</h2>
+                <h2 class="section-heading font-gothic uppercase tracking-tighter">Selected Projects</h2>
                 <a href="portfolio.html" class="text-brandYellow uppercase tracking-[0.2em] font-bold hover:text-brandOffwhite">View all projects</a>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -94,12 +95,12 @@
         <section class="py-24 px-6 bg-brandBlack/30">
             <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
                 <div>
-                    <h2 class="text-5xl font-gothic mb-8 uppercase tracking-tighter">Ready to collaborate?</h2>
+                    <h2 class="section-heading font-gothic mb-8 uppercase tracking-tighter">Ready to collaborate?</h2>
                     <p class="text-brandOffwhite/80 text-lg max-w-md leading-relaxed">If you have a systems challenge, research project, or embedded product idea, let’s connect and build it together.</p>
                 </div>
                 <div class="space-y-4">
-                    <a href="contact.html" class="block bg-brandYellow text-brandBlack px-8 py-4 font-bold uppercase tracking-widest hover:bg-brandOffwhite hover:text-brandBlack transition-all duration-300">Contact Me</a>
-                    <a href="skills.html" class="block border border-brandSlate/30 text-brandOffwhite px-8 py-4 font-bold uppercase tracking-widest hover:border-brandYellow hover:text-brandYellow transition-all duration-300">View Skills</a>
+                    <a href="contact.html" class="btn btn-primary">Contact Me</a>
+                    <a href="skills.html" class="btn btn-outline">View Skills</a>
                 </div>
             </div>
         </section>
@@ -112,3 +113,4 @@
     <script src="js/main.js"></script>
 </body>
 </html>
+

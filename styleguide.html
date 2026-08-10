@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Style Guide — Sibusiso M. Mpofu</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Black+Ops+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <main id="main-content" class="pt-28 px-6 max-w-6xl mx-auto">
+    <header class="mb-16">
+      <p class="text-sm text-brandOffwhite/70 uppercase tracking-[0.5em] mb-4">Style Guide</p>
+      <h1 class="section-heading font-gothic mb-4">Design System and Tokens</h1>
+      <p class="text-brandOffwhite/80 max-w-3xl">Core brand tokens for the portfolio website including colors, typography, spacing, and component styles.</p>
+    </header>
+
+    <section class="mb-16">
+      <h2 class="text-3xl font-gothic mb-6">Color Palette</h2>
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-6">
+        <div class="p-6 rounded-sm border border-brandSlate/20 bg-brandBlack/80">
+          <div class="h-20 mb-4 rounded-sm bg-brandBlack"></div>
+          <p class="font-bold">Background</p>
+          <p class="text-brandOffwhite/70">#1E1E1D</p>
+        </div>
+        <div class="p-6 rounded-sm border border-brandSlate/20 bg-brandBlack/80">
+          <div class="h-20 mb-4 rounded-sm bg-brandOffwhite"></div>
+          <p class="font-bold">Text</p>
+          <p class="text-brandOffwhite/70">#E7E7D6</p>
+        </div>
+        <div class="p-6 rounded-sm border border-brandSlate/20 bg-brandBlack/80">
+          <div class="h-20 mb-4 rounded-sm bg-brandYellow"></div>
+          <p class="font-bold">Accent</p>
+          <p class="text-brandOffwhite/70">#FF8C00</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-3xl font-gothic mb-6">Design Tokens</h2>
+      <p class="text-copy mb-6">The portfolio uses a shared token file for color, spacing, and typography values. These variables drive the CSS and help keep the site consistent.</p>
+      <pre class="p-6 rounded-sm bg-brandBlack/80 border border-brandSlate/20 overflow-x-auto text-sm text-brandOffwhite"><code>{
+  "colors": {
+    "background": "#1E1E1D",
+    "text": "#E7E7D6",
+    "accent": "#FF8C00"
+  },
+  "type": {
+    "fontFamilyBase": "Poppins, system-ui, sans-serif",
+    "fontFamilyHeadline": "Black Ops One, Oswald, sans-serif",
+    "fontSizeBase": "1rem"
+  },
+  "space": {
+    "md": "1.5rem",
+    "lg": "2rem"
+  }
+}</code></pre>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-3xl font-gothic mb-6">Typography</h2>
+      <div class="space-y-6">
+        <div>
+          <p class="text-brandOffwhite/70 mb-2">Headline</p>
+          <h2 class="section-heading font-gothic">Headline style — Black Ops One / Oswald</h2>
+        </div>
+        <div>
+          <p class="text-brandOffwhite/70 mb-2">Body text</p>
+          <p class="text-xl text-copy leading-relaxed">This is the body text style used for paragraphs. It is designed to be comfortable and readable on desktop and mobile screens.</p>
+        </div>
+        <div>
+          <p class="text-brandOffwhite/70 mb-2">Button text</p>
+          <a class="btn btn-primary" href="#">Primary</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-3xl font-gothic mb-6">Spacing and Layout</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="p-6 rounded-sm border border-brandSlate/20 bg-brandBlack/80">
+          <p class="font-bold mb-2">Small</p>
+          <div class="h-8 w-full bg-brandYellow rounded-sm"></div>
+          <p class="text-brandOffwhite/70 mt-2">0.5rem</p>
+        </div>
+        <div class="p-6 rounded-sm border border-brandSlate/20 bg-brandBlack/80">
+          <p class="font-bold mb-2">Medium</p>
+          <div class="h-8 w-full bg-brandYellow rounded-sm"></div>
+          <p class="text-brandOffwhite/70 mt-2">1.5rem</p>
+        </div>
+        <div class="p-6 rounded-sm border border-brandSlate/20 bg-brandBlack/80">
+          <p class="font-bold mb-2">Large</p>
+          <div class="h-8 w-full bg-brandYellow rounded-sm"></div>
+          <p class="text-brandOffwhite/70 mt-2">3rem</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="mb-16">
+      <h2 class="text-3xl font-gothic mb-6">Component Examples</h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div class="p-6 rounded-sm border border-brandSlate/20 bg-brandBlack/80">
+          <p class="text-brandOffwhite/70 mb-4">Primary button</p>
+          <a class="btn btn-primary" href="#">Primary</a>
+        </div>
+        <div class="p-6 rounded-sm border border-brandSlate/20 bg-brandBlack/80">
+          <p class="text-brandOffwhite/70 mb-4">Secondary button</p>
+          <a class="btn btn-secondary" href="#">Secondary</a>
+        </div>
+      </div>
+    </section>
+
+    <footer class="py-12 text-brandOffwhite/70 text-sm border-t border-brandSlate/20">
+      This style guide is part of the Portfolio design system for Sibusiso M. Mpofu.
+    </footer>
+  </main>
+</body>
+</html>
