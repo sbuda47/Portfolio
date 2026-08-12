@@ -32,55 +32,66 @@
 
   <main id="main-content" class="pt-28 max-w-6xl mx-auto">
     <div class="max-w-7xl mx-auto mb-12">
-      <a href="../portfolio.html" class="btn btn-outline">? Back to Portfolio</a>
+      <a href="../portfolio.html" class="btn btn-outline">← Back to Portfolio</a>
     </div>
-    <h1 class="section-heading font-gothic mb-4">Environmental Telemetry Monitoring</h1>
-    <p class="text-lg text-copy mb-6">A Python-based telemetry pipeline for urban air-quality data covering preprocessing, modulation, channel simulation, and monitoring outputs.</p>
 
-    <div class="grid grid-cols-2 gap-8">
-      <div>
-        <h3 class="text-xl font-gothic text-brandYellow mb-2">Summary</h3>
-        <p class="text-brandOffwhite/70">Modular pipeline that ingests raw sensor data, simulates transmission effects, and extracts monitoring features for alerting and visualization.</p>
+    <div class="max-w-7xl mx-auto mb-12">
+      <span class="project-label">Signal processing — 5-person team project</span>
+      <h1 class="section-heading font-gothic mb-4">Environmental Telemetry Monitoring System</h1>
+      <p class="text-lg text-brandOffwhite/70 max-w-3xl leading-relaxed mb-8">An end-to-end telemetry pipeline built with four teammates, simulating real urban air-quality data through signal conditioning, modulation, digital encoding, and automated monitoring.</p>
+      <p class="text-brandOffwhite/70 max-w-4xl leading-relaxed">I owned the preprocessing and data-cleaning subsystem — the foundation the rest of the pipeline was built on.</p>
+    </div>
 
-        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">My Role</h3>
-        <ul class="list-disc list-inside text-brandOffwhite/80">
-          <li>Led signal preprocessing and feature extraction modules</li>
-          <li>Implemented modulation/channel simulation and analysis tools</li>
-          <li>Built dashboard and reporting pipelines</li>
-        </ul>
+    <div class="project-hero-banner mb-12">
+      <div class="project-media">
+        <picture>
+          <source type="image/webp" srcset="../assets/images/tele_1.webp">
+          <img src="../assets/images/normal-images/tele_1.png" alt="Environmental telemetry monitoring dashboard and signal analysis figure" class="w-full h-full" loading="lazy" width="1331" height="641">
+        </picture>
+      </div>
+    </div>
 
-        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">Tech</h3>
-        <p class="text-brandOffwhite/80">Python, NumPy, Pandas, Matplotlib, Streamlit</p>
+    <div class="max-w-7xl mx-auto mb-12">
+      <span class="project-label">My subsystem — preprocessing</span>
+      <div class="project-stat-grid">
+        <div class="project-card project-stat-card">
+          <div class="project-stat-value">~800K</div>
+          <p class="text-brandOffwhite/70">sensor readings screened</p>
+        </div>
+        <div class="project-card project-stat-card">
+          <div class="project-stat-value">4</div>
+          <p class="text-brandOffwhite/70">pollutant streams cleaned</p>
+        </div>
+        <div class="project-card project-stat-card">
+          <div class="project-stat-value">3-tier</div>
+          <p class="text-brandOffwhite/70">sensor quality screening</p>
+        </div>
       </div>
 
-      <div>
-        <div class="gallery-grid mb-6">
-          <button type="button" class="gallery-item gallery-item-main" data-index="0" aria-label="Open telemetry image 1">
-            <picture>
-              <source type="image/webp" srcset="../assets/images/tele_1.webp">
-              <img src="../assets/images/normal-images/tele_1.png" alt="Telemetry image 1" loading="lazy" width="1331" height="641" class="w-full h-full" style="object-fit: cover;">
-            </picture>
-          </button>
-        </div>
+      <div class="project-badges">
+        <span class="project-badge">Python</span>
+        <span class="project-badge">pandas</span>
+        <span class="project-badge">SciPy (Savitzky-Golay, Welch PSD)</span>
+      </div>
+    </div>
 
-        <div class="bg-brandBlack/60 p-6 border border-brandSlate/20">
-          <h4 class="font-gothic text-brandYellow mb-2">Notes</h4>
-          <p class="text-brandOffwhite/80">Designed for report-ready figures and modular reuse across telemetry teaching experiments.</p>
+    <div class="project-grid">
+      <div class="space-y-8">
+        <div class="project-card">
+          <h3 class="text-xl font-gothic text-brandYellow mb-4">What I built</h3>
+          <p class="text-brandOffwhite/70 leading-relaxed">Real air-quality sensor data is not clean — sensors drop out, drift, and fail silently. I built the quality-control and conditioning stage that the team’s modulation and monitoring subsystems depended on, screening every sensor stream against missing-data and validity criteria, interpolating short gaps while preserving long outages as genuine segment boundaries, and comparing two smoothing filters before selecting the Savitzky-Golay filter for its stronger peak retention on pollution spike events.</p>
+          <p class="text-brandOffwhite/70 leading-relaxed mt-4">One sensor with a deceptively low 0.84% missing-data rate was flagged and excluded after quality control revealed 67% of its readings were invalid — a check a simple completeness threshold would have missed.</p>
         </div>
+      </div>
 
-        <div class="gallery-modal" role="dialog" aria-modal="true" aria-hidden="true">
-          <div class="gallery-modal-overlay"></div>
-          <button type="button" class="gallery-close" aria-label="Close gallery">�</button>
-          <button type="button" class="gallery-prev" aria-label="Previous image">�</button>
-          <div class="gallery-viewer">
-            <picture>
-              <source type="image/webp" srcset="../assets/images/tele_1.webp">
-              <img src="../assets/images/normal-images/tele_1.png" alt="Telemetry image" class="gallery-current" loading="lazy" width="1331" height="641">
-            </picture>
-            <video class="gallery-current-video" controls preload="metadata"></video>
-            <div class="gallery-caption"></div>
-          </div>
-          <button type="button" class="gallery-next" aria-label="Next image">�</button>
+      <div class="space-y-6">
+        <div class="project-card">
+          <h3 class="text-xl font-gothic text-brandYellow mb-4">What the team shipped</h3>
+          <ul class="list-disc list-inside text-brandOffwhite/80 leading-relaxed">
+            <li>5-scheme modulation comparison (AM reached 15.4 dB recovered SNR)</li>
+            <li>Digital telemetry chain with zero-error bit recovery</li>
+            <li>Six-tab Streamlit dashboard for live monitoring and alerts</li>
+          </ul>
         </div>
       </div>
     </div>
