@@ -146,8 +146,8 @@ button,
 .project-stat-grid {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 1rem;
-    margin-top: -3rem;
+    gap: 1.25rem;
+    margin-top: 2rem;
     position: relative;
     z-index: 1;
 }
@@ -158,6 +158,27 @@ button,
     border: 1px solid rgba(174, 172, 146, 0.15);
     border-radius: 0.75rem;
     padding: 1.5rem;
+}
+
+.project-stat-card {
+    padding: 1.2rem 1.25rem;
+    min-height: 8.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project-stat-value {
+    font-family: var(--font-headline);
+    font-size: clamp(2.15rem, 2.8vw, 3rem);
+    line-height: 1.05;
+    color: var(--brand-yellow);
+}
+
+.project-stat-card p {
+    margin-top: 0.75rem;
+    font-size: 0.8rem;
+    line-height: 1.5;
 }
 
 .project-card h4,
