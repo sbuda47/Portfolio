@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		];
 	}
 
-	const galleryItems = document.querySelectorAll('.gallery-item, .gallery-thumb');
+	const galleryItems = document.querySelectorAll('.gallery-item');
 	const galleryModal = document.querySelector('.gallery-modal');
 	const galleryViewer = document.querySelector('.gallery-viewer');
 	const galleryCurrent = document.querySelector('.gallery-current');
@@ -104,9 +104,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const updateGallery = (index) => {
 		currentGalleryIndex = (index + galleryMedia.length) % galleryMedia.length;
-		document.querySelectorAll('.gallery-thumb').forEach((thumb, thumbIndex) => {
-			thumb.classList.toggle('active', thumbIndex === currentGalleryIndex);
-		});
 		const current = galleryMedia[currentGalleryIndex];
 		if (current.type === 'image') {
 			if (galleryCurrent) {
