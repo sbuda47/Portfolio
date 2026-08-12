@@ -67,13 +67,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	let galleryMedia = [];
 
 	if (galleryType === 'telemetry') {
-		galleryMedia = [
-			{ type: 'image', src: '../assets/images/tele_1.webp', alt: 'Telemetry image 1' },
-			{ type: 'image', src: '../assets/images/tele_2.webp', alt: 'Telemetry image 2' },
-			{ type: 'image', src: '../assets/images/tele_3.webp', alt: 'Telemetry image 3' },
-			{ type: 'image', src: '../assets/images/tele_4.webp', alt: 'Telemetry image 4' },
-			{ type: 'image', src: '../assets/images/tele_5.webp', alt: 'Telemetry image 5' }
-		];
+		galleryMedia = [1, 2, 3, 4, 5].map((n) => ({
+			type: 'image',
+			src: `../assets/images/tele_${n}.webp`,
+			alt: `Telemetry image ${n}`
+		}));
 	} else if (galleryType === 'bible-quest') {
 		galleryMedia = [
 			{ type: 'image', src: '../assets/images/BQ_1.jpg', alt: 'Bible Quest screenshot 1' },
