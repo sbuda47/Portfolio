@@ -68,11 +68,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	if (galleryType === 'telemetry') {
 		galleryMedia = [
-			{ type: 'image', src: '../assets/images/tele_1.png', alt: 'Telemetry image 1' },
-			{ type: 'image', src: '../assets/images/tele_2.png', alt: 'Telemetry image 2' },
-			{ type: 'image', src: '../assets/images/tele_3.png', alt: 'Telemetry image 3' },
-			{ type: 'image', src: '../assets/images/tele_4.png', alt: 'Telemetry image 4' },
-			{ type: 'image', src: '../assets/images/tele_5.png', alt: 'Telemetry image 5' }
+			{ type: 'image', src: '../assets/images/tele_1.webp', alt: 'Telemetry image 1' },
+			{ type: 'image', src: '../assets/images/tele_2.webp', alt: 'Telemetry image 2' },
+			{ type: 'image', src: '../assets/images/tele_3.webp', alt: 'Telemetry image 3' },
+			{ type: 'image', src: '../assets/images/tele_4.webp', alt: 'Telemetry image 4' },
+			{ type: 'image', src: '../assets/images/tele_5.webp', alt: 'Telemetry image 5' }
 		];
 	} else if (galleryType === 'bible-quest') {
 		galleryMedia = [
@@ -86,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		];
 	}
 
-	const galleryItems = document.querySelectorAll('.gallery-item');
+	const galleryItems = document.querySelectorAll('.gallery-item, .gallery-thumb');
 	const galleryModal = document.querySelector('.gallery-modal');
 	const galleryViewer = document.querySelector('.gallery-viewer');
 	const galleryCurrent = document.querySelector('.gallery-current');
@@ -106,6 +106,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const updateGallery = (index) => {
 		currentGalleryIndex = (index + galleryMedia.length) % galleryMedia.length;
+		document.querySelectorAll('.gallery-thumb').forEach((thumb, thumbIndex) => {
+			thumb.classList.toggle('active', thumbIndex === currentGalleryIndex);
+		});
 		const current = galleryMedia[currentGalleryIndex];
 		if (current.type === 'image') {
 			if (galleryCurrent) {
