@@ -25,9 +25,27 @@ Timeline: 2–3 days for Sprint 2 execution and polish.
 
 ## Next sprint: Sprint 3 — polish, copy, and release readiness
 
-- [ ] Full responsive audit for mobile/tablet breakpoints and layout edge cases.
-- [ ] Content review and stronger project storytelling on all project pages.
-- [ ] Final performance and Lighthouse tuning for GitHub Pages.
-- [ ] Contact form wiring or conversion flow strategy.
-- [ ] Review and remove any unused images / optimize assets further.
-- [ ] Launch-ready QA checklist and final deployment polish.
+Sprint 3 will focus on making the site feel finished and launch-ready.
+
+- [x] Audit responsive layouts across mobile and tablet, then fix breakpoints for the hero, project cards, nav, and form pages.
+- [ ] Review the site copy and project storytelling so each page clearly communicates the role, impact, and technology.
+- [ ] Tune performance and Lighthouse metrics: image delivery, CSS loading, page speed, and GitHub Pages readiness.
+- [ ] Harden accessibility: keyboard focus states, form labels, semantic headings, and contrast on highlighted nav/buttons.
+- [ ] Confirm the GitHub Pages workflow and deployment settings are correct after the workflow fix.
+- [ ] Improve contact conversion: refine the contact form UX and make the call-to-action more compelling.
+- [ ] Add optional analytics or tracking for launch insights if you want to measure visits and behavior.
+- [ ] Clean up any remaining design consistency issues across pages, using the `.agents` skills as useful support.
+
+### Sprint 3 deliverables
+
+- Responsive layout audit results and CSS fixes across the homepage, about, skills, portfolio, and contact pages.
+- A list of content/storytelling changes for the next phase so the portfolio messaging is sharper.
+- Performance and accessibility improvements scoped for GitHub Pages launch.
+- Final launch-ready checklist that includes deployment QA and workflow validation.
+
+### Why these are next
+
+- Responsive audit ensures the portfolio looks strong on phones and tablets, not just desktop.
+- Copy and storytelling are what turn a polished design into a persuasive portfolio.
+- Performance tuning makes the published site load fast and score better in real-world metrics.
+- Accessibility and deploy checks reduce the chance of launch problems and improve professional quality.

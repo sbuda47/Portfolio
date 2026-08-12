@@ -32,6 +32,12 @@ html {
     scroll-behavior: smooth;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body {
     margin: 0;
     min-height: 100vh;
@@ -86,6 +92,13 @@ h3 {
     max-width: 58rem;
 }
 
+pre {
+    overflow-x: auto;
+    max-width: 100%;
+    white-space: pre-wrap;
+    word-break: break-word;
+}
+
 .page-intro h1,
 .section-heading {
     font-size: clamp(2.8rem, 4.8vw, 4.5rem);
@@ -120,6 +133,7 @@ h3 {
 button,
 .btn {
     cursor: pointer;
+    max-width: 100%;
 }
 
 body::selection {
