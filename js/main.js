@@ -161,8 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		});
 
-		galleryPrev.addEventListener('click', () => openGallery(currentGalleryIndex - 1));
-		galleryNext.addEventListener('click', () => openGallery(currentGalleryIndex + 1));
+		galleryPrev.addEventListener('click', () => updateGallery(currentGalleryIndex - 1));
+		galleryNext.addEventListener('click', () => updateGallery(currentGalleryIndex + 1));
 		galleryClose.addEventListener('click', closeGallery);
 
 		galleryModal.addEventListener('click', (event) => {
@@ -174,8 +174,8 @@ document.addEventListener('DOMContentLoaded', () => {
 		document.addEventListener('keydown', (event) => {
 			if (!galleryModal.classList.contains('active')) return;
 			if (event.key === 'Escape') closeGallery();
-			if (event.key === 'ArrowLeft') openGallery(currentGalleryIndex - 1);
-			if (event.key === 'ArrowRight') openGallery(currentGalleryIndex + 1);
+			if (event.key === 'ArrowLeft') updateGallery(currentGalleryIndex - 1);
+			if (event.key === 'ArrowRight') updateGallery(currentGalleryIndex + 1);
 		});
 	}
 });
