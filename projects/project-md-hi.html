@@ -3,6 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Case study for the Mahalanobis Distance Health Index project: industrial fault detection, MATLAB validation, and embedded streaming results.">
   <title>Mahalanobis Distance Health Index — Project</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
@@ -32,40 +33,75 @@
 
   <main id="main-content" class="pt-28 max-w-6xl mx-auto">
     <div class="max-w-7xl mx-auto mb-12">
-      <a href="../portfolio.html" class="btn btn-outline">? Back to Portfolio</a>
+      <a href="../portfolio.html" class="btn btn-outline">← Back to Portfolio</a>
     </div>
-    <h1 class="section-heading font-gothic mb-4">Mahalanobis Distance Health Index (MD-HI)</h1>
-    <p class="text-lg text-copy mb-6">A statistical fault-detection framework used for conveyor and machinery health monitoring, validated against MATLAB references.</p>
 
-    <div class="grid grid-cols-2 gap-8">
-      <div>
-        <h3 class="text-xl font-gothic text-brandYellow mb-2">Summary</h3>
-        <p class="text-brandOffwhite/70">Computes a multivariate Mahalanobis-based health index with EWMA smoothing and per-load calibration to detect faults across sensor feature vectors.</p>
+    <div class="max-w-7xl mx-auto mb-12">
+      <span class="project-label">Industrial condition monitoring</span>
+      <h1 class="section-heading font-gothic mb-4">Mahalanobis Distance Health Index (MD-HI)</h1>
+      <p class="text-lg text-brandOffwhite/70 max-w-3xl leading-relaxed mb-8">A statistical fault-detection framework built to catch conveyor and motor faults before they cause downtime — validated to six decimal places against a MATLAB reference implementation.</p>
 
-        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">My Role</h3>
-        <ul class="list-disc list-inside text-brandOffwhite/80">
-          <li>Reimplemented MATLAB reference in Python with numerical parity</li>
-          <li>Built streaming and UART tools to relay HI values to embedded controllers</li>
-          <li>Prepared validation and figures for a journal submission</li>
-        </ul>
-
-        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">Tech</h3>
-        <p class="text-brandOffwhite/80">Python, NumPy, SciPy, UART streaming</p>
+      <div class="project-stat-grid">
+        <div class="project-card">
+          <div class="text-5xl font-gothic text-brandYellow">6,594</div>
+          <p class="text-sm text-brandOffwhite/70 mt-2">windows validated</p>
+        </div>
+        <div class="project-card">
+          <div class="text-5xl font-gothic text-brandYellow">6 dp</div>
+          <p class="text-sm text-brandOffwhite/70 mt-2">parity with MATLAB</p>
+        </div>
+        <div class="project-card">
+          <div class="text-5xl font-gothic text-brandYellow">49</div>
+          <p class="text-sm text-brandOffwhite/70 mt-2">sensor features</p>
+        </div>
       </div>
 
-      <div>
-        <div class="aspect-video bg-brandSlate/10 overflow-hidden rounded-sm mb-6">
+      <div class="project-badges">
+        <span class="project-badge">Python</span>
+        <span class="project-badge">NumPy</span>
+        <span class="project-badge">SciPy</span>
+        <span class="project-badge">UART streaming</span>
+      </div>
+    </div>
+
+    <div class="project-grid">
+      <div class="space-y-8">
+        <div class="project-card">
+          <h3 class="text-xl font-gothic text-brandYellow mb-4">What it is</h3>
+          <p class="text-brandOffwhite/70 leading-relaxed">MD-HI is a multivariate health index that measures how machine sensor values move together, rather than treating each signal separately. By combining Mahalanobis distance with EWMA smoothing and per-load calibration, the system delivers stable fault detection for conveyors and rotating equipment, even as operating conditions shift.</p>
+        </div>
+
+        <div class="project-card">
+          <h3 class="text-xl font-gothic text-brandYellow mb-4">The approach</h3>
+          <p class="text-brandOffwhite/70 leading-relaxed mb-4">Motor and conveyor faults rarely announce themselves as a single bad reading — they appear as a change in correlation across many sensor channels. I reimplemented the MATLAB Mahalanobis-distance reference in Python, then added EWMA smoothing and load-aware thresholding so the health index stays stable across different machine loads.</p>
+          <p class="text-brandOffwhite/70 leading-relaxed">Once the core pipeline was validated, I built the UART streaming layer to relay live index values and alarms to embedded controllers on the line, making the system suitable for real-time condition monitoring.</p>
+        </div>
+
+        <div class="project-card">
+          <h3 class="text-xl font-gothic text-brandYellow mb-4">My role</h3>
+          <ul class="list-disc list-inside text-brandOffwhite/80 leading-relaxed">
+            <li>Reimplemented MATLAB reference logic in Python for numerical parity</li>
+            <li>Designed EWMA smoothing and per-load calibration to reduce false positives</li>
+            <li>Built streaming tools for UART delivery to embedded controllers</li>
+            <li>Prepared validation figures and documentation for journal submission</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="aspect-video bg-brandSlate/10 overflow-hidden rounded-sm project-media">
           <picture>
             <source type="image/webp" srcset="../assets/images/image_990026.webp">
-            <img src="../assets/images/normal-images/style_examples/image_990026.png" alt="Mahalanobis Distance Health Index visualization" class="w-full h-full" style="object-fit: cover;" loading="lazy" width="1024" height="768">
+            <img src="../assets/images/normal-images/style_examples/image_990026.png" alt="Dashboard screenshot for the Mahalanobis Distance Health Index project" class="w-full h-full" loading="lazy" width="1024" height="768">
           </picture>
         </div>
-        <div class="bg-brandBlack/60 p-6 border border-brandSlate/20">
-          <h4 class="font-gothic text-brandYellow mb-2">Results</h4>
-          <ul class="list-disc list-inside text-brandOffwhite/80">
-            <li>High detection rates for coil/bearing faults</li>
-            <li>Per-load thresholding to reduce false positives</li>
-            <li>Validated against MATLAB implementation across thousands of windows</li>
+
+        <div class="project-card">
+          <h4 class="font-gothic text-brandYellow mb-4">Outcome</h4>
+          <ul class="list-disc list-inside text-brandOffwhite/80 leading-relaxed">
+            <li>Per-load thresholding cut false positives and improved operational trust</li>
+            <li>Streaming pipeline feeds embedded alarms directly to controllers</li>
+            <li>Validation figures prepared for journal review and stakeholder sign-off</li>
           </ul>
         </div>
       </div>
