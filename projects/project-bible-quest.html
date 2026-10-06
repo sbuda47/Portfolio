@@ -3,13 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Bible Quest — Project</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+  <meta name="description" content="Bible Quest is an installable party-game PWA for Bible and Adventist trivia, created for fellowship game nights.">
+  <title>Bible Quest | Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
-<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack px-12 pb-12" data-gallery="bible-quest">
+<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack" data-gallery="bible-quest">
   <a href="#main-content" class="skip-link">Skip to main content</a>
-  <!-- Shared header start -->
+
   <header class="fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
     <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <div class="text-2xl font-gothic tracking-tighter text-brandOffwhite">Sibusiso M. Mpofu</div>
@@ -28,65 +29,97 @@
       </ul>
     </nav>
   </header>
-  <!-- Shared header end -->
 
-  <main id="main-content" class="pt-28 max-w-6xl mx-auto">
-    <div class="max-w-7xl mx-auto mb-12">
-      <a href="../portfolio.html" class="btn btn-outline">? Back to Portfolio</a>
-    </div>
-    <h1 class="section-heading font-gothic mb-4">Bible Quest (PWA)</h1>
-    <p class="text-lg text-copy mb-6">A 30-seconds-style card game implemented as a Progressive Web App and deployed to Netlify, with printable assets for tabletop play.</p>
+  <main id="main-content" class="bible-quest-page">
+    <div class="bq-shell">
+      <a href="../portfolio.html" class="bq-back-link">&larr; Back to portfolio</a>
 
-    <div class="grid grid-cols-2 gap-8">
-      <div>
-        <h3 class="text-xl font-gothic text-brandYellow mb-2">Summary</h3>
-        <p class="text-brandOffwhite/70">Playable web app with offline capabilities, printable card set, and a React-based component architecture for game logic.</p>
-
-        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">My Role</h3>
-        <ul class="list-disc list-inside text-brandOffwhite/80">
-          <li>Built the PWA and game components in React</li>
-          <li>Prepared printable assets and deployment pipeline</li>
-          <li>Managed Netlify deployment and PWA manifest</li>
-        </ul>
-
-        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">Tech</h3>
-        <p class="text-brandOffwhite/80">React, Netlify, PWA manifest, HTML/CSS</p>
-        <div class="bg-brandBlack/60 p-6 border border-brandSlate/20 mt-6">
-          <h4 class="font-gothic text-brandYellow mb-2">Status</h4>
-          <p class="text-brandOffwhite/80">Deployed and shareable; includes installable PWA support and printable game assets.</p>
+      <section class="bq-hero" aria-labelledby="bq-title">
+        <div class="bq-hero-copy">
+          <p class="bq-eyebrow">Personal project, shipped and played</p>
+          <h1 id="bq-title">Bible Quest</h1>
+          <p class="bq-lede">A 30 Seconds-style party game for Bible and Adventist trivia, built for fellowship game nights.</p>
+          <a href="#project-media" class="btn btn-primary bq-hero-action">View project media</a>
         </div>
-      </div>
 
-      <div>
-        <div class="gallery-grid gallery-small mb-6">
-          <button type="button" class="gallery-item gallery-item-main" data-index="0" aria-label="Open Bible Quest image gallery">
-            <picture>
-              <source type="image/webp" srcset="../assets/images/BQ_1.webp">
-              <img src="../assets/images/normal-images/BQ_1.jpg" alt="Bible Quest screenshot 1" loading="lazy" width="1080" height="2203" class="w-full h-full" style="object-fit: cover;">
-            </picture>
+        <figure class="bq-device-frame">
+          <img src="../assets/images/BQ_1.webp" alt="Bible Quest mobile game screen" width="1080" height="2203" fetchpriority="high">
+        </figure>
+      </section>
+
+      <section class="bq-facts" aria-label="Bible Quest at a glance">
+        <div><strong>50</strong><span>cards written</span></div>
+        <div><strong>10</strong><span>trivia categories</span></div>
+        <div><strong>250</strong><span>answers to describe</span></div>
+      </section>
+
+      <section class="bq-story" aria-label="Project story">
+        <div class="bq-story-copy">
+          <h2>A familiar game format, made relevant.</h2>
+          <p>30 Seconds asks players to describe five answers to their team before the timer runs out, without saying the word itself. There was no version built around the Bible knowledge and Adventist beliefs used at our fellowship game nights, so I made one from scratch.</p>
+          <p>The result is 50 cards across 10 categories, from Bible trivia and the parables of Jesus to the 28 Fundamental Beliefs, the health message, and the Great Disappointment of 1844. Every answer was written to be playable aloud without giving itself away.</p>
+        </div>
+
+        <aside class="bq-role" aria-labelledby="role-heading">
+          <h2 id="role-heading">My contribution</h2>
+          <ul>
+            <li>Built the game as a React Progressive Web App.</li>
+            <li>Created the card content and printable fallback set.</li>
+            <li>Configured installability, offline use, and Netlify deployment.</li>
+          </ul>
+        </aside>
+      </section>
+
+      <section class="bq-delivery" aria-labelledby="delivery-heading">
+        <div class="bq-delivery-content">
+          <h2 id="delivery-heading">Easy to start. Ready when the room is.</h2>
+          <p>I chose an installable Progressive Web App so players can open one link, add it to their home screen, and play offline without an app-store step. A printable card set makes game night resilient when Wi-Fi or battery life is not.</p>
+        </div>
+        <p class="bq-status">Played at BIUST Adventist Fellowship events</p>
+      </section>
+
+      <section id="project-media" class="bq-media-section" aria-labelledby="media-heading">
+        <div class="bq-section-heading">
+          <h2 id="media-heading">In play</h2>
+          <p>Browse the mobile game flow and watch a short demo.</p>
+        </div>
+        <div class="bq-media-grid">
+          <button type="button" class="bq-media-primary gallery-item" data-index="0" aria-label="Open Bible Quest media gallery">
+            <img src="../assets/images/BQ_2.webp" alt="Bible Quest game screen showing a question card" loading="lazy" width="1080" height="2203">
+            <span>Open gallery</span>
+          </button>
+          <button type="button" class="bq-media-secondary gallery-item" data-index="6" aria-label="Watch Bible Quest demo video">
+            <img src="../assets/images/BQ_5.webp" alt="Bible Quest mobile game interface" loading="lazy" width="1080" height="2203">
+            <span>Watch demo</span>
           </button>
         </div>
+      </section>
 
-        <div class="gallery-modal" role="dialog" aria-modal="true" aria-hidden="true">
-          <div class="gallery-modal-overlay"></div>
-          <button type="button" class="gallery-close" aria-label="Close gallery">�</button>
-          <button type="button" class="gallery-prev" aria-label="Previous image">�</button>
-          <div class="gallery-viewer">
-            <picture>
-              <source type="image/webp" srcset="../assets/images/BQ_1.webp">
-              <img src="../assets/images/normal-images/BQ_1.jpg" alt="Gallery content" class="gallery-current" loading="lazy" width="1080" height="2203">
-            </picture>
-            <video class="gallery-current-video" controls preload="metadata"></video>
-            <div class="gallery-caption"></div>
-          </div>
-          <button type="button" class="gallery-next" aria-label="Next image">�</button>
-        </div>
-      </div>
+      <section class="bq-tech" aria-labelledby="tech-heading">
+        <h2 id="tech-heading">Built with</h2>
+        <ul class="project-badges" aria-label="Technologies used">
+          <li class="project-badge">React</li>
+          <li class="project-badge">Progressive Web App</li>
+          <li class="project-badge">Netlify</li>
+          <li class="project-badge">Printable assets</li>
+        </ul>
+      </section>
     </div>
   </main>
 
-  <footer class="max-w-7xl mx-auto mt-16 text-sm text-brandSlate">© 2026 Sibusiso M. Mpofu</footer>
+  <div class="gallery-modal" role="dialog" aria-modal="true" aria-label="Bible Quest media gallery" aria-hidden="true">
+    <div class="gallery-modal-overlay"></div>
+    <button type="button" class="gallery-close" aria-label="Close gallery">&times;</button>
+    <button type="button" class="gallery-prev" aria-label="Previous media">&larr;</button>
+    <div class="gallery-viewer">
+      <img src="../assets/images/BQ_1.webp" alt="Bible Quest screenshot 1" class="gallery-current" loading="lazy" width="1080" height="2203">
+      <video class="gallery-current-video" controls preload="metadata"></video>
+      <div class="gallery-caption"></div>
+    </div>
+    <button type="button" class="gallery-next" aria-label="Next media">&rarr;</button>
+  </div>
+
+  <footer class="bq-footer">&copy; 2026 Sibusiso M. Mpofu</footer>
   <script src="../js/main.js"></script>
 </body>
 </html>
-

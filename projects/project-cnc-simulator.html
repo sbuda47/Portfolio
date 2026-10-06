@@ -30,39 +30,65 @@
   </header>
   <!-- Shared header end -->
 
-  <main id="main-content" class="pt-28 max-w-6xl mx-auto">
-    <div class="max-w-7xl mx-auto mb-12">
-      <a href="../portfolio.html" class="btn btn-outline">? Back to Portfolio</a>
-    </div>
-    <h1 class="section-heading font-gothic mb-4">CNC Simulator & G-code Visualizer</h1>
-    <p class="text-lg text-copy mb-6">Desktop tool to parse, simulate, and visualize RS-274/G-code toolpaths before running on hardware.</p>
-
-    <div class="grid grid-cols-2 gap-8">
-      <div>
-        <h3 class="text-xl font-gothic text-brandYellow mb-2">What it does</h3>
-        <p class="text-brandOffwhite/70">Parses G-code, maintains machine modal state, and renders the resulting toolpath with animation and diagnostics to catch unsafe or malformed commands.</p>
-
-        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">My Role</h3>
-        <ul class="list-disc list-inside text-brandOffwhite/80">
-          <li>Lexer, parser, and simulator implementation in Python</li>
-          <li>Tkinter GUI with Matplotlib 3D/2D visualizer and diagnostics</li>
-          <li>Test coverage for core parsing and simulation features</li>
-        </ul>
-
-        <h3 class="text-xl font-gothic text-brandYellow mt-6 mb-2">Tech</h3>
-        <p class="text-brandOffwhite/80">Python, Tkinter, Matplotlib, unittest</p>
+  <main id="main-content" class="project-page">
+    <div class="project-shell">
+      <div class="mb-12">
+        <a href="../portfolio.html" class="project-back-link">&larr; Back to portfolio</a>
       </div>
 
-      <div>
-        <div class="aspect-video bg-brandSlate/10 overflow-hidden rounded-sm mb-6">
+      <div class="mb-12">
+        <span class="project-label">Personal tool · zero-cost insurance against machine crashes</span>
+        <h1 class="section-heading font-gothic mb-4">CNC Simulator & G-code Visualizer</h1>
+        <p class="text-lg text-brandOffwhite/70 max-w-3xl leading-relaxed mb-8">A lexer and parser for RS-274 G-code that tracks machine state and renders the toolpath before hardware. Catches coordinate typos, sequencing errors, and unsafe modal states at your desk — preventing costly tool crashes and part failures before they happen.</p>
+      </div>
+
+      <div class="project-hero-banner mb-8">
+        <div class="aspect-video bg-brandSlate/10 overflow-hidden rounded-sm">
           <video controls class="w-full h-full" style="object-fit: cover;">
             <source src="../assets/images/linkedln%20screen%20recording.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
-        <div class="bg-brandBlack/60 p-6 border border-brandSlate/20">
-          <h4 class="font-gothic text-brandYellow mb-2">Notes</h4>
-          <p class="text-brandOffwhite/80">Supports linear moves, arcs, canned cycles, subprograms, and unit handling. Useful as a pre-run safety check.</p>
+      </div>
+
+      <div class="mb-12">
+        <div class="project-capabilities mb-8">
+          <span class="project-capability">Linear moves</span>
+          <span class="project-capability">Arcs</span>
+          <span class="project-capability">Canned cycles</span>
+          <span class="project-capability">Subprograms</span>
+          <span class="project-capability">Unit handling (G20/G21)</span>
+          <span class="project-capability">Modal state tracking</span>
+        </div>
+
+        <div class="project-badges">
+          <span class="project-badge">Python</span>
+          <span class="project-badge">Tkinter</span>
+          <span class="project-badge">Matplotlib (2D/3D)</span>
+        </div>
+      </div>
+
+      <div class="project-grid">
+        <div>
+          <div class="space-y-6">
+            <div class="project-card">
+              <h3 class="text-xl font-gothic text-brandYellow mb-4">Why I built it</h3>
+              <p class="text-brandOffwhite/70 leading-relaxed">Bad G-code doesn't announce itself — a typo'd coordinate or a wrongly sequenced command can crash the tool or ruin a part before you know something's wrong. I built a lexer and parser for RS-274 G-code from scratch in Python, tracking the machine's modal state across every line and rendering the resulting toolpath for visual validation before hardware.</p>
+              <p class="text-brandOffwhite/70 leading-relaxed mt-4">The tool is built for personal and small-batch use, serving as a first-pass sanity check for G-code validation. It's intentionally scoped for the engineering workflow I use, not as a production safety validator.</p>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div class="space-y-6">
+            <div class="project-card">
+              <h3 class="text-xl font-gothic text-brandYellow mb-4">What it catches</h3>
+              <ul class="list-disc list-inside text-brandOffwhite/70 leading-relaxed space-y-2">
+                <li>Malformed or mistyped commands, flagged at the exact line</li>
+                <li>Out-of-sequence or invalid modal state</li>
+                <li>Visual mismatch between intended and actual toolpath</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -72,4 +98,3 @@
   <script src="../js/main.js"></script>
 </body>
 </html>
-

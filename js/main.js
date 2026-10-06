@@ -36,22 +36,69 @@ document.addEventListener('DOMContentLoaded', () => {
 	const contactForm = document.getElementById('contactForm');
 	const contactFormMessage = document.getElementById('contactFormMessage');
 	if (contactForm) {
+		const nameInput = contactForm.querySelector('#cf-name');
+		const emailInput = contactForm.querySelector('#cf-email');
+
+		// Restrict name field to letters, spaces, and hyphens only (no emojis)
+		if (nameInput) {
+			nameInput.addEventListener('input', (e) => {
+				e.target.value = e.target.value.replace(/[^a-zA-Z\s\-']/g, '');
+			});
+		}
+
+		// Enhanced email validation
+		if (emailInput) {
+			emailInput.addEventListener('blur', (e) => {
+				const email = e.target.value.trim();
+				const isValidEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+				if (email && !isValidEmail) {
+					emailInput.setAttribute('aria-invalid', 'true');
+				} else {
+					emailInput.removeAttribute('aria-invalid');
+				}
+			});
+		}
+
 		contactForm.addEventListener('submit', (ev) => {
 			ev.preventDefault();
 			const name = contactForm.querySelector('#cf-name');
 			const email = contactForm.querySelector('#cf-email');
 			const message = contactForm.querySelector('#cf-message');
 			let ok = true;
-			// simple validations
-			if (!name.value.trim()) { ok = false; name.setAttribute('aria-invalid', 'true'); }
-			else { name.removeAttribute('aria-invalid'); }
-			if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email.value)) { ok = false; email.setAttribute('aria-invalid', 'true'); }
-			else { email.removeAttribute('aria-invalid'); }
-			if (!message.value.trim()) { ok = false; message.setAttribute('aria-invalid', 'true'); }
-			else { message.removeAttribute('aria-invalid'); }
+
+			// Validate name: not empty and only letters/spaces/hyphens
+			if (!name.value.trim()) {
+				ok = false;
+				name.setAttribute('aria-invalid', 'true');
+			}
+			else if (!/^[a-zA-Z\s\-']+$/.test(name.value.trim())) {
+				ok = false;
+				name.setAttribute('aria-invalid', 'true');
+			}
+			else {
+				name.removeAttribute('aria-invalid');
+			}
+
+			// Validate email format
+			if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+				ok = false;
+				email.setAttribute('aria-invalid', 'true');
+			}
+			else {
+				email.removeAttribute('aria-invalid');
+			}
+
+			// Validate message not empty
+			if (!message.value.trim()) {
+				ok = false;
+				message.setAttribute('aria-invalid', 'true');
+			}
+			else {
+				message.removeAttribute('aria-invalid');
+			}
 
 			if (!ok) {
-				contactFormMessage.textContent = 'Please fill out all fields correctly.';
+				contactFormMessage.textContent = 'Please fill out all fields correctly. Name should contain only letters and spaces, and email must be valid.';
 				contactFormMessage.classList.add('text-brandYellow');
 				return;
 			}
@@ -73,22 +120,21 @@ document.addEventListener('DOMContentLoaded', () => {
 			alt: `Telemetry image ${n}`
 		}));
 	} else if (galleryType === 'bible-quest') {
-		galleryMedia = [
-			{ type: 'image', src: '../assets/images/BQ_1.jpg', alt: 'Bible Quest screenshot 1' },
-			{ type: 'image', src: '../assets/images/BQ_2.jpg', alt: 'Bible Quest screenshot 2' },
-			{ type: 'image', src: '../assets/images/BQ_3.jpg', alt: 'Bible Quest screenshot 3' },
-			{ type: 'image', src: '../assets/images/BQ_4.jpg', alt: 'Bible Quest screenshot 4' },
-			{ type: 'image', src: '../assets/images/BQ_5.jpg', alt: 'Bible Quest screenshot 5' },
-			{ type: 'image', src: '../assets/images/BQ_6.jpg', alt: 'Bible Quest screenshot 6' },
-			{ type: 'video', src: '../assets/images/BibleQuest.mp4', alt: 'Bible Quest demo video' }
-		];
+		galleryMedia = [1, 2, 3, 4, 5, 6].map((n) => ({
+			type: 'image',
+			src: `../assets/images/BQ_${n}.webp`,
+			alt: `Bible Quest screenshot ${n}`
+		}));
+		galleryMedia.push({ type: 'video', src: '../assets/images/BibleQuest.mp4', alt: 'Bible Quest demo video' });
 	}
 
 	const galleryItems = document.querySelectorAll('.gallery-item');
 	const galleryModal = document.querySelector('.gallery-modal');
 	const galleryViewer = document.querySelector('.gallery-viewer');
-	const galleryCurrent = document.querySelector('.gallery-current');
-	const galleryCurrentVideo = document.querySelector('.gallery-current-video');
+	// Scope the current media selectors to the gallery viewer to avoid picking up other page images
+	const galleryCurrent = document.querySelector('.gallery-viewer img.gallery-current');
+	const galleryCurrentSource = document.querySelector('.gallery-viewer picture source');
+	const galleryCurrentVideo = document.querySelector('.gallery-viewer video.gallery-current-video');
 	const galleryCaption = document.querySelector('.gallery-caption');
 	const galleryPrev = document.querySelector('.gallery-prev');
 	const galleryNext = document.querySelector('.gallery-next');
@@ -103,18 +149,25 @@ document.addEventListener('DOMContentLoaded', () => {
 	};
 
 	const updateGallery = (index) => {
-		currentGalleryIndex = (index + galleryMedia.length) % galleryMedia.length;
+		if (!galleryMedia.length) return;
+		currentGalleryIndex = ((index % galleryMedia.length) + galleryMedia.length) % galleryMedia.length;
 		const current = galleryMedia[currentGalleryIndex];
+
+		if (galleryCurrentVideo) {
+			galleryCurrentVideo.pause();
+			galleryCurrentVideo.removeAttribute('src');
+			galleryCurrentVideo.style.display = 'none';
+		}
+
 		if (current.type === 'image') {
+			if (galleryCurrentSource) {
+				galleryCurrentSource.setAttribute('srcset', current.src);
+			}
 			if (galleryCurrent) {
 				galleryCurrent.src = current.src;
+				galleryCurrent.srcset = current.src;
 				galleryCurrent.alt = current.alt;
 				galleryCurrent.style.display = 'block';
-			}
-			if (galleryCurrentVideo) {
-				galleryCurrentVideo.pause();
-				galleryCurrentVideo.style.display = 'none';
-				galleryCurrentVideo.removeAttribute('src');
 			}
 			if (galleryCaption) galleryCaption.textContent = `Image ${currentGalleryIndex + 1} of ${galleryMedia.length}`;
 		} else {
@@ -156,10 +209,11 @@ document.addEventListener('DOMContentLoaded', () => {
 	if (galleryItems.length && galleryModal && galleryCurrent && galleryPrev && galleryNext && galleryClose) {
 		galleryItems.forEach((item) => {
 			item.addEventListener('click', () => {
-				const index = Number(item.dataset.index);
-				openGallery(index);
-			});
+			let index = Number(item.dataset.index);
+			if (Number.isNaN(index)) index = 0;
+			openGallery(index);
 		});
+				});
 
 		galleryPrev.addEventListener('click', () => updateGallery(currentGalleryIndex - 1));
 		galleryNext.addEventListener('click', () => updateGallery(currentGalleryIndex + 1));

@@ -30,19 +30,20 @@
   </header>
   <!-- Shared header end -->
 
-  <main id="main-content" class="pt-28 max-w-6xl mx-auto">
-    <div class="max-w-7xl mx-auto mb-12">
-      <a href="../portfolio.html" class="btn btn-outline">← Back to Portfolio</a>
-    </div>
+  <main id="main-content" class="project-page">
+    <div class="project-shell">
+      <div class="mb-12">
+        <a href="../portfolio.html" class="project-back-link">&larr; Back to portfolio</a>
+      </div>
 
-    <div class="max-w-7xl mx-auto mb-12">
+      <div class="mb-12">
       <span class="project-label">Signal processing — 5-person team project</span>
       <h1 class="section-heading font-gothic mb-4">Environmental Telemetry Monitoring System</h1>
       <p class="text-lg text-brandOffwhite/70 max-w-3xl leading-relaxed mb-8">An end-to-end telemetry pipeline built with four teammates, simulating real urban air-quality data through signal conditioning, modulation, digital encoding, and automated monitoring.</p>
       <p class="text-brandOffwhite/70 max-w-4xl leading-relaxed">I owned the preprocessing and data-cleaning subsystem — the foundation the rest of the pipeline was built on.</p>
-    </div>
+      </div>
 
-    <div class="project-hero-banner mb-8">
+      <div class="project-hero-banner mb-8">
       <button type="button" class="gallery-item gallery-item-main" data-index="0" aria-label="Open telemetry image gallery">
         <picture>
           <source type="image/webp" srcset="../assets/images/tele_1.webp">
@@ -53,8 +54,8 @@
 
     <div class="gallery-modal" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="gallery-modal-overlay"></div>
-      <button type="button" class="gallery-close" aria-label="Close gallery">✕</button>
-      <button type="button" class="gallery-prev" aria-label="Previous image">←</button>
+      <button type="button" class="gallery-close" aria-label="Close gallery">&times;</button>
+      <button type="button" class="gallery-prev" aria-label="Previous image">&larr;</button>
       <div class="gallery-viewer">
         <picture>
           <source type="image/webp" srcset="../assets/images/tele_1.webp">
@@ -63,7 +64,7 @@
         <video class="gallery-current-video" controls preload="metadata"></video>
         <div class="gallery-caption"></div>
       </div>
-      <button type="button" class="gallery-next" aria-label="Next image">→</button>
+      <button type="button" class="gallery-next" aria-label="Next image">&rarr;</button>
     </div>
 
     <div class="max-w-7xl mx-auto mb-12">
@@ -90,23 +91,24 @@
       </div>
     </div>
 
-    <div class="project-grid">
-      <div class="space-y-8">
-        <div class="project-card">
-          <h3 class="text-xl font-gothic text-brandYellow mb-4">What I built</h3>
-          <p class="text-brandOffwhite/70 leading-relaxed">Real air-quality sensor data is not clean — sensors drop out, drift, and fail silently. I built the quality-control and conditioning stage that the team’s modulation and monitoring subsystems depended on, screening every sensor stream against missing-data and validity criteria, interpolating short gaps while preserving long outages as genuine segment boundaries, and comparing two smoothing filters before selecting the Savitzky-Golay filter for its stronger peak retention on pollution spike events.</p>
-          <p class="text-brandOffwhite/70 leading-relaxed mt-4">One sensor with a deceptively low 0.84% missing-data rate was flagged and excluded after quality control revealed 67% of its readings were invalid — a check a simple completeness threshold would have missed.</p>
+      <div class="project-grid">
+        <div class="space-y-8">
+          <div class="project-card">
+            <h3 class="text-xl font-gothic text-brandYellow mb-4">What I built</h3>
+            <p class="text-brandOffwhite/70 leading-relaxed">Real air-quality sensor data is not clean — sensors drop out, drift, and fail silently. I built the quality-control and conditioning stage that the team’s modulation and monitoring subsystems depended on, screening every sensor stream against missing-data and validity criteria, interpolating short gaps while preserving long outages as genuine segment boundaries, and comparing two smoothing filters before selecting the Savitzky-Golay filter for its stronger peak retention on pollution spike events.</p>
+            <p class="text-brandOffwhite/70 leading-relaxed mt-4">One sensor with a deceptively low 0.84% missing-data rate was flagged and excluded after quality control revealed 67% of its readings were invalid — a check a simple completeness threshold would have missed.</p>
+          </div>
         </div>
-      </div>
 
-      <div class="space-y-6">
-        <div class="project-card">
-          <h3 class="text-xl font-gothic text-brandYellow mb-4">What the team shipped</h3>
-          <ul class="list-disc list-inside text-brandOffwhite/80 leading-relaxed">
-            <li>5-scheme modulation comparison (AM reached 15.4 dB recovered SNR)</li>
-            <li>Digital telemetry chain with zero-error bit recovery</li>
-            <li>Six-tab Streamlit dashboard for live monitoring and alerts</li>
-          </ul>
+        <div class="space-y-6">
+          <div class="project-card">
+            <h3 class="text-xl font-gothic text-brandYellow mb-4">What the team shipped</h3>
+            <ul class="list-disc list-inside text-brandOffwhite/80 leading-relaxed">
+              <li>5-scheme modulation comparison (AM reached 15.4 dB recovered SNR)</li>
+              <li>Digital telemetry chain with zero-error bit recovery</li>
+              <li>Six-tab Streamlit dashboard for live monitoring and alerts</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
