@@ -79,12 +79,12 @@
       <div class="project-grid">
         <div class="space-y-8">
           <div class="project-card">
-          <h3 class="text-xl font-gothic text-brandYellow mb-4">What it is</h3>
+          <h2 class="text-xl font-gothic text-brandYellow mb-4">What it is</h2>
           <p class="text-brandOffwhite/70 leading-relaxed">MD-HI is a multivariate health index that measures how machine sensor values move together, rather than treating each signal separately. By combining Mahalanobis distance with EWMA smoothing and per-load calibration, the system delivers stable fault detection for conveyors and rotating equipment, even as operating conditions shift.</p>
         </div>
 
         <div class="project-card">
-          <h3 class="text-xl font-gothic text-brandYellow mb-4">The approach</h3>
+          <h2 class="text-xl font-gothic text-brandYellow mb-4">The approach</h2>
           <p class="text-brandOffwhite/70 leading-relaxed mb-4">Motor and conveyor faults rarely announce themselves as a single bad reading — they appear as a change in correlation across many sensor channels. I reimplemented the MATLAB Mahalanobis-distance reference in Python, then added EWMA smoothing and load-aware thresholding so the health index stays stable across different machine loads.</p>
           <p class="text-brandOffwhite/70 leading-relaxed">Once the core pipeline was validated, I built the UART streaming layer to relay live index values and alarms to embedded controllers on the line, making the system suitable for real-time condition monitoring.</p>
         </div>
@@ -92,7 +92,7 @@
 
       <div class="space-y-6">
         <div class="project-card">
-          <h3 class="text-xl font-gothic text-brandYellow mb-4">My role</h3>
+          <h2 class="text-xl font-gothic text-brandYellow mb-4">My role</h2>
           <ul class="list-disc list-inside text-brandOffwhite/80 leading-relaxed">
             <li>Reimplemented MATLAB reference logic in Python for numerical parity</li>
             <li>Designed EWMA smoothing and per-load calibration to reduce false positives</li>
@@ -102,7 +102,7 @@
         </div>
 
         <div class="project-card">
-          <h4 class="font-gothic text-brandYellow mb-4">Outcome</h4>
+          <h3 class="font-gothic text-brandYellow mb-4">Outcome</h3>
           <ul class="list-disc list-inside text-brandOffwhite/80 leading-relaxed">
             <li>Per-load thresholding cut false positives and improved operational trust</li>
             <li>Streaming pipeline feeds embedded alarms directly to controllers</li>
@@ -118,4 +118,3 @@
   <script src="../js/main.js"></script>
 </body>
 </html>
-

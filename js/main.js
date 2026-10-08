@@ -32,6 +32,96 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	/* Contact page call to action and rotating prompt */
+	const contactDialog = document.getElementById('contactDialog');
+	const openContactForm = document.getElementById('openContactForm');
+	const closeContactForm = document.getElementById('closeContactForm');
+	if (contactDialog && openContactForm && closeContactForm) {
+		const contactNameInput = contactDialog.querySelector('#cf-name');
+
+		openContactForm.addEventListener('click', () => {
+			contactDialog.showModal();
+			contactNameInput.focus();
+		});
+
+		contactDialog.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape') {
+				event.preventDefault();
+				contactDialog.close();
+			}
+		});
+
+		closeContactForm.addEventListener('click', () => contactDialog.close());
+		contactDialog.addEventListener('click', (event) => {
+			if (event.target === contactDialog) {
+				contactDialog.close();
+			}
+		});
+	}
+
+	const contactLoopText = document.getElementById('contactLoopText');
+	if (contactLoopText && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+		const prompts = [
+			'Building a prototype?',
+			'Improving a control system?',
+			'Making sense of sensor data?',
+			'Turning an idea into a working system?'
+		];
+		let promptIndex = 0;
+		let characterIndex = contactLoopText.textContent.length;
+		let deleting = true;
+
+		const typeNextPrompt = () => {
+			const prompt = prompts[promptIndex];
+			if (deleting) {
+				characterIndex -= 1;
+				contactLoopText.textContent = prompt.slice(0, characterIndex);
+				if (characterIndex === 0) {
+					deleting = false;
+					promptIndex = (promptIndex + 1) % prompts.length;
+					window.setTimeout(typeNextPrompt, 240);
+					return;
+				}
+				window.setTimeout(typeNextPrompt, 32);
+				return;
+			}
+
+			const nextPrompt = prompts[promptIndex];
+			characterIndex += 1;
+			contactLoopText.textContent = nextPrompt.slice(0, characterIndex);
+			if (characterIndex === nextPrompt.length) {
+				deleting = true;
+				window.setTimeout(typeNextPrompt, 2400);
+				return;
+			}
+			window.setTimeout(typeNextPrompt, 65);
+		};
+
+		window.setTimeout(typeNextPrompt, 2400);
+	}
+
+	/* Skills page domain selector */
+	const skillFilters = document.querySelectorAll('[data-skill-filter]');
+	const skillDomains = document.querySelectorAll('[data-skill-domain]');
+	if (skillFilters.length && skillDomains.length) {
+		const setSkillFilter = (selectedDomain) => {
+			skillFilters.forEach((filter) => {
+				const isSelected = filter.dataset.skillFilter === selectedDomain;
+				filter.setAttribute('aria-pressed', String(isSelected));
+				filter.classList.toggle('is-active', isSelected);
+			});
+
+			skillDomains.forEach((domain) => {
+				domain.hidden = selectedDomain !== 'all' && domain.dataset.skillDomain !== selectedDomain;
+			});
+		};
+
+		skillFilters.forEach((filter) => {
+			filter.addEventListener('click', () => setSkillFilter(filter.dataset.skillFilter));
+		});
+		setSkillFilter('control');
+	}
+
 	/* Contact form validation (client-side) */
 	const contactForm = document.getElementById('contactForm');
 	const contactFormMessage = document.getElementById('contactFormMessage');
@@ -39,7 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		const nameInput = contactForm.querySelector('#cf-name');
 		const emailInput = contactForm.querySelector('#cf-email');
 
-		// Restrict name field to letters, spaces, and hyphens only (no emojis)
+		// Restrict names to letters, spaces, hyphens, and apostrophes (no emojis)
 		if (nameInput) {
 			nameInput.addEventListener('input', (e) => {
 				e.target.value = e.target.value.replace(/[^a-zA-Z\s\-']/g, '');
@@ -59,14 +149,15 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		}
 
-		contactForm.addEventListener('submit', (ev) => {
+		contactForm.addEventListener('submit', async (ev) => {
 			ev.preventDefault();
 			const name = contactForm.querySelector('#cf-name');
 			const email = contactForm.querySelector('#cf-email');
 			const message = contactForm.querySelector('#cf-message');
+			const submitButton = contactForm.querySelector('[type="submit"]');
 			let ok = true;
 
-			// Validate name: not empty and only letters/spaces/hyphens
+			// Validate name: not empty and limited to letters, spaces, hyphens, and apostrophes
 			if (!name.value.trim()) {
 				ok = false;
 				name.setAttribute('aria-invalid', 'true');
@@ -98,15 +189,53 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 
 			if (!ok) {
-				contactFormMessage.textContent = 'Please fill out all fields correctly. Name should contain only letters and spaces, and email must be valid.';
+				contactFormMessage.textContent = 'Please check your name, email address, and message.';
+				contactFormMessage.classList.add('text-brandYellow');
+				contactForm.querySelector('[aria-invalid="true"]').focus();
+				return;
+			}
+
+			const formEndpoint = contactForm.getAttribute('action');
+			if (!formEndpoint || !/^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(formEndpoint)) {
+				contactFormMessage.textContent = 'The form is not configured correctly. Please email me directly.';
 				contactFormMessage.classList.add('text-brandYellow');
 				return;
 			}
 
-			// Demo submission: show success and reset form
-			contactFormMessage.textContent = 'Message sent — thank you! (Demo)';
+			submitButton.disabled = true;
+			contactForm.setAttribute('aria-busy', 'true');
 			contactFormMessage.classList.remove('text-brandYellow');
+			contactFormMessage.textContent = 'Sending your message...';
+
+			let response;
+			try {
+				response = await fetch(formEndpoint, {
+					method: 'POST',
+					body: new FormData(contactForm),
+					headers: { Accept: 'application/json' }
+				});
+			} catch (error) {
+				console.error('Contact form request failed:', error);
+				contactFormMessage.textContent = 'We could not connect to the form service. Please try again or email me directly.';
+				contactFormMessage.classList.add('text-brandYellow');
+				submitButton.disabled = false;
+				contactForm.removeAttribute('aria-busy');
+				return;
+			}
+
+			if (!response.ok) {
+				console.error(`Contact form service returned HTTP ${response.status}.`);
+				contactFormMessage.textContent = 'Your message could not be sent. Please try again or email me directly.';
+				contactFormMessage.classList.add('text-brandYellow');
+				submitButton.disabled = false;
+				contactForm.removeAttribute('aria-busy');
+				return;
+			}
+
 			contactForm.reset();
+			contactFormMessage.textContent = 'Your message has been sent. Thank you.';
+			submitButton.disabled = false;
+			contactForm.removeAttribute('aria-busy');
 		});
 	}
 

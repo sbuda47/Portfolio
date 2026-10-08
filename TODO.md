@@ -1,51 +1,50 @@
 # Portfolio Todo
 
-## Current focus: Sprint 2 — Design System and Hero polish
-
-Timeline: 2–3 days for Sprint 2 execution and polish.
+## Sprint 2: Design system and hero polish
 
 - [x] Establish brand tokens for colors, typography, spacing, radius, and shadows.
 - [x] Create a living style guide page (`styleguide.html`) and reference tokens with a `tokens.json` file.
 - [x] Polish the homepage hero: refine image proportion, typography, and layout balance.
 - [x] Improve responsive typography and type hierarchy across the main pages.
 - [x] Establish a stronger, reusable button system and consistent hover/focus CTA states.
-- [x] Tighten homepage and section spacing so the portfolio feels premium.
+- [x] Tighten homepage and section spacing.
 - [x] Standardize project detail pages with a consistent CTA style, heading hierarchy, and accessible structure.
 - [x] Fix nav hover contrast issues and add visible current-page state on the primary menu.
 - [x] Add skip links plus `main` anchors for accessibility across the site.
 
 ### Delivered in Sprint 2
 
-- Refined hero layout on `index.html` with a balanced 4:5 image panel that fits inside its frame using `object-fit: contain`.
-- Matched heading scale so the hero title and the selected-projects heading feel aligned.
-- Built the `.btn`, `.btn-primary`, `.btn-secondary`, and `.btn-outline` system for consistent CTAs.
-- Updated project pages and portfolio cards to use the same design tokens and button style.
-- Improved site spacing, readable copy blocks, and a more premium rhythm for the homepage and content pages.
-- Added accessibility support with skip-links and page anchors, plus current-page nav styling.
+- Refined the homepage hero image proportion and heading hierarchy.
+- Built reusable `.btn`, `.btn-primary`, `.btn-secondary`, and `.btn-outline` styles.
+- Updated project pages and portfolio cards to use shared design tokens and button styles.
+- Added skip links, main-content anchors, and current-page navigation styling.
 
-## Next sprint: Sprint 3 — polish, copy, and release readiness
+## Sprint 3: polish, copy, and release readiness
 
-Sprint 3 will focus on making the site feel finished and launch-ready.
+Status: complete. Main page structure and content, contact form delivery, accessibility/responsive QA, performance follow-up, and GitHub Pages deployment have been completed. Analytics remains deferred and is not a Sprint 3 blocker.
 
 - [x] Audit responsive layouts across mobile and tablet, then fix breakpoints for the hero, project cards, nav, and form pages.
-- [ ] Review the site copy and project storytelling so each page clearly communicates the role, impact, and technology.
-- [ ] Tune performance and Lighthouse metrics: image delivery, CSS loading, page speed, and GitHub Pages readiness.
-- [ ] Harden accessibility: keyboard focus states, form labels, semantic headings, and contrast on highlighted nav/buttons.
-- [ ] Confirm the GitHub Pages workflow and deployment settings are correct after the workflow fix.
-- [ ] Improve contact conversion: refine the contact form UX and make the call-to-action more compelling.
-- [ ] Add optional analytics or tracking for launch insights if you want to measure visits and behavior.
-- [ ] Clean up any remaining design consistency issues across pages, using the `.agents` skills as useful support.
+- [x] Review and refine site copy and project storytelling, including the homepage, project pages, and Skills content.
+- [x] Run browser-based performance/resource checks on the homepage, Portfolio, Contact, and representative project pages. Record the Lighthouse limitation and fix the measured CNC video preload issue.
+- [x] Complete accessibility QA across key pages: keyboard use, focus visibility, contrast, semantics, form feedback, and modal behavior.
+- [x] Confirm the GitHub Pages workflow and deployment settings are correct after the workflow fix.
+- [x] Improve contact conversion and functionality: centered CTA, dialog form, input validation, and Formspree delivery. Owner confirmed the deployed form works.
+- [x] Do a final visual consistency check at representative mobile, tablet, and desktop widths; fix confirmed issues.
+- [x] Update this checklist with QA results, then commit and push the current local portfolio changes.
+- [ ] Add optional analytics or tracking only if visit/behavior measurement is wanted. This is deferred and not a Sprint 3 blocker.
 
-### Sprint 3 deliverables
+### Sprint 3 completion criteria
 
-- Responsive layout audit results and CSS fixes across the homepage, about, skills, portfolio, and contact pages.
-- A list of content/storytelling changes for the next phase so the portfolio messaging is sharper.
-- Performance and accessibility improvements scoped for GitHub Pages launch.
-- Final launch-ready checklist that includes deployment QA and workflow validation.
+- Performance/resource-check results and the missing-Chrome Lighthouse limitation are recorded; the measured 36.8 MB eager video download was prevented.
+- Accessibility QA and final responsive/visual checks are recorded, with confirmed issues fixed.
+- Current portfolio changes are committed and pushed; deployment status should be confirmed from the Pages workflow.
 
-### Why these are next
+### Final QA results
 
-- Responsive audit ensures the portfolio looks strong on phones and tablets, not just desktop.
-- Copy and storytelling are what turn a polished design into a persuasive portfolio.
-- Performance tuning makes the published site load fast and score better in real-world metrics.
-- Accessibility and deploy checks reduce the chance of launch problems and improve professional quality.
+- Responsive check: nine pages at 320, 390, 768, and 1280 CSS pixels (36 page/viewport combinations) showed no horizontal overflow. The homepage hero and selected-project grid render in two columns at 1280px; the About skills grid renders in three.
+- Accessibility structure check: all nine pages had one `h1` and one `main`, no duplicate IDs, missing image alt attributes, skipped heading levels, or unlabeled form fields. Earlier keyboard and interaction checks covered focus visibility, Contact form validation/dialog behavior, Skills domain selection, and Telemetry gallery navigation.
+- Performance limitation: Lighthouse CLI was available, but could not run because no local Chrome installation was present. Local unthrottled browser timings are not treated as Lighthouse scores.
+- Performance fix: the CNC video is 36,813,884 bytes. `preload="metadata"` caused the browser to fetch the full file during page load; changing it to `preload="none"` was verified to result in zero video bytes requested until playback.
+- JavaScript syntax and `git diff --check` passed.
+
+See [handover.md](./handover.md) for the delivered work, verification notes, and current handoff context.

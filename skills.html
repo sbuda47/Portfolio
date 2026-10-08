@@ -30,89 +30,148 @@
   </header>
   <!-- Shared header end -->
 
-  <main id="main-content" class="pt-28 px-6 pb-24 max-w-7xl mx-auto">
-    <section class="py-22">
-      <div class="mb-12 page-intro">
-        <h1 class="section-heading font-gothic uppercase tracking-tighter">Skills & Competencies</h1>
-        <p class="text-copy mb-8">B.Eng. Mechatronics & Industrial Instrumentation (BIUST, GPA 3.79) with hands-on experience in control systems, embedded platforms, and production deployment. All skills listed are from shipped projects, industrial internships, and academic research.</p>
+  <main id="main-content" class="skills-page">
+    <section class="skills-intro" aria-labelledby="skillsTitle">
+      <div class="skills-intro-copy">
+        <h1 id="skillsTitle" class="section-heading font-gothic uppercase tracking-tighter">Skills &amp; Competencies</h1>
+        <p>Mechatronics and Industrial Instrumentation engineer. Control and instrumentation experience, with embedded and data work grounded in real engineering projects.</p>
       </div>
     </section>
 
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-      <div>
-        <h2 class="text-2xl font-gothic text-brandYellow mb-4">Embedded & Real-Time Systems</h2>
-        <ul class="list-disc list-inside text-brandOffwhite/80 space-y-3">
-          <li>STM32 firmware (CubeMX, CubeIDE, UART/SPI/I2C integration)</li>
-          <li>Jetson Nano edge deployment with CUDA-accelerated inference</li>
-          <li>Arduino and ESP32 prototyping</li>
-          <li>Real-time control loops and hardware-software integration</li>
-        </ul>
+    <section class="skills-experience" aria-labelledby="experienceTitle">
+      <h2 id="experienceTitle" class="font-gothic">Where I have applied it</h2>
+      <ol class="skills-timeline">
+        <li>
+          <div class="skills-timeline-heading"><h3>Final-year project: OPTIBELT</h3><time datetime="2026">2026</time></div>
+          <p class="skills-timeline-place">BIUST</p>
+          <p>Developing a modular belt and stockpile monitoring platform using LiDAR, YOLOv8 vision, and Mahalanobis Distance health indexing, with Jetson Nano edge deployment and an STM32 UART link.</p>
+        </li>
+        <li>
+          <div class="skills-timeline-heading"><h3>Commissioning Engineer (Volunteer)</h3><span>Dec 2025 to Jan 2026</span></div>
+          <p class="skills-timeline-place">Kanye Adventist Hospital Oxygen Plant</p>
+          <p>Supported medical-grade oxygen plant commissioning through pressure regulation checks, flow logic validation, and clinical handover.</p>
+        </li>
+        <li>
+          <div class="skills-timeline-heading"><h3>Student Engineer, Control &amp; Instrumentation</h3><span>Feb to Jul 2024, 22 weeks</span></div>
+          <p class="skills-timeline-place">Morupule B Power Station, Botswana Power Corporation</p>
+          <p>Worked on fault isolation, loop calibration, RTD and thermocouple verification, and commissioning support during startup and outage work.</p>
+        </li>
+        <li>
+          <div class="skills-timeline-heading"><h3>Teaching Assistant</h3><span>BIUST</span></div>
+          <p class="skills-timeline-place">Microcontroller and Circuit Integration labs</p>
+          <p>Led Arduino and embedded systems labs and mentored students in hardware-software integration and debugging.</p>
+        </li>
+      </ol>
+    </section>
 
-        <h2 class="text-2xl font-gothic text-brandYellow mt-8 mb-4">Control & Instrumentation</h2>
-        <ul class="list-disc list-inside text-brandOffwhite/80 space-y-3">
-          <li>PID tuning and Fuzzy Logic control systems</li>
-          <li>Mahalanobis Distance health indexing for predictive maintenance</li>
-          <li>PLC/DCS architectures and industrial automation</li>
-          <li>Field instrumentation: RTDs, thermocouples, pressure transmitters, MOVs</li>
-          <li>Calibration, loop verification, and QA documentation</li>
-        </ul>
+    <section class="skills-explorer" aria-labelledby="skillsExplorerTitle">
+      <div class="skills-section-heading">
+        <h2 id="skillsExplorerTitle" class="font-gothic">Engineering skill domains</h2>
+        <p>Select a domain to see the tools and methods, with examples of where they have been applied.</p>
+      </div>
+      <div class="skills-legend" aria-label="Skill evidence key">
+        <span><i class="skills-evidence-mark" aria-hidden="true"></i> Applied in project or work</span>
+        <span><i class="skills-knowledge-mark" aria-hidden="true"></i> Working knowledge</span>
       </div>
 
-      <div>
-        <h2 class="text-2xl font-gothic text-brandYellow mb-4">Software & Signal Processing</h2>
-        <ul class="list-disc list-inside text-brandOffwhite/80 space-y-3">
-          <li>Python (NumPy, Pandas, Scikit-learn) for data analysis and ML</li>
-          <li>MATLAB/Simulink for control design and simulation</li>
-          <li>C/C++ for embedded systems development</li>
-          <li>Digital signal processing (8-bit quantization, PCM encoding, NRZ-L line coding)</li>
-          <li>Communication protocols: UART, SPI, I2C, PWM, Modbus</li>
-        </ul>
+      <div class="skills-explorer-layout">
+        <nav class="skills-orbit" aria-label="Filter skill domains">
+          <span class="skills-orbit-ring" aria-hidden="true"></span>
+          <span class="skills-orbit-center font-gothic" aria-hidden="true">Engineering<br>practice</span>
+          <button type="button" class="skills-orbit-node is-active" data-skill-filter="control" aria-controls="skill-control" aria-pressed="true">
+            <span class="skills-node-number">01</span><span>Control &amp;<br>Instrumentation</span>
+          </button>
+          <button type="button" class="skills-orbit-node" data-skill-filter="embedded" aria-controls="skill-embedded" aria-pressed="false">
+            <span class="skills-node-number">02</span><span>Embedded &amp;<br>Real-Time</span>
+          </button>
+          <button type="button" class="skills-orbit-node" data-skill-filter="software" aria-controls="skill-software" aria-pressed="false">
+            <span class="skills-node-number">03</span><span>Software &amp;<br>Signal Processing</span>
+          </button>
+          <button type="button" class="skills-orbit-node" data-skill-filter="design" aria-controls="skill-design" aria-pressed="false">
+            <span class="skills-node-number">04</span><span>Design &amp;<br>Fabrication</span>
+          </button>
+          <button type="button" class="skills-show-all" data-skill-filter="all" aria-pressed="false">Show all domains</button>
+        </nav>
 
-        <h2 class="text-2xl font-gothic text-brandYellow mt-8 mb-4">Design & Fabrication</h2>
-        <ul class="list-disc list-inside text-brandOffwhite/80 space-y-3">
-          <li>CAD design (SolidWorks, Fusion 360)</li>
-          <li>Circuit simulation (Proteus, Multisim)</li>
-          <li>Preventive, predictive, and corrective maintenance</li>
-          <li>LOTO procedures and safety compliance</li>
-        </ul>
-      </div>
-    </div>
+        <div id="skillDomains" class="skills-domain-list" aria-live="polite" aria-relevant="additions removals">
+          <article id="skill-control" class="skills-domain is-lead" data-skill-domain="control">
+            <h3 class="font-gothic">Control &amp; Instrumentation</h3>
+            <ul class="skills-tags">
+              <li class="is-applied">Mahalanobis health indexing</li>
+              <li class="is-applied">RTDs and thermocouples</li>
+              <li class="is-applied">Loop calibration and verification</li>
+              <li class="is-applied">Plant commissioning</li>
+              <li>PID tuning</li>
+              <li>Fuzzy Logic</li>
+              <li>PLC and DCS architectures</li>
+              <li>Pressure transmitters and MOVs</li>
+              <li>Predictive and preventive maintenance</li>
+              <li>LOTO and safety procedures</li>
+            </ul>
+            <p class="skills-used-in"><strong>Applied in</strong> Morupule B attachment, hospital oxygen plant commissioning, OPTIBELT, and MD-HI.</p>
+          </article>
 
-    <section class="mt-12 bg-brandBlack/60 p-6 border border-brandSlate/20 rounded-sm">
-      <h3 class="text-xl font-gothic text-brandYellow mb-4">Professional & Academic Experience</h3>
-      <div class="text-brandOffwhite/80 space-y-4">
-        <div>
-          <strong>Student Engineer • Control & Instrumentation Attachment</strong>
-          <div class="text-sm text-brandSlate">Morupule B Power Station, Botswana Power Corporation (BPC) • 22 weeks, Feb–Jul 2024</div>
-          <div class="text-sm mt-1">Fault isolation, loop calibration, RTD/thermocouple verification, commissioning support during plant startup and outage windows.</div>
-        </div>
-        <div>
-          <strong>Commissioning Engineer (Volunteer)</strong>
-          <div class="text-sm text-brandSlate">Kanye Adventist Hospital Oxygen Plant • Dec 2025–Jan 2026</div>
-          <div class="text-sm mt-1">Medical-grade oxygen plant commissioning, pressure regulation verification, flow logic validation, clinical handover support.</div>
-        </div>
-        <div>
-          <strong>Final-Year Project: OPTIBELT</strong>
-          <div class="text-sm text-brandSlate">BIUST • 2026</div>
-          <div class="text-sm mt-1">Modular sensing platform using LiDAR, YOLOv8 computer vision, and Mahalanobis Distance health indexing. Edge deployment on Jetson Nano with STM32 UART integration for real-time belt wear and stockpile monitoring.</div>
-        </div>
-        <div>
-          <strong>Teaching Assistant</strong>
-          <div class="text-sm text-brandSlate">BIUST • Microcontroller & Circuit Integration Labs</div>
-          <div class="text-sm mt-1">Led Arduino and embedded systems labs under IEEE student branch; mentored students on hardware-software integration and debugging methodology.</div>
+          <article id="skill-embedded" class="skills-domain" data-skill-domain="embedded" hidden>
+            <h3 class="font-gothic">Embedded &amp; Real-Time Systems</h3>
+            <ul class="skills-tags">
+              <li class="is-applied">STM32 firmware</li>
+              <li class="is-applied">Jetson Nano edge deployment</li>
+              <li class="is-applied">Arduino</li>
+              <li class="is-applied">UART integration</li>
+              <li>ESP32 prototyping</li>
+              <li>C and C++</li>
+              <li>SPI, I2C, and PWM</li>
+              <li>Modbus</li>
+              <li>Real-time control loops</li>
+              <li>Hardware-software integration</li>
+            </ul>
+            <p class="skills-used-in"><strong>Applied in</strong> OPTIBELT edge deployment and BIUST embedded systems labs.</p>
+          </article>
+
+          <article id="skill-software" class="skills-domain" data-skill-domain="software" hidden>
+            <h3 class="font-gothic">Software &amp; Signal Processing</h3>
+            <ul class="skills-tags">
+              <li class="is-applied">Python</li>
+              <li class="is-applied">NumPy and Pandas</li>
+              <li class="is-applied">SciPy</li>
+              <li class="is-applied">YOLOv8</li>
+              <li class="is-applied">Savitzky-Golay filtering</li>
+              <li class="is-applied">Welch spectral analysis</li>
+              <li class="is-applied">Data quality checks and gap handling</li>
+              <li>Scikit-learn</li>
+              <li>MATLAB and Simulink</li>
+              <li>PCM encoding and NRZ-L line coding</li>
+            </ul>
+            <p class="skills-used-in"><strong>Applied in</strong> OPTIBELT, MD-HI, and Botho Hacks.</p>
+          </article>
+
+          <article id="skill-design" class="skills-domain" data-skill-domain="design" hidden>
+            <h3 class="font-gothic">Design &amp; Fabrication</h3>
+            <ul class="skills-tags">
+              <li class="is-applied">SolidWorks</li>
+              <li class="is-applied">Fusion 360</li>
+              <li>Proteus</li>
+              <li>Multisim</li>
+              <li>Technical documentation</li>
+              <li>Maintenance planning</li>
+              <li>Safety procedures</li>
+            </ul>
+            <p class="skills-used-in"><strong>Applied in</strong> engineering coursework, project development, and plant attachment work.</p>
+          </article>
         </div>
       </div>
     </section>
 
-    <section class="mt-8 bg-brandBlack/60 p-6 border border-brandSlate/20 rounded-sm">
-      <h3 class="text-xl font-gothic text-brandYellow mb-4">Recognition & Leadership</h3>
-      <div class="text-brandOffwhite/80 space-y-3">
-        <div><strong>National Hackathon Winner:</strong> 1st place, Botho Hacks 2024 — AI-based computer vision system for wildlife detection and ecosystem monitoring</div>
-        <div><strong>Cambridge IGCSE Award:</strong> High Achievement, Design & Technology (2020)</div>
-        <div><strong>Club President:</strong> BIUST Adventist Fellowship Club</div>
-        <div><strong>Secretary:</strong> Institute of Robotics, Instrumentation & Hardware (IRIH)</div>
-        <div><strong>Event Organizer:</strong> Deep Learning IndabaX Botswana organizing team</div>
-      </div>
+    <section class="skills-recognition" aria-labelledby="recognitionTitle">
+      <h2 id="recognitionTitle" class="font-gothic">Recognition &amp; leadership</h2>
+      <ul class="skills-recognition-list">
+        <li><strong>Best Final Year Project, BEng Mechatronics and Industrial Instrumentation Class of 2026</strong><span>Sponsored by BOCRA</span></li>
+        <li><strong>1st place, Botho Hacks 2024</strong><span>AI computer vision system for wildlife detection and ecosystem monitoring</span></li>
+        <li><strong>President, BIUST Adventist Fellowship Club</strong></li>
+        <li><strong>Secretary, Institute of Robotics, Instrumentation and Hardware</strong></li>
+        <li><strong>Organizing team, Deep Learning IndabaX Botswana</strong></li>
+        <li><strong>Cambridge IGCSE High Achievement Award, 2020</strong><span>Design and Technology</span></li>
+      </ul>
     </section>
   </main>
 

@@ -31,43 +31,74 @@
     <!-- Shared header end -->
 
     <main id="main-content" class="pt-28">
-        <section class="py-22 px-6 max-w-7xl mx-auto">
-            <div class="page-intro">
-                <h1 class="section-heading font-gothic uppercase tracking-tighter">Contact</h1>
-                <p class="text-xl text-copy leading-relaxed mb-12">Have a systems challenge, product idea, or research project? Reach out — I'm available for engineering, system design, and embedded intelligence work.</p>
-            </div>
-            <div class="grid lg:grid-cols-2 gap-10">
-                <div class="p-8 border border-brandSlate/30 rounded-sm bg-brandBlack/50">
-                    <h2 class="text-2xl font-gothic text-brandYellow mb-4">Get in Touch</h2>
-                    <p class="text-brandOffwhite/80 mb-4"><strong>Email:</strong> <a href="mailto:s.mpofu.m.01@gmail.com" class="text-brandYellow">s.mpofu.m.01@gmail.com</a></p>
-                    <p class="text-brandOffwhite/80 mb-4"><strong>Phone:</strong> <a href="tel:+26775365156" class="text-brandYellow">+267 75 365 156</a></p>
-                    <p class="text-brandOffwhite/80"><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/sibusiso-mpofu-595b492bb" target="_blank" rel="noopener noreferrer" class="text-brandYellow">sibusiso-mpofu-595b492bb</a></p>
+        <section class="contact-page">
+            <div class="contact-hero">
+                <div class="contact-hero-copy">
+                    <p class="contact-eyebrow">Open to engineering collaborations</p>
+                    <h1>Have an engineering challenge?</h1>
+                    <p class="contact-loop-line">
+                        <span class="sr-only">Let's work together on engineering, prototypes, and intelligent systems.</span>
+                        <span id="contactLoop" class="contact-loop" aria-hidden="true">
+                            <span id="contactLoopText">Building a prototype?</span>
+                        </span>
+                    </p>
+                    <p class="contact-lede">I work across mechatronics, embedded systems, controls, and applied machine learning. Tell me what you are building or trying to solve.</p>
+                    <button type="button" id="openContactForm" class="btn btn-primary contact-open-button" aria-haspopup="dialog" aria-controls="contactDialog">
+                        Start a conversation
+                        <span aria-hidden="true">→</span>
+                    </button>
                 </div>
-                <form id="contactForm" class="contact-form p-8 border border-brandSlate/30 rounded-sm bg-brandBlack/50" novalidate>
-                    <div class="grid grid-cols-1 gap-6">
-                        <label class="block"><span class="text-sm text-brandSlate">Name</span><input type="text" name="name" id="cf-name" class="input p-3 mt-2 w-full" required aria-required="true"></label>
-                        <label class="block"><span class="text-sm text-brandSlate">Email</span><input type="email" name="email" id="cf-email" class="input p-3 mt-2 w-full" required aria-required="true"></label>
-                        <label class="block"><span class="text-sm text-brandSlate">Message</span><textarea name="message" id="cf-message" class="input p-3 mt-2 w-full" rows="6" required aria-required="true"></textarea></label>
-                        <div class="flex flex-col gap-4 sm:flex-row sm:items-center">
-                            <button type="submit" class="btn btn-primary">Send Message</button>
-                            <div id="contactFormMessage" class="text-sm text-brandOffwhite/80" aria-live="polite"></div>
-                        </div>
-                    </div>
-                </form>
             </div>
         </section>
+
+        <dialog id="contactDialog" class="contact-dialog" aria-labelledby="contactDialogTitle">
+            <div class="contact-dialog-header">
+                <div>
+                    <p class="contact-details-label">Tell me about it</p>
+                    <h2 id="contactDialogTitle">What are you working on?</h2>
+                </div>
+                <button type="button" id="closeContactForm" class="contact-dialog-close" aria-label="Close contact form">×</button>
+            </div>
+            <p id="contactFormNote" class="contact-form-note">Your message will be sent to my inbox. For direct contact, use the email link below.</p>
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/xwlvobrr" method="POST">
+                <input type="hidden" name="_subject" value="Portfolio contact form message">
+                <label class="contact-field" for="cf-name">
+                    <span>Name</span>
+                    <input type="text" name="name" id="cf-name" class="input" autocomplete="name" pattern="(?:[A-Za-z\s']|\x2D)+" required aria-required="true">
+                </label>
+                <label class="contact-field" for="cf-email">
+                    <span>Email</span>
+                    <input type="email" name="email" id="cf-email" class="input" autocomplete="email" required aria-required="true">
+                </label>
+                <label class="contact-field" for="cf-message">
+                    <span>Message</span>
+                    <textarea name="message" id="cf-message" class="input" rows="5" required aria-required="true"></textarea>
+                </label>
+                <div class="contact-form-actions">
+                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <p id="contactFormMessage" class="contact-form-message" role="status" aria-live="polite" aria-atomic="true"></p>
+                </div>
+            </form>
+        </dialog>
     </main>
 
     <footer class="border-t border-brandSlate/20 py-8 text-center text-sm text-brandSlate">
         <div class="max-w-7xl mx-auto px-6 space-y-4">
             <p>&copy; 2026 Sibusiso M. Mpofu. Engineered with precision.</p>
-            <div class="flex justify-center gap-6">
-                <a href="mailto:s.mpofu.m.01@gmail.com" class="text-brandOffwhite hover:text-brandYellow">Email</a>
-                <a href="https://www.linkedin.com/in/sibusiso-mpofu-595b492bb" target="_blank" rel="noopener noreferrer" class="text-brandOffwhite hover:text-brandYellow">LinkedIn</a>
-            </div>
+            <p class="contact-footer-label">Direct contact</p>
+            <nav class="contact-social-links" aria-label="Direct contact">
+                <a class="contact-social-link" href="mailto:s.mpofu.m.01@gmail.com" aria-label="Email Sibusiso" title="Email">
+                    <span class="contact-social-icon" data-social="email" aria-hidden="true"></span>
+                </a>
+                <a class="contact-social-link" href="https://www.linkedin.com/in/sibusiso-mpofu-595b492bb" target="_blank" rel="noopener noreferrer" aria-label="Sibusiso on LinkedIn" title="LinkedIn">
+                    <span class="contact-social-icon" data-social="linkedin" aria-hidden="true"></span>
+                </a>
+                <a class="contact-social-link" href="https://wa.me/26775365156" target="_blank" rel="noopener noreferrer" aria-label="Message Sibusiso on WhatsApp" title="WhatsApp">
+                    <span class="contact-social-icon" data-social="whatsapp" aria-hidden="true"></span>
+                </a>
+            </nav>
         </div>
     </footer>
     <script src="js/main.js"></script>
 </body>
 </html>
-

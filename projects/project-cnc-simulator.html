@@ -44,8 +44,8 @@
 
       <div class="project-hero-banner mb-8">
         <div class="aspect-video bg-brandSlate/10 overflow-hidden rounded-sm">
-          <video controls class="w-full h-full" style="object-fit: cover;">
-            <source src="../assets/images/linkedln%20screen%20recording.mp4" type="video/mp4">
+          <video controls preload="none" class="w-full h-full" style="object-fit: cover;">
+            <source src="../assets/images/cnc.mp4" type="video/mp4">
             Your browser does not support the video tag.
           </video>
         </div>
@@ -72,7 +72,7 @@
         <div>
           <div class="space-y-6">
             <div class="project-card">
-              <h3 class="text-xl font-gothic text-brandYellow mb-4">Why I built it</h3>
+              <h2 class="text-xl font-gothic text-brandYellow mb-4">Why I built it</h2>
               <p class="text-brandOffwhite/70 leading-relaxed">Bad G-code doesn't announce itself — a typo'd coordinate or a wrongly sequenced command can crash the tool or ruin a part before you know something's wrong. I built a lexer and parser for RS-274 G-code from scratch in Python, tracking the machine's modal state across every line and rendering the resulting toolpath for visual validation before hardware.</p>
               <p class="text-brandOffwhite/70 leading-relaxed mt-4">The tool is built for personal and small-batch use, serving as a first-pass sanity check for G-code validation. It's intentionally scoped for the engineering workflow I use, not as a production safety validator.</p>
             </div>
@@ -81,7 +81,7 @@
         <div>
           <div class="space-y-6">
             <div class="project-card">
-              <h3 class="text-xl font-gothic text-brandYellow mb-4">What it catches</h3>
+              <h2 class="text-xl font-gothic text-brandYellow mb-4">What it catches</h2>
               <ul class="list-disc list-inside text-brandOffwhite/70 leading-relaxed space-y-2">
                 <li>Malformed or mistyped commands, flagged at the exact line</li>
                 <li>Out-of-sequence or invalid modal state</li>
