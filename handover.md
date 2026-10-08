@@ -4,7 +4,7 @@ Status date: 2026-10-08
 
 ## Current status
 
-Sprint 3 QA and implementation are complete. The latest portfolio changes are being prepared for commit and push. GitHub Pages workflow configuration was previously fixed and its deployment verified; confirm the workflow again for this release.
+Sprint 3 QA and implementation are complete. The release changes were pushed to `main` in commit `64f5d8a`. GitHub Pages deploys from the main branch; check its Actions workflow after each release.
 
 ## Completed
 
@@ -29,7 +29,7 @@ See [TODO.md](./TODO.md) for the checklist and the recorded Lighthouse limitatio
 
 ## Next
 
-Sprint 3 has no remaining required scope. Analytics remains optional and deferred. After the latest push, confirm the GitHub Pages workflow succeeds. Any next work can be organized as Sprint 4 based on priorities from the owner.
+Sprint 3 has no remaining required scope. Analytics remains optional and deferred. Organize the next work as Sprint 4 based on priorities from the owner.
 
 ## Technical notes
 
