@@ -1,26 +1,37 @@
 // Main JavaScript entry point
 document.addEventListener('DOMContentLoaded', () => {
-	// Mobile nav toggle
+	// Shared site navigation, including keyboard and mobile dismissal.
 	const navToggle = document.getElementById('navToggle');
-	const header = document.querySelector('header');
-	const primaryNav = document.querySelector('header nav ul');
+	const header = navToggle?.closest('.site-header');
+	const primaryNav = document.getElementById('primaryNav');
 
 	if (navToggle && header && primaryNav) {
+		const closeMenu = () => {
+			header.classList.remove('nav-open');
+			navToggle.setAttribute('aria-expanded', 'false');
+		};
+
 		navToggle.addEventListener('click', () => {
 			const expanded = navToggle.getAttribute('aria-expanded') === 'true';
 			navToggle.setAttribute('aria-expanded', String(!expanded));
-			header.classList.toggle('nav-open');
+			header.classList.toggle('nav-open', !expanded);
 		});
-
-		// Close mobile nav when a link is clicked
-		primaryNav.querySelectorAll('a').forEach(a => {
-			a.addEventListener('click', () => {
-				if (header.classList.contains('nav-open')) {
-					header.classList.remove('nav-open');
-					navToggle.setAttribute('aria-expanded', 'false');
-				}
-			});
+		primaryNav.querySelectorAll('a').forEach(link => {
+			link.addEventListener('click', closeMenu);
 		});
+		document.addEventListener('keydown', (event) => {
+			if (event.key === 'Escape' && header.classList.contains('nav-open')) {
+				closeMenu();
+				navToggle.focus();
+			}
+		});
+		document.addEventListener('click', (event) => {
+			if (!header.contains(event.target)) closeMenu();
+		});
+		header.addEventListener('focusout', (event) => {
+			if (!header.contains(event.relatedTarget)) closeMenu();
+		});
+		window.matchMedia('(max-width: 900px)').addEventListener('change', closeMenu);
 	}
 
 	// Hero heading reveal (CSS-based to avoid layout shifts)
@@ -29,6 +40,25 @@ document.addEventListener('DOMContentLoaded', () => {
 		// keep server-rendered text to avoid CLS; use CSS reveal
 		requestAnimationFrame(() => {
 			heroHeading.classList.add('visible');
+		});
+	}
+
+	// Reveal supporting case-study and skills content as it enters the viewport.
+	const revealItems = document.querySelectorAll('[data-reveal]');
+	const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+	if (revealItems.length && !reducedMotion && 'IntersectionObserver' in window) {
+		document.documentElement.classList.add('js-enhanced');
+		const revealObserver = new IntersectionObserver((entries, observer) => {
+			entries.forEach((entry) => {
+				if (!entry.isIntersecting) return;
+				entry.target.classList.add('is-revealed');
+				observer.unobserve(entry.target);
+			});
+		}, { threshold: 0.16, rootMargin: '0px 0px -8% 0px' });
+
+		revealItems.forEach((item) => {
+			item.classList.add('reveal-on-scroll');
+			revealObserver.observe(item);
 		});
 	}
 

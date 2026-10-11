@@ -1,4 +1,4 @@
-.<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
@@ -11,17 +11,17 @@
     <meta property="og:url" content="https://your-username.github.io/your-repo/">
     <meta property="og:image" content="/assets/images/mpofu.png">
     <meta name="theme-color" content="#1E1E1D">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Black+Ops+One&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=20261011-nav">
+    <link rel="stylesheet" href="css/home.css?v=20261011-nav">
+    <link rel="preload" href="assets/fonts/ArchivoBlack-Regular.ttf" as="font" type="font/ttf" crossorigin>
     <link rel="icon" href="/favicon.ico">
     <link rel="manifest" href="/manifest.json">
 </head>
-<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack">
+<body class="homepage bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack">
     <a href="#main-content" class="skip-link">Skip to main content</a>
 
     <!-- Shared header start -->
-    <header class="fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
+    <header class="site-header fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
         <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
             <div class="text-2xl font-gothic tracking-tighter text-brandOffwhite">Sibusiso M. Mpofu</div>
             <button id="navToggle" class="mobile-nav-toggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -41,30 +41,28 @@
     </header>
     <!-- Shared header end -->
 
-    <main id="main-content" class="pt-28">
-        <section id="home" class="min-h-screen flex items-center px-6 max-w-7xl mx-auto">
-            <div class="hero-grid grid grid-cols-1 lg:grid-cols-2 gap-12 w-full items-center">
-                <div class="hero-left space-y-8">
-                    <h1 class="section-heading font-gothic leading-tight text-brandOffwhite uppercase">Hi, I'm Sibusiso M. Mpofu</h1>
-                    <p class="text-xl text-brandOffwhite/80 max-w-3xl leading-relaxed">Mechatronics engineer and systems architect focused on embedded intelligence, edge-aware ML, and resilient product design for real-world applications.</p>
-                    <div class="hero-actions pt-4">
-                        <a href="portfolio.html" class="btn btn-primary">View Portfolio</a>
-                        <a href="about.html" class="btn btn-secondary">About Me</a>
-                    </div>
-                </div>
-                <div class="relative flex justify-center items-center">
-                    <div class="hero-panel w-full max-w-xl bg-brandSlate/10 border border-brandSlate/20 rounded-sm overflow-hidden relative group">
-                        <picture>
-                            <source type="image/webp" srcset="assets/images/mpofu-640.webp 640w, assets/images/mpofu-1280.webp 1280w" sizes="(max-width: 768px) 90vw, (max-width: 1024px) 50vw, 40vw">
-                            <img src="assets/images/normal-images/mpofu.png" alt="Portrait of Sibusiso M. Mpofu" class="w-full h-full" width="937" height="1171" loading="eager">
-                        </picture>
-                    </div>
-                </div>
+    <main id="main-content">
+        <section id="home" class="engineering-hero" aria-labelledby="hero-title">
+            <div class="hero-texture" aria-hidden="true"></div>
+            <p class="hero-eyebrow">Hardware <span aria-hidden="true">·</span> Control <span aria-hidden="true">·</span> Intelligence</p>
+            <h1 id="hero-title" class="hero-title">
+                <span class="hero-title-line">Mechatronics</span>
+                <span class="hero-title-line hero-title-engineer">Engineer</span>
+            </h1>
+            <div class="hero-portrait">
+                <picture>
+                    <source type="image/webp" srcset="assets/images/home-portrait-640.webp 640w, assets/images/home-portrait-1024.webp 1024w" sizes="(max-width: 900px) 88vw, 42vw">
+                    <img src="assets/images/home-portrait-1024.webp" alt="Portrait of Sibusiso M. Mpofu" width="1024" height="1536" fetchpriority="high" loading="eager">
+                </picture>
+            </div>
+            <div class="hero-intro">
+                <p>Embedded systems, edge-aware ML, and resilient product design.</p>
+                <a href="portfolio.html" class="hero-project-link">View Projects <span aria-hidden="true">→</span></a>
             </div>
         </section>
 
         <section class="py-24 px-6 bg-brandBlack/50">
-            <div class="max-w-7xl mx-auto text-center">
+            <div class="max-w-7xl mx-auto text-center" data-reveal>
                 <h2 class="section-heading font-gothic mb-8 uppercase tracking-tighter">What I build</h2>
                 <p class="text-xl text-brandOffwhite/80 max-w-3xl mx-auto leading-relaxed mb-8">Systems that combine hardware, control, and data intelligence into engineered solutions — from predictive health monitoring that catches failures before downtime, to autonomous platforms that make decisions in real time, to signal processing pipelines that transform raw sensor noise into actionable intelligence.</p>
                 <a href="about.html" class="btn btn-primary">Learn More</a>
@@ -72,16 +70,16 @@
         </section>
 
         <section class="py-24 px-6 max-w-7xl mx-auto">
-            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-12">
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 mb-12" data-reveal>
                 <h2 class="section-heading font-gothic uppercase tracking-tighter">Selected Projects</h2>
                 <a href="portfolio.html" class="text-brandYellow uppercase tracking-[0.2em] font-bold hover:text-brandOffwhite">View all projects</a>
             </div>
             <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <a href="projects/project-cnc-simulator.html" class="group block overflow-hidden border border-brandSlate/20 hover:border-brandYellow transition-all duration-500 rounded-sm">
+                <a href="projects/project-cnc-simulator.html" class="group block overflow-hidden border border-brandSlate/20 hover:border-brandYellow transition-all duration-500 rounded-sm" data-reveal>
                     <div class="aspect-video bg-brandSlate/10 relative overflow-hidden"><div class="absolute inset-0 flex items-center justify-center text-brandSlate/20 font-gothic uppercase tracking-[0.5em]">CNC</div></div>
                     <div class="p-6 space-y-3"><h3 class="text-xl font-gothic group-hover:text-brandYellow transition-colors">CNC Simulator & Visualizer</h3><p class="text-sm text-brandOffwhite/60 line-clamp-2">Catch G-code errors before machine crashes — lexer, parser, and visual validation in Python.</p></div>
                 </a>
-                <a href="projects/project-md-hi.html" class="group block overflow-hidden border border-brandSlate/20 hover:border-brandYellow transition-all duration-500 rounded-sm">
+                <a href="projects/project-md-hi.html" class="group block overflow-hidden border border-brandSlate/20 hover:border-brandYellow transition-all duration-500 rounded-sm" data-reveal>
                     <div class="aspect-video bg-brandSlate/10 relative overflow-hidden"><div class="absolute inset-0 flex items-center justify-center text-brandSlate/20 font-gothic uppercase tracking-[0.5em]">MD-HI</div></div>
                     <div class="p-6 space-y-3"><h3 class="text-xl font-gothic group-hover:text-brandYellow transition-colors">Mahalanobis Health Index</h3><p class="text-sm text-brandOffwhite/60 line-clamp-2">Predict equipment failure before downtime — validated multivariate fault detection for industrial systems.</p></div>
                 </a>
@@ -89,7 +87,7 @@
         </section>
 
         <section class="py-24 px-6 bg-brandBlack/30">
-            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
+            <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center" data-reveal>
                 <div>
                     <h2 class="section-heading font-gothic mb-8 uppercase tracking-tighter">Have a systems challenge?</h2>
                     <p class="text-brandOffwhite/80 text-lg max-w-md leading-relaxed">Equipment failures eating into production time. Sensor data you don't trust. Control systems that need to work first try. Let's design and ship the engineering solution.</p>
@@ -106,7 +104,8 @@
         <p>&copy; 2026 Sibusiso M. Mpofu. Engineered with Precision.</p>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script src="js/main.js?v=20261011-nav"></script>
+    <script src="js/home.js?v=20261011-nav"></script>
 </body>
 </html>
 

@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>CNC Simulator — Project</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/style.css?v=20261011-nav">
 </head>
 <body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack px-12 pb-12">
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Shared header start -->
-  <header class="fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
+  <header class="site-header fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
     <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
       <div class="text-2xl font-gothic tracking-tighter text-brandOffwhite">Sibusiso M. Mpofu</div>
       <button id="navToggle" class="mobile-nav-toggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,19 +30,19 @@
   </header>
   <!-- Shared header end -->
 
-  <main id="main-content" class="project-page">
+  <main id="main-content" class="project-page project-cnc">
     <div class="project-shell">
-      <div class="mb-12">
+      <div class="mb-12" data-reveal>
         <a href="../portfolio.html" class="project-back-link">&larr; Back to portfolio</a>
       </div>
 
-      <div class="mb-12">
+      <div class="mb-12" data-reveal>
         <span class="project-label">Personal tool · zero-cost insurance against machine crashes</span>
         <h1 class="section-heading font-gothic mb-4">CNC Simulator & G-code Visualizer</h1>
         <p class="text-lg text-brandOffwhite/70 max-w-3xl leading-relaxed mb-8">A lexer and parser for RS-274 G-code that tracks machine state and renders the toolpath before hardware. Catches coordinate typos, sequencing errors, and unsafe modal states at your desk — preventing costly tool crashes and part failures before they happen.</p>
       </div>
 
-      <div class="project-hero-banner mb-8">
+      <div class="project-hero-banner mb-8" data-reveal>
         <div class="aspect-video bg-brandSlate/10 overflow-hidden rounded-sm">
           <video controls preload="none" class="w-full h-full" style="object-fit: cover;">
             <source src="../assets/images/cnc.mp4" type="video/mp4">
@@ -51,7 +51,7 @@
         </div>
       </div>
 
-      <div class="mb-12">
+      <div class="mb-12" data-reveal>
         <div class="project-capabilities mb-8">
           <span class="project-capability">Linear moves</span>
           <span class="project-capability">Arcs</span>
@@ -68,7 +68,7 @@
         </div>
       </div>
 
-      <div class="project-grid">
+      <div class="project-grid" data-reveal>
         <div>
           <div class="space-y-6">
             <div class="project-card">
@@ -95,6 +95,6 @@
   </main>
 
   <footer class="max-w-7xl mx-auto mt-16 text-sm text-brandSlate">© 2026 Sibusiso M. Mpofu</footer>
-  <script src="../js/main.js"></script>
+  <script src="../js/main.js?v=20261011-nav"></script>
 </body>
 </html>
