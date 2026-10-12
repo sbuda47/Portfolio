@@ -1,33 +1,5 @@
 /* Homepage only. Shared palette, headings and other pages remain in style.css. */
 @font-face {
-    font-family: 'Poppins';
-    src: url('../assets/fonts/Poppins-Regular.woff2') format('woff2');
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Poppins';
-    src: url('../assets/fonts/Poppins-SemiBold.woff2') format('woff2');
-    font-style: normal;
-    font-weight: 600;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Poppins';
-    src: url('../assets/fonts/Poppins-Bold.woff2') format('woff2');
-    font-style: normal;
-    font-weight: 700;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Black Ops One';
-    src: url('../assets/fonts/BlackOpsOne-Regular.woff2') format('woff2');
-    font-style: normal;
-    font-weight: 400;
-    font-display: swap;
-}
-@font-face {
     font-family: 'Archivo Black';
     src: url('../assets/fonts/ArchivoBlack-Regular.ttf') format('truetype');
     font-style: normal;

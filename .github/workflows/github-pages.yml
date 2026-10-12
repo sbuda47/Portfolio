@@ -32,6 +32,9 @@ jobs:
       - name: Generate WebP images
         run: python convert_images.py
 
+      - name: Validate ready-to-stream project videos
+        run: python scripts/validate-videos.py
+
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:

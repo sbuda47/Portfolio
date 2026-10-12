@@ -5,8 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Bible Quest is an installable party-game PWA for Bible and Adventist trivia, created for fellowship game nights.">
   <title>Bible Quest | Project</title>
-  <link href="https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=20261011-nav">
+  <link rel="stylesheet" href="../css/style.css?v=20261011-video3">
 </head>
 <body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack" data-gallery="bible-quest">
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -81,7 +80,8 @@
       <section id="project-media" class="bq-media-section" aria-labelledby="media-heading">
         <div class="bq-section-heading">
           <h2 id="media-heading">In play</h2>
-          <p>Browse the mobile game flow and watch a short demo.</p>
+          <p>Browse the mobile game flow and watch a short demo. Video loads only when you press play.</p>
+          <noscript><a href="../assets/images/BibleQuest-optimized.mp4">Watch the demo (MP4)</a></noscript>
         </div>
         <div class="bq-media-grid">
           <button type="button" class="bq-media-primary gallery-item" data-index="0" aria-label="Open Bible Quest media gallery">
@@ -113,13 +113,13 @@
     <button type="button" class="gallery-prev" aria-label="Previous media">&larr;</button>
     <div class="gallery-viewer">
       <img src="../assets/images/BQ_1.webp" alt="Bible Quest screenshot 1" class="gallery-current" loading="lazy" width="1080" height="2203">
-      <video class="gallery-current-video" controls preload="metadata"></video>
+      <video class="gallery-current-video" controls playsinline preload="none"></video>
       <div class="gallery-caption"></div>
     </div>
     <button type="button" class="gallery-next" aria-label="Next media">&rarr;</button>
   </div>
 
   <footer class="bq-footer">&copy; 2026 Sibusiso M. Mpofu</footer>
-  <script src="../js/main.js?v=20261011-nav"></script>
+  <script src="../js/main.js?v=20261011-video3"></script>
 </body>
 </html>

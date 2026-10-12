@@ -15,3 +15,4 @@ assets/docs/
 .agents/
 *.sqlite
 *.db
+*-optimized.encoding.mp4

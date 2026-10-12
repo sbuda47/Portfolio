@@ -269,126 +269,255 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
+	// A source is attached only after Play: neither posters nor browsing a gallery
+	// should download a demo. Releasing the source also cancels hidden downloads.
+	const createVideoPlayer = (video) => {
+		if (!video) return null;
+		const shell = document.createElement('div');
+		shell.className = 'video-player';
+		shell.hidden = true;
+		video.before(shell);
+		shell.append(video);
+		video.controls = false;
+		video.playsInline = true;
+		video.preload = 'none';
+		video.classList.add('video-player-media');
+		const panel = document.createElement('div');
+		panel.className = 'video-player-panel';
+		const play = document.createElement('button');
+		play.type = 'button';
+		play.className = 'video-play-button';
+		const status = document.createElement('p');
+		status.className = 'video-player-status';
+		status.setAttribute('role', 'status');
+		const direct = document.createElement('a');
+		direct.textContent = 'Open MP4';
+		direct.target = '_blank';
+		direct.rel = 'noopener';
+		panel.append(play, status, direct);
+		shell.append(panel);
+		let media;
+		let active = false;
+		let generation = 0;
+		let slowTimer;
+
+		const clearSlowTimer = () => window.clearTimeout(slowTimer);
+		const loading = (message) => {
+			if (!active) return;
+			shell.dataset.state = 'loading';
+			status.textContent = message;
+			clearSlowTimer();
+			slowTimer = window.setTimeout(() => {
+				if (active && shell.dataset.state === 'loading') {
+					status.textContent = 'Taking a little longer. Keep this open, or try the MP4 link.';
+				}
+			}, 12000);
+		};
+		const failed = () => {
+			if (!active) return;
+			clearSlowTimer();
+			shell.dataset.state = 'error';
+			play.textContent = 'Retry video';
+			status.textContent = 'Could not load. Check your connection and retry.';
+		};
+		const start = () => {
+			active = true;
+			const attempt = ++generation;
+			loading('Loading video…');
+			video.controls = true;
+			video.src = media.src;
+			video.preload = 'auto';
+			video.play().then(() => {
+				if (attempt === generation && active) video.focus({ preventScroll: true });
+			}).catch((error) => {
+				if (attempt !== generation || !active) return;
+				if (error.name === 'NotAllowedError') {
+					shell.dataset.state = 'ready';
+					play.textContent = 'Play demo';
+					status.textContent = 'Tap Play to start the video.';
+					clearSlowTimer();
+				} else if (error.name !== 'AbortError') {
+					failed();
+				}
+			});
+		};
+		play.addEventListener('click', start);
+		video.addEventListener('error', failed);
+		video.addEventListener('waiting', () => loading('Buffering…'));
+		video.addEventListener('playing', () => {
+			clearSlowTimer();
+			shell.dataset.state = 'playing';
+			status.textContent = '';
+		});
+		video.addEventListener('canplay', () => {
+			if (active && shell.dataset.state === 'loading') {
+				clearSlowTimer();
+				shell.dataset.state = 'playing';
+				status.textContent = '';
+			}
+		});
+		const stop = () => {
+			active = false;
+			generation++;
+			clearSlowTimer();
+			video.pause();
+			if (video.hasAttribute('src')) {
+				video.removeAttribute('src');
+				video.load();
+			}
+			video.preload = 'none';
+			video.controls = false;
+			shell.hidden = true;
+		};
+		const prepare = (item) => {
+			stop();
+			media = item;
+			video.poster = item.poster;
+			video.setAttribute('aria-label', item.alt);
+			video.hidden = false;
+			shell.hidden = false;
+			shell.dataset.state = 'ready';
+			play.textContent = 'Play demo';
+			status.textContent = item.info + ' · Loads only when you press play';
+			direct.href = item.src;
+		};
+		return { shell, prepare, start, stop };
+	};
+
 	const galleryType = document.body.dataset.gallery || '';
 	let galleryMedia = [];
-
 	if (galleryType === 'telemetry') {
 		galleryMedia = [1, 2, 3, 4, 5].map((n) => ({
-			type: 'image',
-			src: `../assets/images/tele_${n}.webp`,
-			alt: `Telemetry image ${n}`
+			type: 'image', src: `../assets/images/tele_${n}.webp`, alt: `Telemetry image ${n}`
 		}));
 	} else if (galleryType === 'bible-quest') {
 		galleryMedia = [1, 2, 3, 4, 5, 6].map((n) => ({
-			type: 'image',
-			src: `../assets/images/BQ_${n}.webp`,
-			alt: `Bible Quest screenshot ${n}`
+			type: 'image', src: `../assets/images/BQ_${n}.webp`, alt: `Bible Quest screenshot ${n}`
 		}));
-		galleryMedia.push({ type: 'video', src: '../assets/images/BibleQuest.mp4', alt: 'Bible Quest demo video' });
+		galleryMedia.push({
+			type: 'video', src: '../assets/images/BibleQuest-optimized.mp4',
+			poster: '../assets/images/BQ_5.webp', alt: 'Bible Quest demo video',
+			info: '52 seconds / 1.66 MB'
+		});
+	} else if (galleryType === 'cnc') {
+		galleryMedia = [1, 2, 3, 4, 5, 6, 7, 8].map((n) => ({
+			type: 'image', src: `../assets/images/CNC_${n}.webp`, alt: `CNC Simulator screenshot ${n}`
+		}));
+		galleryMedia.push({
+			type: 'video', src: '../assets/images/cnc-optimized.mp4',
+			poster: '../assets/images/CNC_1.webp', alt: 'CNC Simulator demo video',
+			info: '65 seconds / 2.84 MB'
+		});
+	}
+
+	if (galleryType === 'cnc') {
+		const showcase = document.querySelector('.cnc-showcase');
+		const showcaseImage = showcase?.querySelector('.cnc-showcase-image');
+		const showcaseVideo = showcase?.querySelector('.cnc-showcase-video');
+		const showcaseCaption = document.querySelector('.cnc-showcase-caption');
+		const player = createVideoPlayer(showcaseVideo);
+		const demoButton = document.querySelector('[data-cnc-demo]');
+		const imagesButton = document.querySelector('[data-cnc-images]');
+		let showcaseIndex = 0;
+		const showCncMedia = (index) => {
+			showcaseIndex = ((index % galleryMedia.length) + galleryMedia.length) % galleryMedia.length;
+			const media = galleryMedia[showcaseIndex];
+			const showVideo = media.type === 'video';
+			showcaseImage.hidden = showVideo;
+			if (showVideo) player.prepare(media);
+			else {
+				player.stop();
+				showcaseImage.src = media.src;
+				showcaseImage.alt = media.alt;
+			}
+			showcase.classList.toggle('is-video', showVideo);
+			demoButton.setAttribute('aria-pressed', String(showVideo));
+			imagesButton.setAttribute('aria-pressed', String(!showVideo));
+			showcaseCaption.textContent = showVideo ? 'Demo video' : `Image ${showcaseIndex + 1} of 8`;
+		};
+		showcase?.querySelector('.cnc-showcase-prev')?.addEventListener('click', () => showCncMedia(showcaseIndex - 1));
+		showcase?.querySelector('.cnc-showcase-next')?.addEventListener('click', () => showCncMedia(showcaseIndex + 1));
+		demoButton?.addEventListener('click', () => showCncMedia(galleryMedia.length - 1));
+		imagesButton?.addEventListener('click', () => showCncMedia(0));
 	}
 
 	const galleryItems = document.querySelectorAll('.gallery-item');
 	const galleryModal = document.querySelector('.gallery-modal');
 	const galleryViewer = document.querySelector('.gallery-viewer');
-	// Scope the current media selectors to the gallery viewer to avoid picking up other page images
 	const galleryCurrent = document.querySelector('.gallery-viewer img.gallery-current');
 	const galleryCurrentSource = document.querySelector('.gallery-viewer picture source');
 	const galleryCurrentVideo = document.querySelector('.gallery-viewer video.gallery-current-video');
+	const galleryPlayer = createVideoPlayer(galleryCurrentVideo);
 	const galleryCaption = document.querySelector('.gallery-caption');
 	const galleryPrev = document.querySelector('.gallery-prev');
 	const galleryNext = document.querySelector('.gallery-next');
 	const galleryClose = document.querySelector('.gallery-close');
-
 	let currentGalleryIndex = 0;
-	const defaultAspect = (galleryType === 'bible-quest') ? '9 / 16' : '16 / 9';
-
-	const setViewerAspect = () => {
-		if (!galleryViewer) return;
-		galleryViewer.style.setProperty('aspect-ratio', defaultAspect);
-	};
+	let galleryOpener;
+	let previousOverflow = '';
 
 	const updateGallery = (index) => {
 		if (!galleryMedia.length) return;
 		currentGalleryIndex = ((index % galleryMedia.length) + galleryMedia.length) % galleryMedia.length;
 		const current = galleryMedia[currentGalleryIndex];
-
-		if (galleryCurrentVideo) {
-			galleryCurrentVideo.pause();
-			galleryCurrentVideo.removeAttribute('src');
-			galleryCurrentVideo.style.display = 'none';
-		}
-
-		if (current.type === 'image') {
-			if (galleryCurrentSource) {
-				galleryCurrentSource.setAttribute('srcset', current.src);
-			}
-			if (galleryCurrent) {
-				galleryCurrent.src = current.src;
-				galleryCurrent.srcset = current.src;
-				galleryCurrent.alt = current.alt;
-				galleryCurrent.style.display = 'block';
-			}
-			if (galleryCaption) galleryCaption.textContent = `Image ${currentGalleryIndex + 1} of ${galleryMedia.length}`;
+		galleryPlayer?.stop();
+		const showVideo = current.type === 'video';
+		galleryViewer.classList.toggle('is-video', showVideo);
+		galleryCaption.hidden = showVideo; // Never cover the native playback controls.
+		galleryCurrent.style.display = showVideo ? 'none' : 'block';
+		if (!showVideo) {
+			if (galleryCurrentSource) galleryCurrentSource.srcset = current.src;
+			galleryCurrent.src = current.src;
+			galleryCurrent.srcset = current.src;
+			galleryCurrent.alt = current.alt;
+			const imageCount = galleryMedia.filter((item) => item.type === 'image').length;
+			galleryCaption.textContent = `Image ${currentGalleryIndex + 1} of ${imageCount}`;
 		} else {
-			if (galleryCurrent) galleryCurrent.style.display = 'none';
-			if (galleryCurrentVideo) {
-				galleryCurrentVideo.src = current.src;
-				galleryCurrentVideo.style.display = 'block';
-				galleryCurrentVideo.load();
-			}
-			if (galleryCaption) galleryCaption.textContent = 'Demo video';
+			galleryPlayer?.prepare(current);
 		}
 	};
-
-	const openGallery = (index) => {
-		if (!galleryModal) return;
-		setViewerAspect();
+	const openGallery = (index, opener) => {
+		galleryOpener = opener;
 		updateGallery(index);
 		galleryModal.classList.add('active');
 		galleryModal.setAttribute('aria-hidden', 'false');
+		previousOverflow = document.body.style.overflow;
 		document.body.style.overflow = 'hidden';
+		galleryClose.focus();
 	};
-
 	const closeGallery = () => {
-		if (!galleryModal) return;
+		galleryPlayer?.stop();
 		galleryModal.classList.remove('active');
 		galleryModal.setAttribute('aria-hidden', 'true');
-		document.body.style.overflow = '';
-		// cleanup video element to prevent playback overlap
-		if (galleryCurrentVideo) {
-			galleryCurrentVideo.pause();
-			galleryCurrentVideo.removeAttribute('src');
-			galleryCurrentVideo.style.display = 'none';
-		}
-		if (galleryCurrent) {
-			galleryCurrent.style.display = 'block';
-		}
+		document.body.style.overflow = previousOverflow;
+		galleryOpener?.focus();
 	};
-
 	if (galleryItems.length && galleryModal && galleryCurrent && galleryPrev && galleryNext && galleryClose) {
-		galleryItems.forEach((item) => {
-			item.addEventListener('click', () => {
-			let index = Number(item.dataset.index);
-			if (Number.isNaN(index)) index = 0;
-			openGallery(index);
-		});
-				});
-
+		galleryItems.forEach((item) => item.addEventListener('click', () => {
+			openGallery(Number(item.dataset.index) || 0, item);
+		}));
 		galleryPrev.addEventListener('click', () => updateGallery(currentGalleryIndex - 1));
 		galleryNext.addEventListener('click', () => updateGallery(currentGalleryIndex + 1));
 		galleryClose.addEventListener('click', closeGallery);
-
 		galleryModal.addEventListener('click', (event) => {
-			if (event.target === galleryModal || event.target.classList.contains('gallery-modal-overlay')) {
-				closeGallery();
-			}
+			if (event.target === galleryModal || event.target.classList.contains('gallery-modal-overlay')) closeGallery();
 		});
-
 		document.addEventListener('keydown', (event) => {
 			if (!galleryModal.classList.contains('active')) return;
 			if (event.key === 'Escape') closeGallery();
-			if (event.key === 'ArrowLeft') updateGallery(currentGalleryIndex - 1);
-			if (event.key === 'ArrowRight') updateGallery(currentGalleryIndex + 1);
+			// Arrow keys belong to native video controls while watching a demo.
+			if (galleryMedia[currentGalleryIndex].type !== 'video') {
+				if (event.key === 'ArrowLeft') updateGallery(currentGalleryIndex - 1);
+				if (event.key === 'ArrowRight') updateGallery(currentGalleryIndex + 1);
+			}
+			if (event.key === 'Tab') {
+				const focusable = Array.from(galleryModal.querySelectorAll('button, a[href], video[controls]'))
+					.filter((element) => element.getClientRects().length && getComputedStyle(element).visibility !== 'hidden');
+				const first = focusable[0];
+				const last = focusable[focusable.length - 1];
+				if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus(); }
+				else if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus(); }
+			}
 		});
 	}
 });

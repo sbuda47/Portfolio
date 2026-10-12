@@ -945,6 +945,59 @@ header nav {
     object-fit: cover;
     transition: transform 0.3s ease;
 }
+.cnc-showcase {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 16 / 9;
+    background: rgba(0, 0, 0, 0.35);
+}
+.cnc-showcase-image,
+.cnc-showcase-video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+.cnc-showcase-image[hidden],
+.cnc-showcase-video[hidden] {
+    display: none;
+}
+.cnc-showcase-prev,
+.cnc-showcase-next {
+    position: absolute;
+    z-index: 2;
+    top: 50%;
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid rgba(174, 172, 146, 0.45);
+    border-radius: 50%;
+    color: var(--brand-offwhite);
+    background: rgba(15, 15, 15, 0.82);
+    font: inherit;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transform: translateY(-50%);
+}
+.cnc-showcase-prev { left: 1rem; }
+.cnc-showcase-next { right: 1rem; }
+.cnc-showcase-prev:hover,
+.cnc-showcase-next:hover,
+.cnc-showcase-prev:focus-visible,
+.cnc-showcase-next:focus-visible {
+    border-color: var(--brand-yellow);
+}
+.cnc-showcase-caption {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    padding: 0.6rem 1rem;
+    color: var(--brand-offwhite);
+    background: rgba(15, 15, 15, 0.78);
+    text-align: center;
+    pointer-events: none;
+}
 .gallery-item:hover img,
 .gallery-item:focus-visible img {
     transform: scale(1.03);
@@ -1564,6 +1617,33 @@ html.js-enhanced .reveal-on-scroll.is-revealed { opacity: 1; transform: none; }
 }
 
 /* Shared site navigation: same presentation and breakpoint on every page. */
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-Regular.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-SemiBold.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 600;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Poppins';
+    src: url('../assets/fonts/Poppins-Bold.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 700;
+    font-display: swap;
+}
+@font-face {
+    font-family: 'Black Ops One';
+    src: url('../assets/fonts/BlackOpsOne-Regular.woff2') format('woff2');
+    font-weight: 400;
+    font-display: swap;
+}
 .site-header {
     --nav-gutter: clamp(1.5rem, 4.4vw, 6rem);
     background: rgba(30, 30, 29, 0.91);
@@ -1578,6 +1658,7 @@ html.js-enhanced .reveal-on-scroll.is-revealed { opacity: 1; transform: none; }
 }
 
 .site-header nav > div {
+    font-family: 'Black Ops One', sans-serif;
     font-size: clamp(1rem, 1.3vw, 1.4rem);
     white-space: nowrap;
 }
@@ -1655,4 +1736,41 @@ html.js-enhanced .reveal-on-scroll.is-revealed { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
     .site-header .nav-link,
     .site-header .nav-link::after { transition: none; }
+}
+
+/* On-demand project demos; player controls always remain unobstructed. */
+body[data-gallery='cnc'] { padding-inline: 0; }
+body[data-gallery='cnc'] > footer { padding-inline: 1.5rem; }
+.project-cnc .project-hero-banner { left: auto; right: auto; width: 100%; max-width: 100%; margin-inline: 0; padding: 0; }
+.video-player { position: relative; width: 100%; height: 100%; background: var(--brand-black); }
+.video-player[hidden] { display: none; }
+.video-player .video-player-media { display: block; width: 100%; height: 100%; object-fit: contain; }
+.video-player-panel { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; padding: 1rem; background: rgba(15, 15, 15, 0.8); text-align: center; }
+.video-play-button { border: 1px solid var(--brand-yellow); background: var(--brand-yellow); color: var(--brand-black); padding: 0.8rem 1.3rem; min-height: 44px; border-radius: 0.3rem; font: inherit; font-weight: 600; cursor: pointer; }
+.video-play-button:hover { background: var(--brand-offwhite); border-color: var(--brand-offwhite); }
+.video-player-status { max-width: 32ch; margin: 0; color: var(--brand-offwhite); font-size: 0.8rem; line-height: 1.6; }
+.video-player-panel a { color: var(--brand-offwhite); font-size: 0.8rem; text-underline-offset: 0.25em; }
+.video-player[data-state='playing'] .video-player-panel { display: none; }
+.video-player[data-state='loading'] .video-player-panel { inset: 0 0 auto; padding: 0.7rem; pointer-events: none; }
+.video-player[data-state='loading'] .video-player-panel a { pointer-events: auto; }
+.video-player[data-state='loading'] .video-play-button { display: none; }
+.video-player :focus-visible, .media-toolbar :focus-visible { outline: 2px solid var(--brand-offwhite); outline-offset: 4px; }
+.media-toolbar { display: flex; align-items: center; justify-content: space-between; gap: 1rem; margin-top: 0.8rem; flex-wrap: wrap; }
+.media-tabs { display: flex; gap: 0.25rem; }
+.media-tabs button { background: transparent; color: var(--brand-offwhite); border: 0; border-bottom: 2px solid transparent; min-height: 44px; padding: 0.65rem 0.75rem; font: inherit; font-size: 0.8rem; cursor: pointer; }
+.media-tabs button[aria-pressed='true'] { color: var(--brand-yellow); border-bottom-color: var(--brand-yellow); }
+.media-tabs button:hover { background: rgba(255,255,255,0.05); }
+.media-toolbar .cnc-showcase-caption { position: static; padding: 0; background: none; font-size: 0.75rem; color: var(--brand-slate); }
+.cnc-showcase.is-video .cnc-showcase-prev, .cnc-showcase.is-video .cnc-showcase-next { display: none; }
+.gallery-caption { pointer-events: none; }
+.gallery-caption[hidden] { display: none; }
+body[data-gallery='bible-quest'] .gallery-viewer { width: min(70vw, 38vh); height: min(78vh, 144vw); aspect-ratio: 1 / 2; }
+body[data-gallery='bible-quest'] .gallery-prev,
+body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transform: none; }
+@media (max-width: 600px) {
+    .cnc-showcase-prev, .cnc-showcase-next { width: 44px; height: 44px; }
+    .cnc-showcase-prev { left: 0.4rem; }
+    .cnc-showcase-next { right: 0.4rem; }
+    .video-player-panel { gap: 0.45rem; padding: 0.5rem; }
+    .video-player-status, .video-player-panel a { font-size: 0.7rem; }
 }

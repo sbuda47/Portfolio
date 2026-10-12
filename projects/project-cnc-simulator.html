@@ -4,10 +4,9 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>CNC Simulator — Project</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/style.css?v=20261011-nav">
+  <link rel="stylesheet" href="../css/style.css?v=20261011-video3">
 </head>
-<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack px-12 pb-12">
+<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack px-12 pb-12" data-gallery="cnc">
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Shared header start -->
   <header class="site-header fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
@@ -44,11 +43,21 @@
 
       <div class="project-hero-banner mb-8" data-reveal>
         <div class="aspect-video bg-brandSlate/10 overflow-hidden rounded-sm">
-          <video controls preload="none" class="w-full h-full" style="object-fit: cover;">
-            <source src="../assets/images/cnc.mp4" type="video/mp4">
-            Your browser does not support the video tag.
-          </video>
+          <div class="cnc-showcase">
+            <img src="../assets/images/CNC_1.webp" alt="CNC Simulator screenshot 1" class="cnc-showcase-image">
+            <video class="cnc-showcase-video" controls playsinline preload="none" poster="../assets/images/CNC_1.webp" hidden></video>
+            <button type="button" class="cnc-showcase-prev" aria-label="Previous project media">&larr;</button>
+            <button type="button" class="cnc-showcase-next" aria-label="Next project media">&rarr;</button>
+          </div>
         </div>
+        <div class="media-toolbar">
+          <div class="media-tabs" aria-label="Project media">
+            <button type="button" data-cnc-images aria-pressed="true">Screenshots</button>
+            <button type="button" data-cnc-demo aria-pressed="false">Demo video</button>
+          </div>
+          <span class="cnc-showcase-caption" aria-live="polite">Image 1 of 8</span>
+        </div>
+        <noscript><p><a href="../assets/images/cnc-optimized.mp4">Watch the CNC demo (MP4)</a></p></noscript>
       </div>
 
       <div class="mb-12" data-reveal>
@@ -95,6 +104,6 @@
   </main>
 
   <footer class="max-w-7xl mx-auto mt-16 text-sm text-brandSlate">© 2026 Sibusiso M. Mpofu</footer>
-  <script src="../js/main.js?v=20261011-nav"></script>
+  <script src="../js/main.js?v=20261011-video3"></script>
 </body>
 </html>
