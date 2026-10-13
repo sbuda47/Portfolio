@@ -82,6 +82,7 @@
   "scripts/public-files.json",
   "scripts/repository-files.json",
   "scripts/serve-preview.cjs",
+  "scripts/test-contact-form.cjs",
   "scripts/test_build_site.py",
   "scripts/test_repository.py",
   "scripts/test_validate_videos.py",

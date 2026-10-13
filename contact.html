@@ -72,8 +72,8 @@
                 </div>
                 <button type="button" id="closeContactForm" class="contact-dialog-close" aria-label="Close contact form">×</button>
             </div>
-            <p id="contactFormNote" class="contact-form-note">Your message will be sent to my inbox. For direct contact, use the email link below.</p>
-            <form id="contactForm" class="contact-form" action="https://formspree.io/f/xwlvobrr" method="POST">
+            <p id="contactFormNote" class="contact-form-note">Next, you will continue to Formspree, where a security check may be required before your message is sent. Look for its confirmation after submitting.</p>
+            <form id="contactForm" class="contact-form" action="https://formspree.io/f/xwlvobrr" method="POST" aria-describedby="contactFormNote">
                 <input type="hidden" name="_subject" value="Portfolio contact form message">
                 <input type="hidden" name="_gotcha" value="">
                 <label class="contact-field" for="cf-name">
@@ -90,7 +90,7 @@
                 </label>
                 <p class="contact-form-privacy">Your name, email, and message are used to respond to your enquiry. This form is processed by Formspree. Please avoid sending sensitive information. <a href="privacy.html">Read the privacy notice</a>.</p>
                 <div class="contact-form-actions">
-                    <button type="submit" class="btn btn-primary">Send Message</button>
+                    <button type="submit" class="btn btn-primary">Continue to Formspree <span aria-hidden="true">↗</span></button>
                     <p id="contactFormMessage" class="contact-form-message" role="status" aria-live="polite" aria-atomic="true"></p>
                 </div>
             </form>
@@ -115,6 +115,6 @@
         </div>
         <p class="site-privacy-link"><a href="privacy.html">Privacy notice</a></p>
     </footer>
-    <script src="js/main.js?v=20261013-release1"></script>
+    <script src="js/main.js?v=20261014-contact-captcha1"></script>
 </body>
 </html>

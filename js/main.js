@@ -315,11 +315,24 @@ document.addEventListener('DOMContentLoaded', () => {
 		});
 	}
 
-	/* Contact form validation (client-side) */
+	/* Contact form: native POST lets Formspree present its hosted CAPTCHA. */
 	const contactForm = document.getElementById('contactForm');
 	const contactFormMessage = document.getElementById('contactFormMessage');
 	if (contactForm) {
 		const emailInput = contactForm.querySelector('#cf-email');
+		const submitButton = contactForm.querySelector('[type="submit"]');
+		let submitting = false;
+
+		// Back/forward cache can restore the disabled button after the handoff.
+		// Keep the visitor's input; returning does not prove delivery succeeded.
+		window.addEventListener('pageshow', () => {
+			if (!submitting) return;
+			submitting = false;
+			submitButton.disabled = false;
+			contactForm.removeAttribute('aria-busy');
+			contactFormMessage.classList.remove('text-brandYellow');
+			contactFormMessage.textContent = 'Back from Formspree? Only send again if you did not see its submission confirmation.';
+		});
 
 		// Enhanced email validation
 		if (emailInput) {
@@ -334,12 +347,14 @@ document.addEventListener('DOMContentLoaded', () => {
 			});
 		}
 
-		contactForm.addEventListener('submit', async (ev) => {
-			ev.preventDefault();
+		contactForm.addEventListener('submit', (ev) => {
+			if (submitting) {
+				ev.preventDefault();
+				return;
+			}
 			const name = contactForm.querySelector('#cf-name');
 			const email = contactForm.querySelector('#cf-email');
 			const message = contactForm.querySelector('#cf-message');
-			const submitButton = contactForm.querySelector('[type="submit"]');
 			let ok = true;
 
 			// Names may contain characters from any language. Never render them as HTML.
@@ -370,6 +385,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 
 			if (!ok) {
+				ev.preventDefault();
 				contactFormMessage.textContent = 'Please check your name, email address, and message.';
 				contactFormMessage.classList.add('text-brandYellow');
 				contactForm.querySelector('[aria-invalid="true"]').focus();
@@ -377,46 +393,20 @@ document.addEventListener('DOMContentLoaded', () => {
 			}
 
 			const formEndpoint = contactForm.getAttribute('action');
-			if (!formEndpoint || !/^https:\/\/formspree\.io\/f\/[a-zA-Z0-9]+$/.test(formEndpoint)) {
+			if (formEndpoint !== 'https://formspree.io/f/xwlvobrr' || contactForm.method.toLowerCase() !== 'post') {
+				ev.preventDefault();
 				contactFormMessage.textContent = 'The form is not configured correctly. Please email me directly.';
 				contactFormMessage.classList.add('text-brandYellow');
 				return;
 			}
 
+			// Do not prevent a valid native submission, fetch JSON, or reset fields.
+			// The hosted service owns verification, errors, and success feedback.
+			submitting = true;
 			submitButton.disabled = true;
 			contactForm.setAttribute('aria-busy', 'true');
 			contactFormMessage.classList.remove('text-brandYellow');
-			contactFormMessage.textContent = 'Sending your message...';
-
-			let response;
-			try {
-				response = await fetch(formEndpoint, {
-					method: 'POST',
-					body: new FormData(contactForm),
-					headers: { Accept: 'application/json' }
-				});
-			} catch (error) {
-				console.error('Contact form request failed:', error);
-				contactFormMessage.textContent = 'We could not connect to the form service. Please try again or email me directly.';
-				contactFormMessage.classList.add('text-brandYellow');
-				submitButton.disabled = false;
-				contactForm.removeAttribute('aria-busy');
-				return;
-			}
-
-			if (!response.ok) {
-				console.error(`Contact form service returned HTTP ${response.status}.`);
-				contactFormMessage.textContent = 'Your message could not be sent. Please try again or email me directly.';
-				contactFormMessage.classList.add('text-brandYellow');
-				submitButton.disabled = false;
-				contactForm.removeAttribute('aria-busy');
-				return;
-			}
-
-			contactForm.reset();
-			contactFormMessage.textContent = 'Your message has been sent. Thank you.';
-			submitButton.disabled = false;
-			contactForm.removeAttribute('aria-busy');
+			contactFormMessage.textContent = 'Continuing to Formspree. Complete any security check there to send your message.';
 		});
 	}
 

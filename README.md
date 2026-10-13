@@ -41,6 +41,7 @@ python scripts/validate-videos.py
 python scripts/build-site.py
 node --check js/main.js
 node --check js/home.js
+node --test scripts/test-contact-form.cjs
 node scripts/serve-preview.cjs
 ```
 
@@ -69,6 +70,22 @@ monthly Actions and local media-dependency updates; review them before merging.
 The owner reported configuring repository **Settings → Pages → Build and
 deployment → Source → GitHub Actions** and **Enforce HTTPS** on 14 October 2026.
 Do not restore a branch-root publisher alongside the allowlisted workflow.
+
+## Contact form and CAPTCHA
+
+The contact dialog submits a normal HTTPS POST to Formspree in the same tab.
+It deliberately does not request JSON: Formspree can show its hosted CAPTCHA
+when enabled, then its own submission confirmation. No CAPTCHA keys, external
+scripts, or paid custom redirect are needed on this site. Visitors can use Back
+to return; restored pages unlock the button without clearing their input or
+assuming the message was sent. Do not resend after seeing a confirmation.
+
+Keep Formshield enabled and set the project's domain restriction to
+`sbuda47.github.io` (no protocol or `/Portfolio/` path). The owner must re-enable
+CAPTCHA and test from the published Contact page, complete any challenge, and
+confirm both the Formspree submission and receiving inbox. Local tests exercise
+validation, native handoff, repeat-submit blocking, and Back restoration without
+sending real messages; they cannot verify the provider's CAPTCHA or delivery.
 
 ## Preparing assets
 

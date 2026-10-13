@@ -28,6 +28,11 @@ jobs:
           python-version: '3.13'
       - name: Run publishing and MP4 regression tests
         run: python -m unittest discover -s scripts -p "test_*.py" -v
+      - name: Check JavaScript and CAPTCHA-compatible contact handoff
+        run: |
+          node --check js/main.js
+          node --check js/home.js
+          node --test scripts/test-contact-form.cjs
       - name: Validate tracked-file policy and common credential patterns
         run: python scripts/validate-repository.py
       - name: Validate ready-to-stream project videos

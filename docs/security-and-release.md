@@ -23,6 +23,9 @@ reviewed site's release and repository cleanup on 14 October 2026.
   preserving the origin required by Formspree's domain filter.
 - Contact feedback uses `textContent`, not HTML insertion. The form has a
   `_gotcha` honeypot and reasonable input lengths. Unicode names are accepted.
+  Native POST allows Formspree's hosted CAPTCHA and confirmation flow. There
+  are no on-site CAPTCHA scripts or keys; returning with Back restores the
+  button but does not claim successful delivery or erase the visitor's input.
   Client-side validation/honeypots are not a substitute for provider-side spam
   filtering or a security boundary against determined automated submissions.
 - CI deploys only after validation; pull-request jobs cannot deploy.
@@ -46,11 +49,13 @@ found. This does not rule out sensitive information visible in an image or
 other metadata. 33 relocated tracked media/icon files match their original Git
 blobs exactly; originals were moved, not deleted or recompressed.
 
-Nineteen regression tests pass. They cover the publication boundary, traversal,
+Nineteen Python regression tests cover the publication boundary, traversal,
 missing dependencies, inline markup checks, relative project URLs, a complete
 site build, and MP4 container/fast-start failures. Both MP4s pass their real-file
 checks. Browser checks covered all 11 public HTML pages at 320, 390, 768, and
-1280 CSS pixels, plus key interactions. Both demos played after pressing Play,
+1280 CSS pixels, plus key interactions. Ten additional dependency-free Node
+tests exercise the native contact handoff, validation, endpoint/method checks,
+repeat-submit prevention, and restored-page state. Both demos played after pressing Play,
 and each had no attached video source before that action. No real contact POST
 was sent. Physical-device, provider-delivery, and deployed performance checks
 remain post-release checks unless the owner has explicitly confirmed them.
@@ -85,16 +90,19 @@ ever exposed, revoke/rotate it first; deleting a file alone is insufficient.
 - On 14 October 2026 the owner reported completing the GitHub Pages Source and
   HTTPS checks. This is owner confirmation, not a direct account-settings read.
 - The owner approved the privacy notice, video quality/loading, and other page
-  layouts. The supplied Formspree screenshot shows Form Enabled, Formshield,
-  and CAPTCHA enabled. No provider settings were changed by the agent.
-- The owner chose to defer domain restriction because it was not visible in the
-  form-settings screenshot. Official documentation places this setting at the
-  **project** level; it is not a mandatory gate for this release. Do not claim
-  that the production domain filter is configured.
-- Keep the receiving inbox correct. After release, the owner should send a
-  non-sensitive enquiry from the published Contact page and confirm delivery
-  (including the spam inbox if necessary). Do not disable provider CAPTCHA
-  without reviewing and testing the consequences.
+  layouts. The first Formspree screenshot showed Form Enabled, Formshield,
+  and CAPTCHA enabled; a later project-settings screenshot showed
+  `sbuda47.github.io` in Restrict to Domain. Saved provider settings were not
+  directly inspected. No provider settings were changed by the agent.
+- The owner confirmed messages were delivered after they disabled CAPTCHA.
+  The previous AJAX handler did not supply a CAPTCHA response or show the
+  hosted challenge. The revised native POST flow follows Formspree's documented
+  hosted verification approach; unit/UI checks are not a live-delivery proof.
+- Keep the receiving inbox correct and Formshield enabled. Re-enable CAPTCHA,
+  send one non-sensitive enquiry from the published Contact page, complete any
+  challenge, and confirm Formspree's confirmation, submission list, and inbox
+  delivery (including spam). The owner must complete this final verification;
+  automated QA does not solve CAPTCHA or send real enquiries.
 - Confirm **Deploy GitHub Pages** succeeds for the release commit. Verify the
   privacy page, CV download, and that former notes/original-video URLs return
   404 rather than their original contents.
@@ -109,5 +117,6 @@ ever exposed, revoke/rotate it first; deleting a file alone is insufficient.
 - [Meta CSP support and limitations](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CSP)
 - [Formspree domain restriction and referrer requirements](https://help.formspree.io/articles/form-and-project-settings/restrict-to-domain/)
 - [Formspree honeypot filtering](https://help.formspree.io/articles/building-your-form/honeypot-spam-filtering)
+- [Formspree hosted CAPTCHA settings](https://help.formspree.io/articles/form-and-project-settings/recaptcha-settings/)
 - [Formspree privacy](https://formspree.io/legal/privacy-policy/)
 - [GitHub Pages IP logging](https://docs.github.com/en/pages/getting-started-with-github-pages/what-is-github-pages#data-collection)
