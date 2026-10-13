@@ -1,18 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://your-username.github.io/your-repo/index.html</loc>
-  </url>
-  <url>
-    <loc>https://your-username.github.io/your-repo/portfolio.html</loc>
-  </url>
-  <url>
-    <loc>https://your-username.github.io/your-repo/about.html</loc>
-  </url>
-  <url>
-    <loc>https://your-username.github.io/your-repo/skills.html</loc>
-  </url>
-  <url>
-    <loc>https://your-username.github.io/your-repo/contact.html</loc>
-  </url>
+  <url><loc>https://sbuda47.github.io/Portfolio/</loc></url>
+  <url><loc>https://sbuda47.github.io/Portfolio/about.html</loc></url>
+  <url><loc>https://sbuda47.github.io/Portfolio/skills.html</loc></url>
+  <url><loc>https://sbuda47.github.io/Portfolio/portfolio.html</loc></url>
+  <url><loc>https://sbuda47.github.io/Portfolio/contact.html</loc></url>
+  <url><loc>https://sbuda47.github.io/Portfolio/privacy.html</loc></url>
+  <url><loc>https://sbuda47.github.io/Portfolio/projects/project-cnc-simulator.html</loc></url>
+  <url><loc>https://sbuda47.github.io/Portfolio/projects/project-md-hi.html</loc></url>
+  <url><loc>https://sbuda47.github.io/Portfolio/projects/project-telemetry.html</loc></url>
+  <url><loc>https://sbuda47.github.io/Portfolio/projects/project-bible-quest.html</loc></url>
 </urlset>

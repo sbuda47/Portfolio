@@ -2,9 +2,19 @@
 <html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://formspree.io; form-action https://formspree.io; object-src 'none'; base-uri 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact — Sibusiso M. Mpofu</title>
-    <link rel="stylesheet" href="css/style.css?v=20261011-video3">
+    <meta name="description" content="Contact Sibusiso Mpofu about engineering collaborations, embedded systems, automation, and intelligent control.">
+    <link rel="stylesheet" href="css/style.css?v=20261014-socials1">
+    <link rel="canonical" href="https://sbuda47.github.io/Portfolio/contact.html">
+    <link rel="icon" href="favicon.ico">
+    <meta property="og:title" content="Contact — Sibusiso M. Mpofu">
+    <meta property="og:description" content="Contact Sibusiso Mpofu about engineering collaborations, embedded systems, automation, and intelligent control.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sbuda47.github.io/Portfolio/contact.html">
+    <meta property="og:image" content="https://sbuda47.github.io/Portfolio/assets/images/home-portrait-1024.webp">
 </head>
 <body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack">
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -34,7 +44,11 @@
             <div class="contact-hero">
                 <div class="contact-hero-copy">
                     <p class="contact-eyebrow">Have an engineering challenge?</p>
-                    <h1>I'm open to engineering collaborations</h1>
+                    <h1 aria-label="I'm open to engineering collaborations">
+                        <span aria-hidden="true">I'm open to</span>
+                        <span aria-hidden="true">engineering</span>
+                        <span class="contact-title-last" aria-hidden="true">collaborations</span>
+                    </h1>
                     <p class="contact-loop-line">
                         <span class="sr-only">Let's work together on engineering, prototypes, and intelligent systems.</span>
                         <span id="contactLoop" class="contact-loop" aria-hidden="true">
@@ -61,18 +75,20 @@
             <p id="contactFormNote" class="contact-form-note">Your message will be sent to my inbox. For direct contact, use the email link below.</p>
             <form id="contactForm" class="contact-form" action="https://formspree.io/f/xwlvobrr" method="POST">
                 <input type="hidden" name="_subject" value="Portfolio contact form message">
+                <input type="hidden" name="_gotcha" value="">
                 <label class="contact-field" for="cf-name">
                     <span>Name</span>
-                    <input type="text" name="name" id="cf-name" class="input" autocomplete="name" pattern="(?:[A-Za-z\s']|\x2D)+" required aria-required="true">
+                    <input type="text" name="name" id="cf-name" class="input" autocomplete="name" maxlength="120" required aria-required="true">
                 </label>
                 <label class="contact-field" for="cf-email">
                     <span>Email</span>
-                    <input type="email" name="email" id="cf-email" class="input" autocomplete="email" required aria-required="true">
+                    <input type="email" name="email" id="cf-email" class="input" autocomplete="email" maxlength="254" required aria-required="true">
                 </label>
                 <label class="contact-field" for="cf-message">
                     <span>Message</span>
-                    <textarea name="message" id="cf-message" class="input" rows="5" required aria-required="true"></textarea>
+                    <textarea name="message" id="cf-message" class="input" rows="5" maxlength="5000" required aria-required="true"></textarea>
                 </label>
+                <p class="contact-form-privacy">Your name, email, and message are used to respond to your enquiry. This form is processed by Formspree. Please avoid sending sensitive information. <a href="privacy.html">Read the privacy notice</a>.</p>
                 <div class="contact-form-actions">
                     <button type="submit" class="btn btn-primary">Send Message</button>
                     <p id="contactFormMessage" class="contact-form-message" role="status" aria-live="polite" aria-atomic="true"></p>
@@ -97,7 +113,8 @@
                 </a>
             </nav>
         </div>
+        <p class="site-privacy-link"><a href="privacy.html">Privacy notice</a></p>
     </footer>
-    <script src="js/main.js?v=20261011-video3"></script>
+    <script src="js/main.js?v=20261013-release1"></script>
 </body>
 </html>

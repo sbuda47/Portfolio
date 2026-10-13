@@ -2,11 +2,21 @@
 <html lang="en" class="scroll-smooth">
 <head>
   <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://formspree.io; form-action https://formspree.io; object-src 'none'; base-uri 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Skills • Sibusiso M. Mpofu</title>
-  <link rel="stylesheet" href="css/style.css?v=20261011-video3">
+  <meta name="description" content="Explore Sibusiso Mpofu's engineering capabilities across instrumentation, embedded systems, signal processing, and mechanical design.">
+  <title>Skills | Sibusiso M. Mpofu</title>
+  <link rel="stylesheet" href="css/style.css?v=20261014-socials1">
+    <link rel="canonical" href="https://sbuda47.github.io/Portfolio/skills.html">
+    <link rel="icon" href="favicon.ico">
+    <meta property="og:title" content="Skills | Sibusiso M. Mpofu">
+    <meta property="og:description" content="Explore Sibusiso Mpofu's engineering capabilities across instrumentation, embedded systems, signal processing, and mechanical design.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sbuda47.github.io/Portfolio/skills.html">
+    <meta property="og:image" content="https://sbuda47.github.io/Portfolio/assets/images/home-portrait-1024.webp">
 </head>
-<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack">
+<body class="skills-body bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack">
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Shared header start -->
   <header class="site-header fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
@@ -32,18 +42,134 @@
   <main id="main-content" class="skills-page">
     <section class="skills-intro" aria-labelledby="skillsTitle" data-reveal>
       <div class="skills-intro-copy">
-        <h1 id="skillsTitle" class="section-heading font-gothic uppercase tracking-tighter">Skills &amp; Competencies</h1>
-        <p>Mechatronics and Industrial Instrumentation engineer. Control and instrumentation experience, with embedded and data work grounded in real engineering projects.</p>
+        <p class="skills-kicker">Engineering capability</p>
+        <h1 id="skillsTitle" class="section-heading font-gothic uppercase tracking-tighter">From sensors<br>to systems.</h1>
+        <p>I connect instrumentation, embedded control, mechanical design, and applied intelligence to build and improve dependable engineering systems.</p>
+      </div>
+      <div class="skills-intro-note" aria-label="Professional focus">
+        <span>Mechatronics engineer</span>
+        <p>Practical systems thinking, grounded in commissioning, prototyping, integration, and analysis.</p>
+      </div>
+    </section>
+
+    <section class="skills-explorer" aria-labelledby="skillsExplorerTitle">
+      <div class="skills-section-heading" data-reveal>
+        <p class="skills-kicker">Capability map</p>
+        <h2 id="skillsExplorerTitle" class="font-gothic">Engineering skill domains</h2>
+        <p>Select a domain to stop the orbit and inspect the tools, methods, and evidence behind it.</p>
+      </div>
+      <div class="skills-legend" aria-label="Skill evidence key" data-reveal>
+        <span><i class="skills-evidence-mark" aria-hidden="true"></i> Applied in project or work</span>
+        <span><i class="skills-knowledge-mark" aria-hidden="true"></i> Working knowledge</span>
+      </div>
+
+      <div class="skills-explorer-layout" data-skills-state="idle">
+        <nav class="skills-orbit" aria-label="Explore skill domains" aria-describedby="skillsOrbitHelp">
+          <span class="skills-orbit-ring" aria-hidden="true"></span>
+          <span class="skills-orbit-center font-gothic" aria-hidden="true">Systems<br>integration</span>
+          <button type="button" class="skills-orbit-node" data-skill-filter="control" data-orbit-index="0" aria-controls="skill-control" aria-pressed="false">
+            <span class="skills-node-number">01</span><span>Control &amp;<br>Instrumentation</span>
+          </button>
+          <button type="button" class="skills-orbit-node" data-skill-filter="embedded" data-orbit-index="1" aria-controls="skill-embedded" aria-pressed="false">
+            <span class="skills-node-number">02</span><span>Embedded &amp;<br>Real-Time</span>
+          </button>
+          <button type="button" class="skills-orbit-node" data-skill-filter="software" data-orbit-index="2" aria-controls="skill-software" aria-pressed="false">
+            <span class="skills-node-number">03</span><span>Software, Vision &amp;<br>Signal Processing</span>
+          </button>
+          <button type="button" class="skills-orbit-node" data-skill-filter="design" data-orbit-index="3" aria-controls="skill-design" aria-pressed="false">
+            <span class="skills-node-number">04</span><span>Mechanical Design &amp;<br>Fabrication</span>
+          </button>
+          <button type="button" class="skills-show-all" data-skill-filter="all" aria-controls="skillDomains" aria-pressed="false">Show all domains</button>
+        </nav>
+        <p id="skillsOrbitHelp" class="sr-only">The skill categories rotate when this section is visible. Hover over the orbit or focus a category to pause it. Select a category to display its skills.</p>
+
+        <div id="skillDomains" class="skills-domain-list" aria-live="polite" aria-relevant="additions removals">
+          <article id="skill-control" class="skills-domain is-lead" data-skill-domain="control">
+            <p class="skills-domain-index">Domain 01</p>
+            <h3 class="font-gothic">Control &amp; Instrumentation</h3>
+            <p class="skills-domain-summary">Commissioning, verifying, troubleshooting, and improving industrial measurement and control systems.</p>
+            <ul class="skills-tags">
+              <li class="is-applied">Mahalanobis health indexing</li>
+              <li class="is-applied">RTDs and thermocouples</li>
+              <li class="is-applied">Loop calibration and verification</li>
+              <li class="is-applied">Plant commissioning</li>
+              <li>PID tuning</li>
+              <li>Fuzzy Logic</li>
+              <li>PLC and DCS architectures</li>
+              <li>Pressure transmitters and MOVs</li>
+              <li>Predictive and preventive maintenance</li>
+              <li>LOTO and safety procedures</li>
+            </ul>
+            <p class="skills-used-in"><strong>Applied in</strong> Morupule B attachment, hospital oxygen plant commissioning, OPTIBELT, and MD-HI.</p>
+          </article>
+
+          <article id="skill-embedded" class="skills-domain" data-skill-domain="embedded" hidden>
+            <p class="skills-domain-index">Domain 02</p>
+            <h3 class="font-gothic">Embedded &amp; Real-Time Systems</h3>
+            <p class="skills-domain-summary">Connecting sensors, firmware, communications, and edge hardware into responsive physical systems.</p>
+            <ul class="skills-tags">
+              <li class="is-applied">STM32 firmware</li>
+              <li class="is-applied">Jetson Nano edge deployment</li>
+              <li class="is-applied">Arduino</li>
+              <li class="is-applied">UART integration</li>
+              <li>ESP32 prototyping</li>
+              <li>C and C++</li>
+              <li>SPI, I2C, and PWM</li>
+              <li>Modbus</li>
+              <li>Real-time control loops</li>
+              <li>Hardware-software integration</li>
+            </ul>
+            <p class="skills-used-in"><strong>Applied in</strong> OPTIBELT edge deployment and BIUST embedded systems labs.</p>
+          </article>
+
+          <article id="skill-software" class="skills-domain" data-skill-domain="software" hidden>
+            <p class="skills-domain-index">Domain 03</p>
+            <h3 class="font-gothic">Software, Vision &amp; Signal Processing</h3>
+            <p class="skills-domain-summary">Turning sensor, image, and operational data into useful diagnostics and engineering decisions.</p>
+            <ul class="skills-tags">
+              <li class="is-applied">Python</li>
+              <li class="is-applied">NumPy and Pandas</li>
+              <li class="is-applied">SciPy</li>
+              <li class="is-applied">YOLOv8</li>
+              <li class="is-applied">Savitzky-Golay filtering</li>
+              <li class="is-applied">Welch spectral analysis</li>
+              <li class="is-applied">Data quality checks and gap handling</li>
+              <li>Scikit-learn</li>
+              <li>MATLAB and Simulink</li>
+              <li>PCM encoding and NRZ-L line coding</li>
+            </ul>
+            <p class="skills-used-in"><strong>Applied in</strong> OPTIBELT, MD-HI, and Botho Hacks.</p>
+          </article>
+
+          <article id="skill-design" class="skills-domain" data-skill-domain="design" hidden>
+            <p class="skills-domain-index">Domain 04</p>
+            <h3 class="font-gothic">Mechanical Design &amp; Fabrication</h3>
+            <p class="skills-domain-summary">Developing practical mechanical and electrical designs that can be fabricated, assembled, maintained, and documented.</p>
+            <ul class="skills-tags">
+              <li class="is-applied">SolidWorks</li>
+              <li class="is-applied">Fusion 360</li>
+              <li>Proteus</li>
+              <li>Multisim</li>
+              <li>Technical documentation</li>
+              <li>Maintenance planning</li>
+              <li>Safety procedures</li>
+            </ul>
+            <p class="skills-used-in"><strong>Applied in</strong> engineering coursework, project development, and plant attachment work.</p>
+          </article>
+        </div>
       </div>
     </section>
 
     <section class="skills-experience" aria-labelledby="experienceTitle" data-reveal>
-      <h2 id="experienceTitle" class="font-gothic">Where I have applied it</h2>
+      <div class="skills-section-heading">
+        <p class="skills-kicker">Evidence in practice</p>
+        <h2 id="experienceTitle" class="font-gothic">Where I have applied it</h2>
+      </div>
       <ol class="skills-timeline">
         <li>
           <div class="skills-timeline-heading"><h3>Final-year project: OPTIBELT</h3><time datetime="2026">2026</time></div>
           <p class="skills-timeline-place">BIUST</p>
-          <p>Developing a modular belt and stockpile monitoring platform using LiDAR, YOLOv8 vision, and Mahalanobis Distance health indexing, with Jetson Nano edge deployment and an STM32 UART link.</p>
+          <p>Led the development of the Mahalanobis Distance health index for a modular belt and stockpile monitoring platform, while contributing to the team's LiDAR and YOLOv8 vision work, Jetson Nano edge deployment, and STM32 UART integration.</p>
         </li>
         <li>
           <div class="skills-timeline-heading"><h3>Commissioning Engineer (Volunteer)</h3><span>Dec 2025 to Jan 2026</span></div>
@@ -63,105 +189,8 @@
       </ol>
     </section>
 
-    <section class="skills-explorer" aria-labelledby="skillsExplorerTitle" data-reveal>
-      <div class="skills-section-heading">
-        <h2 id="skillsExplorerTitle" class="font-gothic">Engineering skill domains</h2>
-        <p>Select a domain to see the tools and methods, with examples of where they have been applied.</p>
-      </div>
-      <div class="skills-legend" aria-label="Skill evidence key">
-        <span><i class="skills-evidence-mark" aria-hidden="true"></i> Applied in project or work</span>
-        <span><i class="skills-knowledge-mark" aria-hidden="true"></i> Working knowledge</span>
-      </div>
-
-      <div class="skills-explorer-layout">
-        <nav class="skills-orbit" aria-label="Filter skill domains">
-          <span class="skills-orbit-ring" aria-hidden="true"></span>
-          <span class="skills-orbit-center font-gothic" aria-hidden="true">Engineering<br>practice</span>
-          <button type="button" class="skills-orbit-node is-active" data-skill-filter="control" aria-controls="skill-control" aria-pressed="true">
-            <span class="skills-node-number">01</span><span>Control &amp;<br>Instrumentation</span>
-          </button>
-          <button type="button" class="skills-orbit-node" data-skill-filter="embedded" aria-controls="skill-embedded" aria-pressed="false">
-            <span class="skills-node-number">02</span><span>Embedded &amp;<br>Real-Time</span>
-          </button>
-          <button type="button" class="skills-orbit-node" data-skill-filter="software" aria-controls="skill-software" aria-pressed="false">
-            <span class="skills-node-number">03</span><span>Software &amp;<br>Signal Processing</span>
-          </button>
-          <button type="button" class="skills-orbit-node" data-skill-filter="design" aria-controls="skill-design" aria-pressed="false">
-            <span class="skills-node-number">04</span><span>Design &amp;<br>Fabrication</span>
-          </button>
-          <button type="button" class="skills-show-all" data-skill-filter="all" aria-pressed="false">Show all domains</button>
-        </nav>
-
-        <div id="skillDomains" class="skills-domain-list" aria-live="polite" aria-relevant="additions removals">
-          <article id="skill-control" class="skills-domain is-lead" data-skill-domain="control">
-            <h3 class="font-gothic">Control &amp; Instrumentation</h3>
-            <ul class="skills-tags">
-              <li class="is-applied">Mahalanobis health indexing</li>
-              <li class="is-applied">RTDs and thermocouples</li>
-              <li class="is-applied">Loop calibration and verification</li>
-              <li class="is-applied">Plant commissioning</li>
-              <li>PID tuning</li>
-              <li>Fuzzy Logic</li>
-              <li>PLC and DCS architectures</li>
-              <li>Pressure transmitters and MOVs</li>
-              <li>Predictive and preventive maintenance</li>
-              <li>LOTO and safety procedures</li>
-            </ul>
-            <p class="skills-used-in"><strong>Applied in</strong> Morupule B attachment, hospital oxygen plant commissioning, OPTIBELT, and MD-HI.</p>
-          </article>
-
-          <article id="skill-embedded" class="skills-domain" data-skill-domain="embedded" hidden>
-            <h3 class="font-gothic">Embedded &amp; Real-Time Systems</h3>
-            <ul class="skills-tags">
-              <li class="is-applied">STM32 firmware</li>
-              <li class="is-applied">Jetson Nano edge deployment</li>
-              <li class="is-applied">Arduino</li>
-              <li class="is-applied">UART integration</li>
-              <li>ESP32 prototyping</li>
-              <li>C and C++</li>
-              <li>SPI, I2C, and PWM</li>
-              <li>Modbus</li>
-              <li>Real-time control loops</li>
-              <li>Hardware-software integration</li>
-            </ul>
-            <p class="skills-used-in"><strong>Applied in</strong> OPTIBELT edge deployment and BIUST embedded systems labs.</p>
-          </article>
-
-          <article id="skill-software" class="skills-domain" data-skill-domain="software" hidden>
-            <h3 class="font-gothic">Software &amp; Signal Processing</h3>
-            <ul class="skills-tags">
-              <li class="is-applied">Python</li>
-              <li class="is-applied">NumPy and Pandas</li>
-              <li class="is-applied">SciPy</li>
-              <li class="is-applied">YOLOv8</li>
-              <li class="is-applied">Savitzky-Golay filtering</li>
-              <li class="is-applied">Welch spectral analysis</li>
-              <li class="is-applied">Data quality checks and gap handling</li>
-              <li>Scikit-learn</li>
-              <li>MATLAB and Simulink</li>
-              <li>PCM encoding and NRZ-L line coding</li>
-            </ul>
-            <p class="skills-used-in"><strong>Applied in</strong> OPTIBELT, MD-HI, and Botho Hacks.</p>
-          </article>
-
-          <article id="skill-design" class="skills-domain" data-skill-domain="design" hidden>
-            <h3 class="font-gothic">Design &amp; Fabrication</h3>
-            <ul class="skills-tags">
-              <li class="is-applied">SolidWorks</li>
-              <li class="is-applied">Fusion 360</li>
-              <li>Proteus</li>
-              <li>Multisim</li>
-              <li>Technical documentation</li>
-              <li>Maintenance planning</li>
-              <li>Safety procedures</li>
-            </ul>
-            <p class="skills-used-in"><strong>Applied in</strong> engineering coursework, project development, and plant attachment work.</p>
-          </article>
-        </div>
-      </div>
-    </section>
-
     <section class="skills-recognition" aria-labelledby="recognitionTitle" data-reveal>
+      <p class="skills-kicker">Milestones</p>
       <h2 id="recognitionTitle" class="font-gothic">Recognition &amp; leadership</h2>
       <ul class="skills-recognition-list">
         <li><strong>Best Final Year Project, BEng Mechatronics and Industrial Instrumentation Class of 2026</strong><span>BOCRA Award</span></li>
@@ -172,12 +201,31 @@
         <li><strong>Cambridge IGCSE High Achievement Award, 2020</strong><span>Design and Technology</span></li>
       </ul>
     </section>
+    <div class="skills-cv-download">
+      <div>
+        <p class="skills-cv-title">My full CV</p>
+        <p>Experience, qualifications, and project work. PDF, 89 KB.</p>
+      </div>
+      <a class="btn btn-primary" href="assets/docs/Sibusiso_Mpofu_CV.pdf" download="Sibusiso_Mpofu_CV.pdf" type="application/pdf">Download CV (PDF)</a>
+    </div>
   </main>
 
   <footer class="border-t border-brandSlate/20 py-8 text-center text-sm text-brandSlate">
-    <p>&copy; 2026 Sibusiso M. Mpofu.</p>
+      <p>&copy; 2026 Sibusiso M. Mpofu.</p>
+      <nav class="contact-social-links site-footer-socials" aria-label="Contact links">
+          <a class="contact-social-link" href="mailto:s.mpofu.m.01@gmail.com" aria-label="Email Sibusiso" title="Email">
+              <span class="contact-social-icon" data-social="email" aria-hidden="true"></span>
+          </a>
+          <a class="contact-social-link" href="https://www.linkedin.com/in/sibusiso-mpofu-595b492bb" target="_blank" rel="noopener noreferrer" aria-label="Sibusiso on LinkedIn" title="LinkedIn">
+              <span class="contact-social-icon" data-social="linkedin" aria-hidden="true"></span>
+          </a>
+          <a class="contact-social-link" href="https://wa.me/26775365156" target="_blank" rel="noopener noreferrer" aria-label="Message Sibusiso on WhatsApp" title="WhatsApp">
+              <span class="contact-social-icon" data-social="whatsapp" aria-hidden="true"></span>
+          </a>
+      </nav>
+      <p class="site-privacy-link"><a href="privacy.html">Privacy notice</a></p>
   </footer>
 
-  <script src="js/main.js?v=20261011-video3"></script>
+  <script src="js/main.js?v=20261013-release1"></script>
 </body>
 </html>

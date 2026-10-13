@@ -1,0 +1,2 @@
+# Local asset preparation only. Not installed by deployment.
+Pillow==12.3.0

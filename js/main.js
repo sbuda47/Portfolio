@@ -133,38 +133,193 @@ document.addEventListener('DOMContentLoaded', () => {
 	/* Skills page domain selector */
 	const skillFilters = document.querySelectorAll('[data-skill-filter]');
 	const skillDomains = document.querySelectorAll('[data-skill-domain]');
-	if (skillFilters.length && skillDomains.length) {
-		const setSkillFilter = (selectedDomain) => {
+	const skillsExplorer = document.querySelector('.skills-explorer');
+	const skillsLayout = document.querySelector('.skills-explorer-layout');
+	const skillsOrbit = document.querySelector('.skills-orbit');
+	const orbitNodes = [...document.querySelectorAll('.skills-orbit-node[data-skill-filter]')];
+	if (skillFilters.length && skillDomains.length && skillsExplorer && skillsLayout && skillsOrbit && orbitNodes.length) {
+		const skillsReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+		const skillsCompactOrbit = window.matchMedia('(max-width: 640px)');
+		let orbitRotation = -90;
+		let orbitFrame = 0;
+		let previousFrameTime = 0;
+		let explorerVisible = false;
+		let pointerPaused = false;
+		let focusPaused = false;
+		let explorerState = 'idle';
+
+		const renderOrbit = () => {
+			if (skillsCompactOrbit.matches) {
+				orbitNodes.forEach((node) => node.style.removeProperty('transform'));
+				return;
+			}
+
+			const radius = Math.max(112, skillsOrbit.clientWidth * 0.34);
+			orbitNodes.forEach((node, index) => {
+				const angle = (orbitRotation + (index * 90)) * (Math.PI / 180);
+				const x = Math.cos(angle) * radius;
+				const y = Math.sin(angle) * radius;
+				node.style.transform = `translate(-50%, -50%) translate3d(${x}px, ${y}px, 0)`;
+			});
+		};
+
+		const setIdleShift = () => {
+			if (window.matchMedia('(max-width: 860px)').matches) {
+				skillsOrbit.style.setProperty('--orbit-idle-shift', '0px');
+				return;
+			}
+			const orbitCenter = skillsOrbit.offsetLeft + (skillsOrbit.offsetWidth / 2);
+			const stageCenter = skillsLayout.clientWidth / 2;
+			skillsOrbit.style.setProperty('--orbit-idle-shift', `${stageCenter - orbitCenter}px`);
+		};
+
+		const stopOrbit = () => {
+			if (orbitFrame) window.cancelAnimationFrame(orbitFrame);
+			orbitFrame = 0;
+			previousFrameTime = 0;
+		};
+
+		const shouldRotate = () => explorerVisible
+			&& explorerState === 'idle'
+			&& !pointerPaused
+			&& !focusPaused
+			&& !skillsReducedMotion.matches
+			&& !skillsCompactOrbit.matches;
+
+		const rotateOrbit = (time) => {
+			if (!shouldRotate()) {
+				stopOrbit();
+				return;
+			}
+			if (previousFrameTime) {
+				const elapsed = Math.min(time - previousFrameTime, 40);
+				orbitRotation = (orbitRotation + (elapsed * 0.009)) % 360;
+				renderOrbit();
+			}
+			previousFrameTime = time;
+			orbitFrame = window.requestAnimationFrame(rotateOrbit);
+		};
+
+		const startOrbit = () => {
+			if (!shouldRotate() || orbitFrame) return;
+			orbitFrame = window.requestAnimationFrame(rotateOrbit);
+		};
+
+		const animateOrbitTo = (targetRotation) => {
+			stopOrbit();
+			const delta = ((targetRotation - orbitRotation + 540) % 360) - 180;
+			if (skillsReducedMotion.matches || skillsCompactOrbit.matches) {
+				orbitRotation += delta;
+				renderOrbit();
+				return;
+			}
+
+			const startRotation = orbitRotation;
+			const startTime = performance.now();
+			const duration = 680;
+			const step = (time) => {
+				const progress = Math.min((time - startTime) / duration, 1);
+				const eased = 1 - Math.pow(1 - progress, 3);
+				orbitRotation = startRotation + (delta * eased);
+				renderOrbit();
+				if (progress < 1) orbitFrame = window.requestAnimationFrame(step);
+				else orbitFrame = 0;
+			};
+			orbitFrame = window.requestAnimationFrame(step);
+		};
+
+		const setPressedState = (selectedDomain) => {
 			skillFilters.forEach((filter) => {
 				const isSelected = filter.dataset.skillFilter === selectedDomain;
 				filter.setAttribute('aria-pressed', String(isSelected));
 				filter.classList.toggle('is-active', isSelected);
 			});
+		};
+
+		const showDomain = (selectedDomain) => {
+			explorerState = 'focused';
+			skillsLayout.dataset.skillsState = explorerState;
+			setPressedState(selectedDomain);
 
 			skillDomains.forEach((domain) => {
-				domain.hidden = selectedDomain !== 'all' && domain.dataset.skillDomain !== selectedDomain;
+				const isSelected = domain.dataset.skillDomain === selectedDomain;
+				domain.hidden = !isSelected;
+				domain.classList.toggle('is-entering', isSelected);
+			});
+
+			const selectedNode = orbitNodes.find((node) => node.dataset.skillFilter === selectedDomain);
+			const selectedIndex = Number(selectedNode?.dataset.orbitIndex || 0);
+			animateOrbitTo(-(selectedIndex * 90));
+		};
+
+		const showAllDomains = () => {
+			explorerState = 'all';
+			skillsLayout.dataset.skillsState = explorerState;
+			stopOrbit();
+			setPressedState('all');
+			skillDomains.forEach((domain) => {
+				domain.hidden = false;
+				domain.classList.remove('is-entering');
 			});
 		};
 
 		skillFilters.forEach((filter) => {
-			filter.addEventListener('click', () => setSkillFilter(filter.dataset.skillFilter));
+			filter.addEventListener('click', () => {
+				const selectedDomain = filter.dataset.skillFilter;
+				if (selectedDomain === 'all') showAllDomains();
+				else showDomain(selectedDomain);
+			});
 		});
-		setSkillFilter('control');
+
+		skillsOrbit.addEventListener('pointerenter', () => {
+			pointerPaused = true;
+			stopOrbit();
+		});
+		skillsOrbit.addEventListener('pointerleave', () => {
+			pointerPaused = false;
+			startOrbit();
+		});
+		skillsOrbit.addEventListener('focusin', () => {
+			focusPaused = true;
+			stopOrbit();
+		});
+		skillsOrbit.addEventListener('focusout', () => {
+			window.requestAnimationFrame(() => {
+				focusPaused = skillsOrbit.contains(document.activeElement);
+				startOrbit();
+			});
+		});
+
+		const orbitObserver = new IntersectionObserver((entries) => {
+			explorerVisible = entries[0]?.isIntersecting || false;
+			if (explorerVisible) startOrbit();
+			else stopOrbit();
+		}, { threshold: 0.28 });
+		orbitObserver.observe(skillsExplorer);
+
+		const handleOrbitLayoutChange = () => {
+			setIdleShift();
+			renderOrbit();
+			startOrbit();
+		};
+		window.addEventListener('resize', handleOrbitLayoutChange);
+		skillsReducedMotion.addEventListener('change', handleOrbitLayoutChange);
+		skillsCompactOrbit.addEventListener('change', handleOrbitLayoutChange);
+
+		skillsLayout.dataset.skillsState = 'idle';
+		setPressedState('');
+		skillDomains.forEach((domain) => { domain.hidden = true; });
+		requestAnimationFrame(() => {
+			setIdleShift();
+			renderOrbit();
+		});
 	}
 
 	/* Contact form validation (client-side) */
 	const contactForm = document.getElementById('contactForm');
 	const contactFormMessage = document.getElementById('contactFormMessage');
 	if (contactForm) {
-		const nameInput = contactForm.querySelector('#cf-name');
 		const emailInput = contactForm.querySelector('#cf-email');
-
-		// Restrict names to letters, spaces, hyphens, and apostrophes (no emojis)
-		if (nameInput) {
-			nameInput.addEventListener('input', (e) => {
-				e.target.value = e.target.value.replace(/[^a-zA-Z\s\-']/g, '');
-			});
-		}
 
 		// Enhanced email validation
 		if (emailInput) {
@@ -187,12 +342,8 @@ document.addEventListener('DOMContentLoaded', () => {
 			const submitButton = contactForm.querySelector('[type="submit"]');
 			let ok = true;
 
-			// Validate name: not empty and limited to letters, spaces, hyphens, and apostrophes
+			// Names may contain characters from any language. Never render them as HTML.
 			if (!name.value.trim()) {
-				ok = false;
-				name.setAttribute('aria-invalid', 'true');
-			}
-			else if (!/^[a-zA-Z\s\-']+$/.test(name.value.trim())) {
 				ok = false;
 				name.setAttribute('aria-invalid', 'true');
 			}

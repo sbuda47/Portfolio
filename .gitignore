@@ -1,4 +1,7 @@
 .env
+.env.*
+*.pem
+*.key
 config.json
 aws-credentials
 google-services.json
@@ -11,8 +14,18 @@ node_modules/
 .vscode/
 .idea/
 .DS_Store
-assets/docs/
+assets/docs/*
+!assets/docs/Sibusiso_Mpofu_CV.pdf
 .agents/
 *.sqlite
 *.db
 *-optimized.encoding.mp4
+_site/
+_site-build-*/
+output/
+docs/internal/
+# Local originals, generated-art masters, and working records are not public code.
+source-assets/
+docs/archive/
+handover.md
+TODO.md

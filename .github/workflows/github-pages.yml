@@ -2,12 +2,47 @@ name: Deploy GitHub Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+  pull_request:
+    branches: [main]
   workflow_dispatch:
 
+permissions:
+  contents: read
+
+concurrency:
+  group: pages-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Set up Python
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: '3.13'
+      - name: Run publishing and MP4 regression tests
+        run: python -m unittest discover -s scripts -p "test_*.py" -v
+      - name: Validate tracked-file policy and common credential patterns
+        run: python scripts/validate-repository.py
+      - name: Validate ready-to-stream project videos
+        run: python scripts/validate-videos.py
+      - name: Build and validate the allowlisted website
+        run: python scripts/build-site.py
+      - name: Upload only the website
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@56afc609e74202658d3ffba0e8f6dda462b719fa # v3
+        with:
+          path: _site
+
   deploy:
+    if: github.event_name != 'pull_request'
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
@@ -16,30 +51,9 @@ jobs:
       contents: read
       pages: write
       id-token: write
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Install Pillow
-        run: python -m pip install pillow
-
-      - name: Generate WebP images
-        run: python convert_images.py
-
-      - name: Validate ready-to-stream project videos
-        run: python scripts/validate-videos.py
-
-      - name: Upload artifact for GitHub Pages
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-
-      - name: Deploy to GitHub Pages
+      - name: Check Pages configuration
+        uses: actions/configure-pages@983d7736d9b0ae728b81ab479565c72886d7745b # v5
+      - name: Deploy GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@d6db90164ac5ed86f2b6aed7e0febac5b3c0c03e # v4
