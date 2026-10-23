@@ -74,7 +74,7 @@ class PublishingTests(unittest.TestCase):
         with tempfile.TemporaryDirectory(prefix="portfolio-build-test-") as folder:
             output = Path(folder) / "site"
             builder.stage_site(builder.ROOT, output, files)
-            self.assertEqual(builder.validate_site(output, files), 11)
+            self.assertEqual(builder.validate_site(output, files), 12)
 
     def test_social_icons_on_every_public_page(self):
         class FooterLinks(HTMLParser):

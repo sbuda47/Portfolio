@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://formspree.io; form-action https://formspree.io; object-src 'none'; base-uri 'self'">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="OPTIBELT final-year project: conveyor monitoring, my motor health-index contribution, and operating the integrated system on NVIDIA Jetson Nano.">
+  <title>OPTIBELT — Conveyor Monitoring | Sibusiso Mpofu</title>
+  <link rel="stylesheet" href="../css/style.css?v=20261014-socials1">
+    <link rel="canonical" href="https://sbuda47.github.io/Portfolio/projects/project-optibelt.html">
+    <link rel="icon" href="../favicon.ico">
+    <meta property="og:title" content="OPTIBELT — Conveyor Monitoring | Sibusiso Mpofu">
+    <meta property="og:description" content="OPTIBELT final-year project: conveyor monitoring, my motor health-index contribution, and operating the integrated system on NVIDIA Jetson Nano.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://sbuda47.github.io/Portfolio/projects/project-optibelt.html">
+    <meta property="og:image" content="https://sbuda47.github.io/Portfolio/assets/images/project-thumbnails/optibelt-1440.png">
+  <link rel="stylesheet" href="../css/optibelt.css?v=20261021">
+</head>
+<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack">
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+  <!-- Shared header start -->
+  <header class="site-header fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
+    <nav class="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
+      <div class="text-2xl font-gothic tracking-tighter text-brandOffwhite">Sibusiso M. Mpofu</div>
+      <button id="navToggle" class="mobile-nav-toggle" aria-controls="primaryNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="sr-only">Menu</span>
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18"></path>
+        </svg>
+      </button>
+      <ul id="primaryNav" class="flex space-x-8 font-poppins tracking-widest uppercase text-sm">
+        <li><a href="../index.html" class="nav-link transition-colors">Home</a></li>
+        <li><a href="../about.html" class="nav-link transition-colors">About</a></li>
+        <li><a href="../skills.html" class="nav-link transition-colors">Skills</a></li>
+        <li><a href="../portfolio.html" class="nav-link transition-colors" aria-current="page">Portfolio</a></li>
+        <li><a href="../contact.html" class="nav-link transition-colors">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+  <!-- Shared header end -->
+
+  <main id="main-content" class="ob-page">
+    <a href="../portfolio.html" class="ob-back">&larr; Back to portfolio</a>
+    <section class="ob-intro" aria-labelledby="ob-heading">
+      <p class="ob-kicker">Final-year team project · Industrial monitoring</p>
+      <h1 id="ob-heading">OPTIBELT</h1>
+      <p class="ob-deck">Optimised Stockpile and Conveyor Belt Monitoring System</p>
+      <p class="ob-summary">We chose OPTIBELT as a shorter name that is easier to remember and say. The system brings belt health, motor condition, and stockpile levels into one view, helping an operator spot deterioration and understand when attention is needed.</p>
+      <div class="ob-meta"><span>Python &amp; Streamlit</span><span>NVIDIA Jetson Nano</span><span>ESP32 · Camera · LiDAR</span></div>
+    </section>
+
+    <section id="optibelt-demo" class="ob-demo" aria-label="Interactive OPTIBELT dashboard preview">
+      <div class="ob-demo-top">
+        <div><div class="ob-wordmark">OPTI<span>BELT</span></div><p>CONVEYOR MONITORING / INTERACTIVE PREVIEW</p></div>
+        <span class="ob-demo-label">Demo data · No live connection</span>
+      </div>
+      <noscript><p class="ob-noscript">Enable JavaScript to explore the dashboard. The project overview and my contribution are available below.</p></noscript>
+      <div class="ob-tabs" role="tablist" aria-label="Dashboard views">
+        <button id="ob-tab-motor" type="button" role="tab" aria-controls="ob-motor" aria-selected="true" data-view="motor">Motor health</button>
+        <button id="ob-tab-volume" type="button" role="tab" aria-controls="ob-volume" aria-selected="false" tabindex="-1" data-view="volume">Stockpile</button>
+        <button id="ob-tab-belt" type="button" role="tab" aria-controls="ob-belt" aria-selected="false" tabindex="-1" data-view="belt">Belt inspection</button>
+        <button id="ob-tab-system" type="button" role="tab" aria-controls="ob-system" aria-selected="false" tabindex="-1" data-view="system">System</button>
+      </div>
+      <div id="ob-motor" class="ob-panel" role="tabpanel" aria-labelledby="ob-tab-motor" tabindex="0">
+        <div class="ob-panel-head">
+          <div><h3>One index. An easier health check.</h3><p class="ob-small">Explore how the motor health index changes across a replay.</p></div>
+          <div class="ob-control"><label for="ob-scenario">Scenario</label><select id="ob-scenario"><option value="healthy">Healthy replay</option><option value="warning">Warning replay</option><option value="fault">Fault replay</option></select></div>
+        </div>
+        <div class="ob-monitor-grid">
+          <div class="ob-chart-wrap">
+            <div class="ob-chart-title"><span>HEALTH INDEX / %</span><span id="ob-replay-name">Healthy replay</span></div>
+            <svg id="ob-health-chart" class="ob-chart" viewBox="0 0 654 236" role="img" aria-labelledby="ob-health-title ob-health-description"></svg>
+            <div class="ob-chart-footer"><span>Row 1</span><span>Source file order</span><span id="ob-last-row"></span></div>
+            <div class="ob-scrubber"><label for="ob-sample">Move through the samples</label><output id="ob-row" for="ob-sample"></output><input id="ob-sample" type="range" min="0" max="120" value="0" step="1"></div>
+          </div>
+          <div class="ob-reading" aria-live="polite" aria-atomic="true">
+            <span class="ob-reading-label">Selected motor health</span>
+            <div class="ob-value"><span id="ob-health-value">—</span><small> %</small></div>
+            <span id="ob-health-status" class="ob-status">Replay</span>
+            <p id="ob-health-message" class="ob-small">Choose a scenario to explore the health index.</p>
+          </div>
+        </div>
+        <p class="ob-insight">The health index makes changing motor condition easier to interpret. The status follows each sample’s value; a replay file can contain readings from more than one health band.</p>
+      </div>
+
+      <div id="ob-volume" class="ob-panel" role="tabpanel" aria-labelledby="ob-tab-volume" tabindex="0" hidden>
+        <div class="ob-panel-head"><div><h3>See how much material is there.</h3><p class="ob-small">Explore the project’s synthetic stockpile reference scans.</p></div><div class="ob-control"><label for="ob-stockpile">Stockpile</label><select id="ob-stockpile"><option value="empty">Empty</option><option value="low">Low</option><option value="medium" selected>Medium</option><option value="full">Full</option></select></div></div>
+        <div class="ob-monitor-grid">
+          <div class="ob-chart-wrap"><div class="ob-chart-title"><span>LIDAR POINT CLOUD</span><span>Synthetic reference · mm</span></div><svg id="ob-point-cloud" class="ob-chart ob-cloud" viewBox="0 0 640 300" role="img" aria-label="Synthetic stockpile point cloud"></svg>
+            <dl class="ob-facts"><div><dt>Reference volume</dt><dd id="ob-volume-cm"></dd></div><div><dt>Remaining capacity</dt><dd id="ob-volume-remaining"></dd></div><div><dt>Scan points</dt><dd id="ob-volume-points"></dd></div></dl>
+          </div>
+          <div class="ob-reading" aria-live="polite" aria-atomic="true"><span class="ob-reading-label">Reference fill level</span><div class="ob-value"><span id="ob-volume-value">—</span><small> %</small></div><span id="ob-volume-status" class="ob-status">Medium</span><div class="ob-fill-track" aria-hidden="true"><div id="ob-volume-fill" class="ob-fill-bar"></div></div><p class="ob-small">Relative to the dataset’s full reference of 5,337 cm³. This is a small-scale test stockpile.</p></div>
+        </div>
+        <p class="ob-insight">LiDAR measures the shape of a pile. OPTIBELT uses that shape to estimate volume and, with a selected material density, tonnage. This helps the operator understand material availability.</p>
+      </div>
+
+      <div id="ob-belt" class="ob-panel" role="tabpanel" aria-labelledby="ob-tab-belt" tabindex="0" hidden>
+        <div class="ob-panel-head"><div><h3>Watch for wear on the belt.</h3><p class="ob-small">Illustrative snapshot of the camera inspection output.</p></div><span class="ob-demo-label">Example values</span></div>
+        <div class="ob-belt-grid">
+          <div class="ob-reading"><span class="ob-reading-label">Example belt health</span><div class="ob-value">78<small> %</small></div><span class="ob-status">Illustrative</span><p class="ob-small">The original dashboard pairs a health score with camera frames and detected defects.</p></div>
+          <div class="ob-defects"><div class="ob-defect"><b>Cuts</b><p>Local damage across the belt surface.</p><strong>1</strong></div><div class="ob-defect"><b>Tears</b><p>Splits that can compromise the belt.</p><strong>0</strong></div><div class="ob-defect"><b>Fraying</b><p>Visible deterioration around the edges.</p><strong>2</strong></div></div>
+        </div>
+        <p class="ob-insight">Camera inspection adds a view of physical belt damage alongside the motor’s health index. Together, they give the operator a more complete picture than either signal alone.</p>
+      </div>
+
+      <div id="ob-system" class="ob-panel" role="tabpanel" aria-labelledby="ob-tab-system" tabindex="0" hidden>
+        <div class="ob-panel-head"><div><h3>From separate signals to one system.</h3><p class="ob-small">How the original project connects sensing, monitoring, and control.</p></div></div>
+        <div class="ob-system-flow">
+          <div class="ob-system-node"><span class="ob-system-step">01 / OBSERVE</span><h4>Camera, LiDAR &amp; motor data</h4><p>Belt inspection identifies visible wear. LiDAR estimates the stockpile. The health index describes motor condition.</p></div>
+          <div class="ob-system-node"><span class="ob-system-step">02 / BRING TOGETHER</span><h4>NVIDIA Jetson Nano</h4><p>The Python application brings subsystem results together and supplies the Streamlit dashboard. I was the main operator of this integrated setup.</p></div>
+          <div class="ob-system-node"><span class="ob-system-step">03 / RESPOND</span><h4>ESP32 controller</h4><p>The controller handles scanning and belt-speed control, using system health and stockpile level to inform its response.</p></div>
+        </div>
+        <p class="ob-insight">The original system supports hardware, replay, and simulated inputs. Camera inference can run on a separate computer, with its results returned to the Jetson.</p>
+      </div>
+      <p id="ob-source" class="ob-source">A redesigned static preview of the original Streamlit dashboard, using clearly labelled demonstration data.</p>
+    </section>
+
+    <section class="ob-story" aria-label="Project background and contribution">
+      <div><h2>A system built to work together.</h2><p>Our final-year project combined belt inspection, stockpile measurement, and motor-health monitoring in one supervisory system. The dashboard made the results visible, while an ESP32 controller handled scanning and belt-speed control. The aim was to help an operator see both equipment condition and material flow without jumping between disconnected tools, allowing them to make informed and smarter decisions.</p></div>
+      <div class="ob-role"><h2>My contribution</h2><p>I developed the motor health index, turning changes in sensor behaviour into a score that is easier to interpret.</p><p>I was also the main person operating the complete system on the Jetson Nano, and assisted across the other subsystems as we brought the project together.</p></div>
+    </section>
+    <details class="ob-details"><summary>A little more about the engineering</summary><div class="ob-details-body"><div><h3>How the health index helps</h3><p>The Mahalanobis-distance health index looks at how sensor readings change together, rather than judging every reading in isolation. It translates that change into a health score, making deterioration easier to recognise.</p></div><div><h3>What this preview represents</h3><p>The original interface was built in Streamlit. This portfolio version reorganises its key views for the browser. Motor charts use selected rows from the repository’s replay files; stockpile scans are synthetic references; the belt snapshot uses illustrative values. It does not run inference or control equipment.</p></div></div></details>
+    <div class="ob-related"><a href="project-md-hi.html">Explore my health-index work &rarr;</a><a href="../portfolio.html">More projects &rarr;</a></div>
+  </main>
+
+  <footer class="max-w-7xl mx-auto mt-16 py-8 text-center text-sm text-brandSlate">
+      <p>© 2026 Sibusiso M. Mpofu</p>
+      <nav class="contact-social-links site-footer-socials" aria-label="Contact links">
+          <a class="contact-social-link" href="mailto:s.mpofu.m.01@gmail.com" aria-label="Email Sibusiso" title="Email">
+              <span class="contact-social-icon" data-social="email" aria-hidden="true"></span>
+          </a>
+          <a class="contact-social-link" href="https://www.linkedin.com/in/sibusiso-mpofu-595b492bb" target="_blank" rel="noopener noreferrer" aria-label="Sibusiso on LinkedIn" title="LinkedIn">
+              <span class="contact-social-icon" data-social="linkedin" aria-hidden="true"></span>
+          </a>
+          <a class="contact-social-link" href="https://wa.me/26775365156" target="_blank" rel="noopener noreferrer" aria-label="Message Sibusiso on WhatsApp" title="WhatsApp">
+              <span class="contact-social-icon" data-social="whatsapp" aria-hidden="true"></span>
+          </a>
+      </nav>
+      <p class="site-privacy-link"><a href="../privacy.html">Privacy notice</a></p>
+  </footer>
+  <script src="../js/main.js?v=20261013-release1"></script>
+  <script src="../js/optibelt-data.js?v=20261021"></script>
+  <script src="../js/optibelt.js?v=20261021"></script>
+</body>
+</html>

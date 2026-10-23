@@ -27,5 +27,7 @@ docs/internal/
 # Local originals, generated-art masters, and working records are not public code.
 source-assets/
 docs/archive/
+# Repository archives supplied as local reference material.
+docs/*.zip
 handover.md
 TODO.md

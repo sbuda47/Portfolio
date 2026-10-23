@@ -70,5 +70,13 @@
   "assets/images/project-thumbnails/telemetry-1440.webp",
   "assets/images/project-thumbnails/bible-quest-640.webp",
   "assets/images/project-thumbnails/bible-quest-1440.webp",
-  "assets/docs/Sibusiso_Mpofu_CV.pdf"
+  "assets/docs/Sibusiso_Mpofu_CV.pdf",
+  "projects/project-optibelt.html",
+  "css/optibelt.css",
+  "js/optibelt.js",
+  "js/optibelt-data.js",
+  "assets/images/project-thumbnails/optibelt-640.png",
+  "assets/images/project-thumbnails/optibelt-1440.png",
+  "css/md-replay.css",
+  "js/md-replay.js"
 ]

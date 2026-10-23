@@ -10,7 +10,7 @@ Original media and local working records are deliberately not versioned.
 
 ```text
 *.html                 Main pages, privacy notice, and custom 404
-projects/              Four active case studies
+projects/              Five active case studies
 assets/
   fonts/               Self-hosted fonts and their licenses
   icons/               Contact SVGs
@@ -88,6 +88,17 @@ validation, native handoff, repeat-submit blocking, and Back restoration without
 sending real messages; they cannot verify the provider's CAPTCHA or delivery.
 
 ## Preparing assets
+
+The OPTIBELT case study includes a browser-only dashboard preview. Its motor
+charts use selected rows from the project's replay files; its stockpile view
+uses synthetic reference scans. The original Streamlit app is not deployed.
+See [preview provenance](docs/design/optibelt-preview.md) for the data sources,
+sampling method, and distinction between team work and personal contribution.
+
+The prepared `js/optibelt-data.js` is committed, so ordinary builds need no source
+archive. To regenerate it from the owner's local archive, run
+`python scripts/prepare-optibelt-data.py docs/OPTIBELT-main.zip`. Archives in
+`docs/` stay local and are excluded from Git tracking and the publishing manifest.
 
 Only the local image tools need Pillow:
 

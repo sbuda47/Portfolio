@@ -8,6 +8,7 @@
   <meta name="description" content="Case study for the Mahalanobis Distance Health Index project: industrial fault detection, MATLAB validation, and embedded streaming results.">
   <title>Mahalanobis Distance Health Index — Project</title>
   <link rel="stylesheet" href="../css/style.css?v=20261014-socials1">
+  <link rel="stylesheet" href="../css/md-replay.css?v=20261022">
     <link rel="canonical" href="https://sbuda47.github.io/Portfolio/projects/project-md-hi.html">
     <link rel="icon" href="../favicon.ico">
     <meta property="og:title" content="Mahalanobis Distance Health Index — Project">
@@ -51,12 +52,37 @@
       <p class="text-lg text-brandOffwhite/70 max-w-3xl leading-relaxed mb-8">A statistical fault-detection framework built to catch conveyor and motor faults before they cause downtime — validated to six decimal places against a MATLAB reference implementation.</p>
     </div>
 
-      <div class="project-hero-banner mb-12" data-reveal>
-        <div class="project-media">
-          <img src="../assets/images/project-thumbnails/mdhi-1440.webp" srcset="../assets/images/project-thumbnails/mdhi-640.webp 640w, ../assets/images/project-thumbnails/mdhi-1440.webp 1440w" sizes="(max-width: 768px) 100vw, 1100px" alt="Concept illustration of an MD-HI dashboard showing health trends over time; illustrative data" class="project-thumbnail" width="1440" height="810">
+      <section class="md-replay-wrap mb-12" aria-label="Animated motor health-index demonstration">
+        <div id="md-replay" class="md-replay">
+          <div class="md-replay-head">
+            <div><span class="md-replay-eyebrow">MD-HI / MOTOR CONDITION</span><h2>Watch the health index change.</h2></div>
+            <div class="md-playback"><span id="md-playback-state">Demo data</span><button id="md-playback" type="button" hidden>Pause replay</button></div>
+          </div>
+          <div class="md-scenarios" role="group" aria-label="Replay scenario" hidden>
+            <button type="button" data-md-scenario="healthy" aria-pressed="true">Healthy replay</button>
+            <button type="button" data-md-scenario="warning" aria-pressed="false">Warning replay</button>
+            <button type="button" data-md-scenario="fault" aria-pressed="false">Fault replay</button>
+          </div>
+          <div id="md-replay-content" class="md-replay-grid" hidden>
+            <div class="md-plot-panel">
+              <div class="md-plot-label"><span>HEALTH INDEX / %</span><span id="md-replay-name">Healthy replay</span></div>
+              <svg id="md-replay-chart" viewBox="0 0 650 250" role="img" aria-labelledby="md-chart-title md-chart-desc"><title id="md-chart-title">Motor health-index replay</title><desc id="md-chart-desc">Health index from zero to one hundred percent, with operating boundaries at twenty and eighty percent. The faint line shows the full replay; the orange line traces its progress. Sample values appear alongside the chart.</desc></svg>
+              <div class="md-plot-axis"><span>First sample</span><span>Source file order</span><span>Last sample</span></div>
+              <div class="md-progress" aria-hidden="true"><div id="md-progress-fill"></div></div>
+            </div>
+            <div class="md-reading">
+              <span class="md-reading-label">Motor health</span>
+              <div class="md-reading-value"><span id="md-health-value">90.6</span><small> %</small></div>
+              <span id="md-health-status" class="md-health-status" data-state="healthy">Healthy</span>
+              <p id="md-health-explainer">Above 80%: within the healthy operating band.</p>
+              <span id="md-source-row" class="md-source-row">Replay sample</span>
+            </div>
+          </div>
+          <p id="md-replay-help" class="md-replay-help">Choose a scenario or let the replay cycle through all three. Pause to inspect a reading.</p>
+          <noscript><p class="md-replay-help">Enable JavaScript to play the animated health-index demonstration.</p><img src="../assets/images/project-thumbnails/mdhi-1440.webp" alt="Illustrative health-index dashboard; JavaScript is needed for the animated replay" width="1440" height="810" class="md-fallback"></noscript>
         </div>
-        <p class="project-media-caption">Concept dashboard artwork with illustrative data, not a screenshot of measured project results.</p>
-      </div>
+        <p class="project-media-caption">Accelerated loop of selected samples from OPTIBELT’s motor replay files, not a live feed or a continuous failure recording. Status follows each reading, not the file’s scenario label. <a href="project-optibelt.html">Explore the complete OPTIBELT system &rarr;</a></p>
+      </section>
 
       <div class="mb-12" data-reveal>
       <div class="project-stat-grid">
@@ -136,5 +162,7 @@
       <p class="site-privacy-link"><a href="../privacy.html">Privacy notice</a></p>
   </footer>
   <script src="../js/main.js?v=20261013-release1"></script>
+  <script src="../js/optibelt-data.js?v=20261021"></script>
+  <script src="../js/md-replay.js?v=20261022"></script>
 </body>
 </html>
