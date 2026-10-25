@@ -6,17 +6,18 @@
     <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>Environmental Telemetry System — Project</title>
-    <meta name="description" content="Contact Sibusiso Mpofu about engineering collaborations, embedded systems, automation, and intelligent control.">
-  <link rel="stylesheet" href="../css/style.css?v=20261014-socials1">
+    <meta name="description" content="A five-person air-quality telemetry simulation comparing AM, FM, ASK, FSK and PSK, with signal preparation, noisy-channel transmission, recovery, digital encoding and monitoring.">
+  <link rel="stylesheet" href="../css/style.css?v=20261025-spacing">
+  <link rel="stylesheet" href="../css/telemetry-preview.css?v=20261025-spacing">
     <link rel="canonical" href="https://sbuda47.github.io/Portfolio/projects/project-telemetry.html">
     <link rel="icon" href="../favicon.ico">
     <meta property="og:title" content="Environmental Telemetry System — Project">
-    <meta property="og:description" content="Contact Sibusiso Mpofu about engineering collaborations, embedded systems, automation, and intelligent control.">
+    <meta property="og:description" content="Preparing, transmitting and recovering real air-quality data: five modulation schemes compared in an end-to-end telemetry simulation, with digital encoding and monitoring.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sbuda47.github.io/Portfolio/projects/project-telemetry.html">
-    <meta property="og:image" content="https://sbuda47.github.io/Portfolio/assets/images/project-thumbnails/telemetry-1440.webp">
+    <meta property="og:image" content="https://sbuda47.github.io/Portfolio/assets/images/project-thumbnails/telemetry-illustration-1440.webp">
 </head>
-<body class="bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack px-12 pb-12" data-gallery="telemetry">
+<body class="project-case-study bg-brandBlack text-brandOffwhite font-poppins antialiased selection:bg-brandYellow selection:text-brandBlack px-12 pb-12" data-gallery="telemetry">
   <a href="#main-content" class="skip-link">Skip to main content</a>
   <!-- Shared header start -->
   <header class="site-header fixed top-0 left-0 w-full z-50 bg-brandBlack/90 backdrop-blur-md border-b border-brandSlate/20">
@@ -46,20 +47,54 @@
       </div>
 
       <div class="mb-12" data-reveal>
-      <span class="project-label">Signal processing — 5-person team project</span>
+      <span class="project-label">Telemetry &amp; communications — 5-person team project</span>
       <h1 class="section-heading font-gothic mb-4">Environmental Telemetry Monitoring System</h1>
-      <p class="text-lg text-brandOffwhite/70 max-w-3xl leading-relaxed mb-8">An end-to-end telemetry pipeline built with four teammates, simulating real urban air-quality data through signal conditioning, modulation, digital encoding, and automated monitoring.</p>
-      <p class="text-brandOffwhite/70 max-w-4xl leading-relaxed">I owned the preprocessing and data-cleaning subsystem — the foundation the rest of the pipeline was built on.</p>
+      <p class="text-lg text-brandOffwhite/70 max-w-3xl leading-relaxed mb-8">How well can air-quality readings survive transmission and still support useful monitoring? Our five-person team built an end-to-end Python simulation using real urban sensor data. We prepared the signals, compared five ways of transmitting them through noise, recovered the information, and built digital encoding and monitoring stages.</p>
+      <p class="text-brandOffwhite/70 max-w-4xl leading-relaxed">I led signal preprocessing: checking sensor quality, handling missing readings, and preparing filtered signals for the transmission tests. The replay below demonstrates this part of the wider system.</p>
       </div>
 
-      <div class="project-hero-banner mb-8" data-reveal>
-      <button type="button" class="gallery-item gallery-item-main" data-index="0" aria-label="Open telemetry image gallery">
-        <picture>
-          <source type="image/webp" srcset="../assets/images/tele_1.webp">
-          <img src="../assets/images/tele_1.webp" alt="Environmental telemetry monitoring dashboard and signal analysis figure" class="w-full h-full" loading="lazy" width="1331" height="641">
-        </picture>
-      </button>
-    </div>
+      <section class="tp-preview" aria-label="Interactive signal-filtering demonstration">
+        <div id="tp-dashboard" class="tp-dashboard">
+          <div class="tp-head">
+            <div><span class="tp-eyebrow">MY CONTRIBUTION / SIGNAL PREPARATION</span><h2>See what filtering changes.</h2></div>
+            <div class="tp-playback" data-tp-enhanced hidden><span id="tp-play-state">Recorded replay</span><button id="tp-play" type="button">Pause replay</button></div>
+          </div>
+          <p id="tp-load-note" class="tp-foot">The interactive preview needs JavaScript and its sample data. Original project screenshots are available below.</p>
+          <div class="tp-controls" data-tp-enhanced hidden>
+            <div class="tp-pollutants" role="group" aria-label="Pollutant">
+              <button type="button" data-tp-pollutant="NO2" aria-pressed="true" aria-label="Nitrogen dioxide">NO₂</button>
+              <button type="button" data-tp-pollutant="O3" aria-pressed="false" aria-label="Ozone">O₃</button>
+              <button type="button" data-tp-pollutant="PM10" aria-pressed="false" aria-label="PM10 particulate matter">PM₁₀</button>
+              <button type="button" data-tp-pollutant="PM2_5" aria-pressed="false" aria-label="PM2.5 particulate matter">PM₂.₅</button>
+            </div>
+            <div class="tp-views" role="group" aria-label="Chart view">
+              <button type="button" data-tp-view="compare" aria-pressed="true">Compare</button>
+              <button type="button" data-tp-view="before" aria-pressed="false">Before</button>
+              <button type="button" data-tp-view="after" aria-pressed="false">Filtered</button>
+            </div>
+          </div>
+          <div class="tp-grid" data-tp-enhanced hidden>
+            <div class="tp-plot">
+              <div class="tp-plot-label"><span id="tp-signal">Nitrogen dioxide / ppb</span><span>Sensor S10 · hourly samples</span></div>
+              <svg id="tp-chart" class="tp-chart" viewBox="0 0 650 250" role="img" aria-labelledby="tp-chart-title tp-chart-desc"><title id="tp-chart-title">Before filtering and Savitzky-Golay output</title><desc id="tp-chart-desc">A recorded week from 16 to 23 August 2022. Grey shows preprocessed readings before smoothing; orange shows the exported filtered signal. A moving cursor follows the samples. Use the sample slider to pause and inspect exact readings.</desc></svg>
+              <div class="tp-legend" aria-label="Chart legend"><span><i aria-hidden="true"></i>Before filtering</span><span><i aria-hidden="true"></i>Savitzky-Golay filtered</span></div>
+              <div class="tp-scrub"><label for="tp-scrub"><span>Inspect a sample</span><span id="tp-sample-label">16 Aug, 08:00 UTC</span></label><input id="tp-scrub" type="range" min="0" max="167" step="1" value="0"></div>
+            </div>
+            <aside class="tp-readings" aria-label="Selected sample values">
+              <div><span class="tp-reading-label">Before filtering</span><div class="tp-reading"><strong id="tp-before-value">67.5</strong><small data-tp-unit>ppb</small></div></div>
+              <div><span class="tp-reading-label">Filtered output</span><div class="tp-reading tp-reading-after"><strong id="tp-after-value">40.2</strong><small data-tp-unit>ppb</small></div></div>
+              <p>Smoothing makes the underlying trend easier to inspect. The aim is to reduce fluctuations while keeping meaningful changes in the signal.</p>
+            </aside>
+          </div>
+          <div class="tp-foot"><strong>My part in the pipeline:</strong> screen sensor quality → prepare continuous segments → compare filters → hand signals to the transmission stage.</div>
+        </div>
+        <details class="tp-source">
+          <summary>About this replay and its data</summary>
+          <p>An accelerated replay of 168 hourly samples from the project’s TURDATA exports, covering 16–23 August 2022. This is recorded data, not live air-quality monitoring. “Before filtering” is the already-preprocessed <code>value_raw</code> column; “Filtered” is the exported <code>value_sg</code> column. Neither is a calibrated reference measurement.</p>
+          <p>The original filter uses an 11-sample window and a quadratic fit. The preview displays saved outputs without recalculating them. The chart scale adjusts for each pollutant; gas concentrations use ppb and particulate concentrations use µg/m³.</p>
+          <p>Selected source: <code id="tp-source-file">data/processed/selected_segments/NO2_S10_segment_2.csv</code>. The first 168 rows are shown in source order.</p>
+        </details>
+      </section>
 
     <div class="gallery-modal" role="dialog" aria-modal="true" aria-hidden="true">
       <div class="gallery-modal-overlay"></div>
@@ -85,7 +120,7 @@
         </div>
         <div class="project-card project-stat-card">
           <div class="project-stat-value">4</div>
-          <p class="text-brandOffwhite/70">pollutant streams cleaned</p>
+          <p class="text-brandOffwhite/70">pollutants processed</p>
         </div>
         <div class="project-card project-stat-card">
           <div class="project-stat-value">3-tier</div>
@@ -104,22 +139,35 @@
         <div class="space-y-8">
           <div class="project-card">
             <h2 class="text-xl font-gothic text-brandYellow mb-4">What I built</h2>
-            <p class="text-brandOffwhite/70 leading-relaxed">Real air-quality sensor data is not clean — sensors drop out, drift, and fail silently. I built the quality-control and conditioning stage that the team’s modulation and monitoring subsystems depended on, screening every sensor stream against missing-data and validity criteria, interpolating short gaps while preserving long outages as genuine segment boundaries, and comparing two smoothing filters before selecting the Savitzky-Golay filter for its stronger peak retention on pollution spike events.</p>
-            <p class="text-brandOffwhite/70 leading-relaxed mt-4">One sensor with a deceptively low 0.84% missing-data rate was flagged and excluded after quality control revealed 67% of its readings were invalid — a check a simple completeness threshold would have missed.</p>
+            <p class="text-brandOffwhite/70 leading-relaxed">I turned the source workbooks into consistent time-series data, screened sensors for missing readings and documented faults, and prepared continuous segments for analysis. I compared moving-average and Savitzky-Golay filtering, choosing the latter because it retained more of the peaks in our NO₂ comparisons.</p>
+            <p class="text-brandOffwhite/70 leading-relaxed mt-4">One useful lesson: a nearly complete dataset can still be unreliable. The NO₂ S9 sensor had only 0.84% missing readings, but a documented drift issue affected 67.2% of its records. My quality checks explicitly excluded it.</p>
           </div>
         </div>
 
         <div class="space-y-6">
           <div class="project-card">
-            <h2 class="text-xl font-gothic text-brandYellow mb-4">What the team shipped</h2>
+            <h2 class="text-xl font-gothic text-brandYellow mb-4">Beyond filtering: the full system</h2>
+            <p class="text-brandOffwhite/70 leading-relaxed mb-4">The team compared AM, FM, ASK, FSK and PSK — different ways of carrying information in a signal — to assess how well each recovered data after simulated channel noise. We measured reconstruction error, signal similarity, noise levels and bit errors, depending on the scheme.</p>
             <ul class="list-disc list-inside text-brandOffwhite/80 leading-relaxed">
-              <li>5-scheme modulation comparison (AM reached 15.4 dB recovered SNR)</li>
-              <li>Digital telemetry chain with zero-error bit recovery</li>
-              <li>Six-tab Streamlit dashboard for live monitoring and alerts</li>
+              <li>Transmission and recovery: compare the received information with the original input</li>
+              <li>Digital telemetry: convert readings into binary data using PCM encoding, line coding and integrity checks</li>
+              <li>Monitoring: a six-tab Streamlit dashboard for trends, threshold events, drift, alerts and transmission quality</li>
             </ul>
+            <p class="text-brandOffwhite/70 leading-relaxed mt-4">The saved tests reported no bit errors for ASK, FSK or PSK under those test conditions. The comparison evaluates our simulated implementations, rather than establishing one scheme as universally best.</p>
           </div>
         </div>
       </div>
+      <section class="tp-gallery" aria-labelledby="tp-gallery-heading">
+        <h2 id="tp-gallery-heading" class="font-gothic">Original project screenshots</h2>
+        <p>The team’s interface and analysis figures. Select an image to explore the full gallery.</p>
+        <div class="tp-gallery-grid">
+          <button type="button" class="gallery-item" data-index="0" aria-label="Open project screenshot 1 of 5"><img src="../assets/images/tele_1.webp" alt="Telemetry project screenshot 1" loading="lazy" width="1331" height="641"></button>
+          <button type="button" class="gallery-item" data-index="1" aria-label="Open project screenshot 2 of 5"><img src="../assets/images/tele_2.webp" alt="Telemetry project screenshot 2" loading="lazy"></button>
+          <button type="button" class="gallery-item" data-index="2" aria-label="Open project screenshot 3 of 5"><img src="../assets/images/tele_3.webp" alt="Telemetry project screenshot 3" loading="lazy"></button>
+          <button type="button" class="gallery-item" data-index="3" aria-label="Open project screenshot 4 of 5"><img src="../assets/images/tele_4.webp" alt="Telemetry project screenshot 4" loading="lazy"></button>
+          <button type="button" class="gallery-item" data-index="4" aria-label="Open project screenshot 5 of 5"><img src="../assets/images/tele_5.webp" alt="Telemetry project screenshot 5" loading="lazy"></button>
+        </div>
+      </section>
     </div>
   </main>
 
@@ -139,5 +187,7 @@
       <p class="site-privacy-link"><a href="../privacy.html">Privacy notice</a></p>
   </footer>
   <script src="../js/main.js?v=20261013-release1"></script>
+  <script src="../js/telemetry-data.js?v=20261023"></script>
+  <script src="../js/telemetry-preview.js?v=20261023"></script>
 </body>
 </html>

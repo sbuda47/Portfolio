@@ -21,6 +21,10 @@
     --space-lg: 2rem;
     --space-xl: 3rem;
     --space-xxl: 4rem;
+    --page-top: clamp(7rem, 10vw, 8rem);
+    --page-gutter: clamp(1rem, 3vw, 1.5rem);
+    --section-space: clamp(3rem, 5vw, 5rem);
+    --block-space: clamp(1.5rem, 3vw, 2.5rem);
     --radius-sm: 0.375rem;
     --radius: 0.75rem;
     --radius-lg: 1rem;
@@ -1446,12 +1450,12 @@ header nav {
 .skills-recognition-list li span { color: var(--brand-slate); font-size: 0.82rem; }
 
 /* Bible Quest case study */
-.bible-quest-page { padding: 8.5rem 1.5rem 0; overflow: hidden; }
-.project-page { padding: 8.5rem 1.5rem 0; overflow: hidden; }
+.bible-quest-page { padding: var(--page-top) var(--page-gutter) var(--section-space); overflow: hidden; }
+.project-page { padding: var(--page-top) var(--page-gutter) var(--section-space); overflow: hidden; }
 .bq-shell, .project-shell, .bq-footer { width: min(100%, 72rem); margin: 0 auto; }
 .bq-back-link, .project-back-link { display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0.45rem 0.9rem; border: 1px solid rgba(174, 172, 146, 0.32); border-radius: var(--radius-sm); color: var(--brand-slate); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.11em; text-transform: uppercase; transition: color var(--transition-fast), border-color var(--transition-fast), background-color var(--transition-fast), transform var(--transition-fast); }
 .bq-back-link:hover, .bq-back-link:focus-visible, .project-back-link:hover, .project-back-link:focus-visible { color: var(--brand-black); border-color: var(--brand-yellow); background: var(--brand-yellow); transform: translateY(-1px); }
-.bq-hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.8fr); align-items: center; gap: clamp(2.5rem, 7vw, 7rem); min-height: min(39rem, calc(100dvh - 9rem)); padding: clamp(2rem, 4vw, 4rem) 0; }
+.bq-hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(17rem, 0.8fr); align-items: start; gap: clamp(2.5rem, 7vw, 7rem); min-height: 0; padding: var(--block-space) 0 var(--section-space); }
 .bq-eyebrow { margin: 0 0 0.9rem; color: var(--brand-yellow); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; }
 .bq-hero h1 { max-width: 11ch; font-size: clamp(3.75rem, 8vw, 7.5rem); letter-spacing: -0.045em; line-height: 0.95; }
 .bq-lede { max-width: 35rem; margin: 1.5rem 0 2rem; color: var(--brand-slate); font-size: clamp(1.05rem, 1.8vw, 1.35rem); line-height: 1.65; }
@@ -1464,7 +1468,7 @@ header nav {
 .bq-facts strong, .bq-facts span { display: block; }
 .bq-facts strong { color: var(--brand-yellow); font-family: var(--font-headline); font-size: clamp(2.6rem, 5vw, 4.35rem); line-height: 1; }
 .bq-facts span { margin-top: 0.7rem; color: var(--brand-slate); font-size: 0.9rem; }
-.bq-story { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(17rem, 0.75fr); gap: clamp(2rem, 8vw, 8rem); padding: clamp(5rem, 11vw, 9rem) 0; }
+.bq-story { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(17rem, 0.75fr); gap: var(--block-space); padding: var(--section-space) 0; }
 .bq-story h2, .bq-delivery h2, .bq-media-section h2, .bq-tech h2 { font-size: clamp(2rem, 3.5vw, 3.5rem); letter-spacing: -0.025em; }
 .bq-story p, .bq-delivery p, .bq-media-section p { color: rgba(231, 231, 214, 0.82); }
 .bq-story-copy p { max-width: 62ch; margin: 1.4rem 0 0; }
@@ -1475,18 +1479,18 @@ header nav {
 .bq-delivery { display: grid; grid-template-columns: minmax(0, 1fr) minmax(16rem, 0.55fr); gap: 2rem; align-items: end; padding: clamp(2.2rem, 5vw, 4rem); border: 1px solid rgba(255, 140, 0, 0.34); border-radius: var(--radius); background: linear-gradient(115deg, rgba(255, 140, 0, 0.13), rgba(255, 140, 0, 0.025)); }
 .bq-delivery-content p { max-width: 60ch; margin: 1rem 0 0; }
 .bq-status { margin: 0; color: var(--brand-yellow) !important; font-weight: 600; line-height: 1.45; }
-.bq-media-section { padding: clamp(5rem, 11vw, 9rem) 0; }
+.bq-media-section { padding: var(--section-space) 0; }
 .bq-section-heading p { margin: 0.9rem 0 2rem; }
 .bq-media-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr); gap: 1.25rem; align-items: stretch; justify-items: center; }
 .bq-media-primary, .bq-media-secondary { position: relative; display: flex; width: 100%; max-width: 18.5rem; aspect-ratio: 9 / 18.5; padding: 0; border: 1px solid rgba(174, 172, 146, 0.24); border-radius: var(--radius); overflow: hidden; background: #111110; }
 .bq-media-primary img, .bq-media-secondary img { width: 100%; height: 100%; object-fit: cover; object-position: center top; transition: transform 500ms ease; }
 .bq-media-primary:hover img, .bq-media-primary:focus-visible img, .bq-media-secondary:hover img, .bq-media-secondary:focus-visible img { transform: scale(1.035); }
 .bq-media-primary span, .bq-media-secondary span { position: absolute; right: 1rem; bottom: 1rem; padding: 0.55rem 0.75rem; border: 1px solid rgba(231, 231, 214, 0.24); border-radius: var(--radius-sm); background: rgba(30, 30, 29, 0.82); color: var(--brand-offwhite); font-size: 0.75rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; }
-.bq-tech { padding-bottom: clamp(5rem, 10vw, 8rem); }
+.bq-tech { padding-bottom: 0; }
 .bq-tech .project-badges { margin: 1.5rem 0 0; }
 .bq-footer { padding: 0 0 2rem; color: var(--brand-slate); font-size: 0.8rem; }
-@media (max-width: 800px) { .bq-hero, .bq-story, .bq-delivery, .bq-media-grid { grid-template-columns: 1fr; } .bq-hero { min-height: auto; padding: 3.5rem 0 4.5rem; } .bq-device-frame { grid-row: 1; width: min(100%, 16rem); } .bq-hero-copy { grid-row: 2; } .bq-facts { grid-template-columns: 1fr; } .bq-facts div { min-height: 0; } .bq-role { border-top: 3px solid var(--brand-yellow); border-left: 0; } .bq-media-primary, .bq-media-secondary { min-height: 18rem; width: 100%; max-width: none; } }
-@media (max-width: 640px) { .bible-quest-page { padding: 6.5rem 1rem 0; } .bq-hero h1 { font-size: clamp(3.3rem, 17vw, 5rem); } .bq-hero-action { width: 100%; } .bq-media-primary, .bq-media-secondary { min-height: 16rem; width: 100%; max-width: none; } }
+@media (max-width: 800px) { .bq-hero, .bq-story, .bq-delivery, .bq-media-grid { grid-template-columns: 1fr; } .bq-hero { min-height: auto; padding: var(--block-space) 0 var(--section-space); gap: 2rem; } .bq-device-frame { grid-row: 2; width: min(100%, 16rem); } .bq-hero-copy { grid-row: 1; } .bq-facts { grid-template-columns: 1fr; } .bq-facts div { min-height: 0; } .bq-role { border-top: 3px solid var(--brand-yellow); border-left: 0; } .bq-media-primary, .bq-media-secondary { min-height: 18rem; width: 100%; max-width: none; } }
+@media (max-width: 640px) { .bible-quest-page { padding: var(--page-top) var(--page-gutter) var(--section-space); } .bq-hero h1 { font-size: clamp(3.3rem, 17vw, 5rem); } .bq-hero-action { width: 100%; } .bq-media-primary, .bq-media-secondary { min-height: 16rem; width: 100%; max-width: none; } }
 @media (prefers-reduced-motion: reduce) { .bq-back-link, .bq-device-frame, .bq-media-primary img, .bq-media-secondary img { transition: none; } .bq-device-frame, .bq-device-frame:hover, .bq-media-primary:hover img, .bq-media-primary:focus-visible img, .bq-media-secondary:hover img, .bq-media-secondary:focus-visible img { transform: none; } }
 
 /* Mobile navigation toggle and responsive rules */
@@ -1546,7 +1550,7 @@ header nav {
     .contact-page { width: min(78rem, calc(100% - 2rem)); padding-top: 3rem; }
     .contact-hero h1 { font-size: clamp(1.75rem, 9vw, 3.75rem); }
     .contact-open-button { width: 100%; justify-content: center; }
-    .skills-page { width: min(78rem, calc(100% - 2rem)); padding-top: 6.5rem; }
+    .skills-page { width: min(78rem, calc(100% - 2rem)); padding-top: var(--page-top); }
     .skills-intro-copy h1 { font-size: clamp(2rem, 10vw, 3.4rem); }
     .skills-experience, .skills-explorer, .skills-recognition { margin-top: 4rem; }
     .skills-orbit { gap: 0.35rem; }
@@ -1563,10 +1567,10 @@ header nav {
 }
 
 /* Case-study refinement and scroll reveals */
-.project-page .project-shell > .mb-12:first-child { margin-bottom: clamp(2.5rem, 5vw, 4.5rem); }
+.project-page .project-shell > .mb-12:first-child { margin-bottom: var(--block-space); }
 .project-page .section-heading { max-width: 19ch; }
 .project-page .project-label { color: var(--brand-yellow); font-weight: 700; letter-spacing: 0.14em; }
-.project-page .project-hero-banner { margin-top: clamp(2.5rem, 5vw, 4.5rem); margin-bottom: clamp(3.5rem, 8vw, 6rem); }
+.project-page .project-hero-banner { margin-top: 0; margin-bottom: var(--section-space); }
 .project-page .project-card { border-color: rgba(174, 172, 146, 0.2); background: rgba(255, 255, 255, 0.028); box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.025); }
 .project-page .project-card h2, .project-page .project-card h3 { color: var(--brand-offwhite); }
 .project-page .project-card p, .project-page .project-card li { color: rgba(231, 231, 214, 0.8); }
@@ -1578,21 +1582,21 @@ header nav {
 .project-cnc .project-hero-banner > .aspect-video::before { position: absolute; inset: 0; z-index: 1; border: 1px solid rgba(255, 255, 255, 0.06); border-radius: inherit; content: ""; pointer-events: none; }
 .project-cnc .project-capabilities { gap: 0.7rem; max-width: 60rem; }
 .project-cnc .project-capability { padding: 0.55rem 0.8rem; }
-.project-cnc .project-grid { grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr); gap: clamp(1.5rem, 5vw, 4rem); }
+.project-cnc .project-grid { grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr); gap: var(--block-space); }
 
 .project-mdhi .section-heading { max-width: 17ch; }
 .project-mdhi .project-hero-banner .project-media { border-color: rgba(255, 140, 0, 0.34); background: linear-gradient(135deg, rgba(255, 140, 0, 0.08), rgba(255, 255, 255, 0.02)); }
 .project-mdhi .project-stat-grid { grid-template-columns: minmax(0, 1.25fr) repeat(2, minmax(0, 0.875fr)); gap: 0.8rem; }
 .project-mdhi .project-stat-card:first-child { border-color: rgba(255, 140, 0, 0.5); background: rgba(255, 140, 0, 0.08); }
 .project-mdhi .project-stat-value { letter-spacing: -0.03em; }
-.project-mdhi .project-grid { grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr); gap: clamp(1.5rem, 5vw, 4rem); }
+.project-mdhi .project-grid { grid-template-columns: minmax(0, 1.2fr) minmax(18rem, 0.8fr); gap: var(--block-space); }
 
 .project-telemetry .section-heading { max-width: 18ch; }
 .project-telemetry .project-hero-banner > .gallery-item { min-height: 0; border-color: rgba(255, 140, 0, 0.34); border-radius: var(--radius-lg); background: rgba(255, 255, 255, 0.025); box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.32); }
 .project-telemetry .project-hero-banner > .gallery-item img { display: block; aspect-ratio: 16 / 8; object-fit: cover; }
 .project-telemetry .project-stat-grid { grid-template-columns: minmax(0, 1.3fr) minmax(0, 0.7fr) minmax(0, 0.9fr); gap: 0.8rem; }
 .project-telemetry .project-stat-card:first-child { border-color: rgba(255, 140, 0, 0.5); background: rgba(255, 140, 0, 0.08); }
-.project-telemetry .project-grid { grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr); gap: clamp(1.5rem, 5vw, 4rem); }
+.project-telemetry .project-grid { grid-template-columns: minmax(0, 1fr); gap: 2rem; }
 
 .skills-intro { border-bottom: 1px solid rgba(174, 172, 146, 0.18); }
 .skills-intro-copy h1 { letter-spacing: -0.035em; }
@@ -1610,7 +1614,20 @@ html.js-enhanced .reveal-on-scroll { opacity: 0; transform: translateY(1.5rem); 
 html.js-enhanced .reveal-on-scroll.is-revealed { opacity: 1; transform: none; }
 
 @media (max-width: 900px) {
+    /* Let the page own the gutter instead of stacking body and page padding. */
+    .project-case-study { padding-inline: 0; }
+    .project-case-study > footer { padding-inline: 1.5rem; }
     .project-cnc .project-grid, .project-mdhi .project-grid, .project-telemetry .project-grid, .project-mdhi .project-stat-grid, .project-telemetry .project-stat-grid { grid-template-columns: minmax(0, 1fr); }
+}
+
+@media (max-width: 640px) {
+    .project-case-study .project-page { padding: var(--page-top) var(--page-gutter) var(--section-space); }
+    .project-case-study h1.section-heading {
+        max-width: none;
+        font-size: clamp(1.75rem, 8vw, 2.5rem);
+        line-height: 1.1;
+        overflow-wrap: anywhere;
+    }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1792,7 +1809,7 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 }
 
 .about-main { overflow: clip; }
-.about-shell { width: min(100% - 3rem, 104rem); margin-inline: auto; }
+.about-shell { width: min(100% - 3rem, 90rem); margin-inline: auto; }
 .about-main section { position: relative; border-bottom: 1px solid var(--about-line); }
 .about-kicker,
 .about-index {
@@ -1805,7 +1822,7 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
     text-transform: uppercase;
 }
 
-.about-hero { min-height: min(60rem, 100svh); padding-top: 5.5rem; }
+.about-hero { min-height: 0; padding-top: var(--page-top); }
 .about-hero::before {
     position: absolute;
     inset: 5.5rem 0 0 52%;
@@ -1816,10 +1833,10 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 .about-hero-grid {
     display: grid;
     grid-template-columns: minmax(0, 1.08fr) minmax(22rem, 0.92fr);
-    min-height: calc(min(60rem, 100svh) - 5.5rem);
+    min-height: 0;
     align-items: center;
     gap: clamp(3rem, 7vw, 9rem);
-    padding-block: clamp(4rem, 8vw, 7.5rem) clamp(3rem, 6vw, 5.5rem);
+    padding-block: 0 var(--section-space);
 }
 .about-hero-copy { position: relative; z-index: 1; }
 .about-hero-copy h1 {
@@ -1888,7 +1905,7 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 .about-practice,
 .about-method,
 .about-personal,
-.about-future { padding-block: clamp(5.5rem, 10vw, 10rem); }
+.about-future { padding-block: var(--section-space); }
 .about-section-heading h2,
 .about-future h2 {
     margin: 1rem 0 0;
@@ -1902,7 +1919,7 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 .about-origin-grid {
     display: grid;
     grid-template-columns: minmax(15rem, 0.72fr) minmax(22rem, 1.28fr);
-    gap: clamp(3rem, 8vw, 9rem);
+    gap: var(--block-space) clamp(2rem, 5vw, 4rem);
 }
 .about-origin .about-section-heading h2 { max-width: 9ch; }
 .about-story { max-width: 45rem; color: var(--about-muted); font-size: 1rem; line-height: 1.9; }
@@ -1912,7 +1929,7 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
     grid-column: 1 / -1;
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    margin-top: clamp(1rem, 3vw, 3rem);
+    margin-top: 0;
     border-block: 1px solid var(--about-line);
 }
 .about-foundation-rail div { padding: clamp(1.4rem, 3vw, 2.5rem); border-left: 1px solid var(--about-line); }
@@ -1924,7 +1941,7 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 .about-section-heading-wide .about-index { align-self: start; }
 .about-section-heading-wide h2 { max-width: 13ch; margin-top: 0; }
 .about-section-heading-wide > p:last-child { margin: 0; color: var(--about-muted); font-size: 0.95rem; line-height: 1.75; }
-.about-experience-list { margin: clamp(4rem, 8vw, 7rem) 0 0; padding: 0; list-style: none; border-top: 1px solid var(--about-line); }
+.about-experience-list { margin: var(--block-space) 0 0; padding: 0; list-style: none; border-top: 1px solid var(--about-line); }
 .about-experience-list li {
     display: grid;
     grid-template-columns: 4rem minmax(16rem, 0.9fr) minmax(20rem, 1.1fr);
@@ -1943,7 +1960,7 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
     display: grid;
     grid-template-columns: 0.7fr 2.2fr;
     gap: 2rem;
-    margin: clamp(4rem, 8vw, 8rem) 0 0 clamp(0rem, 9vw, 9rem);
+    margin: var(--block-space) 0 0;
     padding: clamp(2rem, 4vw, 4rem);
     border-left: 4px solid var(--brand-yellow);
     background: rgba(231, 231, 214, 0.045);
@@ -1952,13 +1969,13 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 .about-dcs-note div p { max-width: 50rem; margin: 0; color: var(--about-muted); line-height: 1.8; }
 
 .about-method { background: rgba(8, 8, 8, 0.22); }
-.about-method-grid { display: grid; grid-template-columns: minmax(19rem, 0.9fr) minmax(25rem, 1.1fr); gap: clamp(4rem, 9vw, 10rem); align-items: start; }
+.about-method-grid { display: grid; grid-template-columns: minmax(19rem, 0.9fr) minmax(25rem, 1.1fr); gap: clamp(2rem, 5vw, 4rem); align-items: start; }
 .about-method .about-section-heading h2 { max-width: 10ch; }
 .about-method blockquote { max-width: 38rem; margin: clamp(2rem, 4vw, 3.5rem) 0 0; padding-left: 1.5rem; border-left: 2px solid var(--brand-yellow); color: var(--about-muted); font-size: clamp(1.05rem, 1.5vw, 1.35rem); font-style: normal; line-height: 1.7; }
 .about-method-list { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--about-line); border-left: 1px solid var(--about-line); }
 .about-method-list article { min-height: 15rem; padding: clamp(1.5rem, 3vw, 2.5rem); border-right: 1px solid var(--about-line); border-bottom: 1px solid var(--about-line); }
 .about-method-list article > span { color: var(--brand-yellow); font-size: 0.68rem; letter-spacing: 0.15em; }
-.about-method-list h3 { margin: 2.5rem 0 0.7rem; font-family: var(--font-headline); font-size: clamp(1.4rem, 2vw, 2rem); font-weight: 400; text-transform: uppercase; }
+.about-method-list h3 { margin: 1.5rem 0 0.7rem; font-family: var(--font-headline); font-size: clamp(1.4rem, 2vw, 2rem); font-weight: 400; text-transform: uppercase; }
 .about-method-list p { margin: 0; color: var(--about-muted); font-size: 0.88rem; line-height: 1.75; }
 
 .about-personal-grid {
@@ -1999,11 +2016,12 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 .about-personal-notes span { display: block; margin-bottom: 0.65rem; color: var(--brand-yellow); font-size: 0.68rem; letter-spacing: 0.14em; text-transform: uppercase; }
 
 .about-future { border-bottom: 0 !important; background: var(--brand-black); color: var(--brand-offwhite); }
-.about-future-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: clamp(3rem, 9vw, 10rem); align-items: start; }
+.about-future-grid { display: grid; grid-template-columns: 1.08fr 0.92fr; gap: var(--block-space); align-items: start; }
 .about-future h2 { max-width: 11ch; }
 .about-future-grid > div:last-child { padding-top: 2rem; }
 .about-future-grid > div:last-child > p { max-width: 44rem; margin: 0; color: var(--about-muted); line-height: 1.8; }
-.about-actions { display: flex; align-items: center; gap: 2rem; margin-top: 2.25rem; }
+.about-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 1.5rem 2rem; margin-top: 2rem; }
+.about-actions .btn { flex-shrink: 0; }
 .about-future .btn-primary { border-radius: 0; }
 .about-text-link { position: relative; color: var(--brand-offwhite); font-size: 0.76rem; font-weight: 700; letter-spacing: 0.13em; text-transform: uppercase; }
 .about-text-link::after { position: absolute; inset: auto 0 -0.45rem; height: 2px; background: var(--brand-yellow); content: ''; transform: scaleX(0.28); transform-origin: left; transition: transform 220ms ease; }
@@ -2022,15 +2040,15 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
     .about-method-grid { gap: 4rem; }
 }
 
-@media (max-width: 760px) {
+@media (max-width: 900px) {
     .about-shell { width: min(100% - 2rem, 104rem); }
-    .about-hero { padding-top: 4.5rem; }
+    .about-hero { padding-top: var(--page-top); }
     .about-hero-grid,
     .about-origin-grid,
     .about-method-grid,
     .about-personal-grid,
     .about-future-grid { grid-template-columns: minmax(0, 1fr); }
-    .about-hero-grid { padding-top: 3.5rem; }
+    .about-hero-grid { padding-top: 0; }
     .about-hero-copy h1 { font-size: clamp(2.85rem, 11.5vw, 5.6rem); }
     .about-portrait { width: min(100%, 34rem); margin-left: auto; }
     .about-role-line { gap: 0.55rem 0.8rem; }
@@ -2077,7 +2095,7 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 
 /* Skills page: interactive capability orbit and evidence-led hierarchy. */
 .skills-body { background: var(--brand-black); }
-.skills-body .skills-page { width: min(100% - 3rem, 90rem); padding: 9rem 0 7rem; }
+.skills-body .skills-page { width: min(100% - 3rem, 90rem); padding: var(--page-top) 0 var(--section-space); }
 .skills-kicker {
     margin: 0 0 1rem;
     color: var(--brand-yellow);
@@ -2089,9 +2107,9 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 .skills-body .skills-intro {
     display: grid;
     grid-template-columns: minmax(0, 1.35fr) minmax(18rem, 0.65fr);
-    gap: clamp(3rem, 9vw, 10rem);
+    gap: var(--block-space);
     align-items: end;
-    padding: clamp(3rem, 7vw, 6.5rem) 0 clamp(4rem, 8vw, 7rem);
+    padding: 0 0 var(--section-space);
     border-bottom: 1px solid rgba(174, 172, 146, 0.23);
 }
 .skills-body .skills-intro-copy { max-width: none; }
@@ -2107,7 +2125,7 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 .skills-intro-note span { color: var(--brand-offwhite); font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
 .skills-intro-note p { max-width: 35ch; margin: 0.75rem 0 0; color: var(--brand-slate); font-size: 0.9rem; line-height: 1.75; }
 
-.skills-body .skills-explorer { margin-top: 0; padding: clamp(5.5rem, 10vw, 9rem) 0 clamp(6rem, 11vw, 10rem); border-bottom: 1px solid rgba(174, 172, 146, 0.23); }
+.skills-body .skills-explorer { margin-top: 0; padding: var(--section-space) 0; border-bottom: 1px solid rgba(174, 172, 146, 0.23); }
 .skills-body .skills-section-heading { max-width: 58rem; }
 .skills-body .skills-section-heading h2,
 .skills-body .skills-experience > .skills-section-heading h2,
@@ -2126,9 +2144,9 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
     position: relative;
     display: grid;
     grid-template-columns: minmax(27rem, 0.92fr) minmax(24rem, 1.08fr);
-    gap: clamp(3.5rem, 7vw, 8rem);
-    min-height: clamp(38rem, 70vw, 46rem);
-    margin-top: clamp(2.5rem, 5vw, 4.5rem);
+    gap: var(--block-space);
+    min-height: 0;
+    margin-top: var(--block-space);
     align-items: center;
 }
 .skills-body .skills-orbit {
@@ -2258,10 +2276,10 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
     to { opacity: 1; transform: none; }
 }
 
-.skills-body .skills-experience { margin-top: 0; padding: clamp(6rem, 11vw, 10rem) 0; border-bottom: 1px solid rgba(174, 172, 146, 0.23); }
+.skills-body .skills-experience { margin-top: 0; padding: var(--section-space) 0; border-bottom: 1px solid rgba(174, 172, 146, 0.23); }
 .skills-body .skills-timeline { max-width: none; margin-top: clamp(2.5rem, 5vw, 4rem); }
 .skills-body .skills-timeline-heading h3 { font-size: clamp(1rem, 1.5vw, 1.2rem); }
-.skills-body .skills-recognition { margin-top: 0; padding: clamp(6rem, 11vw, 10rem) 0 2rem; }
+.skills-body .skills-recognition { margin-top: 0; padding: var(--section-space) 0 0; }
 .skills-body .skills-recognition-list { margin-top: 2.25rem; }
 
 .skills-cv-download {
@@ -2285,7 +2303,7 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 .privacy-section a:hover { color: var(--brand-yellow); }
 .contact-form-privacy { margin: 0; font-size: 0.78rem; line-height: 1.65; color: var(--brand-slate); }
 .project-media-caption { margin-top: 0.8rem; font-size: 0.78rem; line-height: 1.65; color: var(--brand-slate); }
-.privacy-page { width: min(100% - 3rem, 70rem); margin: 0 auto; padding: 10rem 0 5rem; }
+.privacy-page { width: min(100% - 3rem, 70rem); margin: 0 auto; padding: var(--page-top) 0 var(--section-space); }
 .privacy-intro { max-width: 51rem; margin-bottom: 3rem; }
 .privacy-intro h1,
 .not-found-page h1 { font-family: var(--font-headline); font-size: clamp(2.8rem, 7vw, 5rem); line-height: 1.1; margin: 1rem 0 1.5rem; text-transform: uppercase; }
@@ -2296,7 +2314,7 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 .privacy-section h2 { font-size: 1.2rem; font-weight: 600; margin: 0 0 1rem; }
 .privacy-section p { max-width: 48rem; font-size: 0.95rem; line-height: 1.9; margin: 0 0 1rem; overflow-wrap: anywhere; }
 .privacy-section p:last-child { margin-bottom: 0; }
-.not-found-page { width: min(100% - 3rem, 70rem); min-height: 100svh; margin: 0 auto; padding: 15vh 0 4rem; }
+.not-found-page { width: min(100% - 3rem, 70rem); min-height: calc(100svh - 12rem); margin: 0 auto; padding: clamp(4rem, 12vh, 7rem) 0 var(--section-space); }
 .not-found-page > p { margin-bottom: 2rem; line-height: 1.8; }
 .not-found-page .btn { margin: 0 0.5rem 1rem 0; }
 @media (max-width: 640px) {
@@ -2321,11 +2339,11 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
 }
 
 @media (max-width: 640px) {
-    .skills-body .skills-page { width: min(100% - 2rem, 90rem); padding-top: 6.5rem; }
-    .skills-body .skills-intro { padding-top: 2.5rem; }
+    .skills-body .skills-page { width: min(100% - 2rem, 90rem); padding-top: var(--page-top); }
+    .skills-body .skills-intro { padding-top: 0; }
     .skills-body .skills-intro-copy h1 { font-size: clamp(3.1rem, 15vw, 5.2rem); }
-    .skills-body .skills-explorer { padding-top: 4.5rem; padding-bottom: 2.75rem; }
-    .skills-body .skills-experience { padding-top: 4rem; }
+    .skills-body .skills-explorer { padding-block: var(--section-space); }
+    .skills-body .skills-experience { padding-top: var(--section-space); }
     .skills-body .skills-orbit {
         display: grid;
         width: 100%;
@@ -2358,4 +2376,36 @@ body[data-gallery='bible-quest'] .gallery-next { top: auto; bottom: 1rem; transf
     .skills-body .skills-orbit-node,
     .skills-body .skills-domain-list { transition: none; }
     .skills-body .skills-domain.is-entering { animation: none; }
+}
+
+/* Shared page rhythm: the page owns outer gutters and section separation. */
+.portfolio-page { padding: var(--page-top) var(--page-gutter) var(--section-space); }
+.portfolio-page > section { padding: 0; }
+.portfolio-page .page-intro { padding: 0; }
+.portfolio-page .page-intro p { margin-bottom: var(--block-space); }
+.homepage main > section:not(#home) { padding-block: var(--section-space); }
+.homepage .group .space-y-3 > p, .portfolio-page .group .space-y-3 > p { margin: 0; }
+.contact-main { padding-top: 0; }
+.contact-main .contact-page { padding: var(--page-top) 0 var(--section-space); }
+.project-case-study { padding-inline: 0; padding-bottom: 0; }
+.project-page .project-shell > .mb-12 { margin-bottom: var(--block-space); }
+.project-page .project-card > p:last-child,
+.project-page .project-card > ul:last-child { margin-bottom: 0; }
+.project-page .project-stat-grid { margin-top: 1rem; }
+.project-page .project-card li + li { margin-top: 0.5rem; }
+body > footer[class] { margin-top: 0; padding: 2rem var(--page-gutter); }
+body > footer p { margin: 0; }
+body > footer .site-footer-socials { margin-top: 1rem; }
+body > footer .site-privacy-link { margin-top: 1rem; }
+body > footer .contact-footer-label { margin-top: 1rem; }
+body > footer > .space-y-4 { gap: 0; }
+@media (max-width: 640px) {
+    .homepage main > section:not(#home) { padding-inline: var(--page-gutter); }
+    .project-page .project-card { padding: 1.25rem; }
+    .project-page .project-stat-card { min-height: 0; }
+    .about-origin-grid, .about-method-grid, .about-personal-grid, .about-future-grid { gap: 2rem; }
+    .about-foundation-rail { margin-top: 0; }
+    .about-dcs-note { padding: 1.5rem; }
+    .about-actions { gap: 1.5rem; }
+    .bq-media-primary, .bq-media-secondary { max-width: 20rem; }
 }

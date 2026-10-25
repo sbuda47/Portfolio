@@ -1,11 +1,10 @@
 /* Native portfolio UI; the interactive preview uses the project's demo datasets. */
-.ob-page { max-width: 1240px; margin: 0 auto; padding: 132px 32px 48px; }
+.ob-page { max-width: 1240px; margin: 0 auto; padding: var(--page-top) var(--page-gutter) var(--section-space); }
 .ob-page h1 { font-family: var(--font-headline); font-size: clamp(3.3rem, 8vw, 6.4rem); letter-spacing: -.04em; margin: 18px 0 10px; }
 .ob-page h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); line-height: 1.2; }
 .ob-page h3 { font-size: 1rem; line-height: 1.5; }
 .ob-page p { margin: 0; }
-.ob-back { color: var(--brand-slate); font-size: .8rem; }
-.ob-intro { padding: 38px 0 36px; }
+.ob-intro { padding: var(--block-space) 0 var(--block-space); }
 .ob-kicker { color: var(--brand-yellow); font-size: .7rem; letter-spacing: .13em; text-transform: uppercase; }
 .ob-deck { font-size: clamp(1.15rem, 2.6vw, 1.6rem); max-width: 38ch; line-height: 1.5; }
 .ob-summary { max-width: 72ch; color: #c0c0b3; font-size: .93rem; margin-top: 18px !important; }
@@ -75,7 +74,7 @@
 .ob-system-node h4 { margin: 0 0 12px; font-size: .9rem; font-weight: 500; }
 .ob-system-node p { font-size: .74rem; color: #c4cbb9; }
 .ob-system-step { display: block; color: #ffb65f; font-size: .65rem; margin-bottom: 15px; }
-.ob-story { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: 70px; padding: 56px 0 42px; }
+.ob-story { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: var(--block-space); padding: var(--section-space) 0 var(--block-space); }
 .ob-story h2 { margin-bottom: 18px; }
 .ob-story p { font-size: .9rem; color: #c8c8ba; line-height: 1.85; }
 .ob-role { border-left: 2px solid #ff8c00; padding-left: 28px; }
@@ -91,7 +90,7 @@
 .ob-related a { color: #ffab45; text-underline-offset: 5px; text-decoration: underline; }
 .ob-noscript { padding: 20px; color: #ffc479; }
 @media (max-width: 767px) {
-    .ob-page { padding: 112px 20px 32px; }
+    .ob-page { padding: var(--page-top) var(--page-gutter) var(--section-space); }
     .ob-intro { padding-top: 26px; }
     .ob-monitor-grid, .ob-belt-grid { grid-template-columns: minmax(0, 1fr); }
     .ob-reading { display: grid; grid-template-columns: 1fr auto; gap: 0 16px; padding: 18px; }
@@ -113,7 +112,7 @@
     .ob-facts dd { font-size: .8rem; }
 }
 @media (max-width: 380px) {
-    .ob-page { padding-inline: 14px; }
+    .ob-page { padding-inline: var(--page-gutter); }
     .ob-demo-top { align-items: flex-start; flex-direction: column; }
     .ob-panel { padding: 14px; }
     .ob-meta span + span { border: 0; padding: 0; }

@@ -3,6 +3,7 @@
 Requires Pillow. Run from any directory; paths are relative to this script.
 """
 
+import argparse
 from pathlib import Path
 
 from PIL import Image, ImageOps
@@ -16,14 +17,20 @@ WIDTHS = (640, 1440)
 
 
 def main():
-    sources = [SOURCE_DIR / f"{project}.png" for project in PROJECTS]
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--illustrations", action="store_true", help="Build the cream diagram card set without overwriting the original thumbnails")
+    args = parser.parse_args()
+    projects = ("optibelt", *PROJECTS) if args.illustrations else PROJECTS
+    source_dir = SOURCE_DIR / "illustrations" if args.illustrations else SOURCE_DIR
+    suffix = "-illustration" if args.illustrations else ""
+    sources = [source_dir / f"{project}.png" for project in projects]
     missing = [str(source) for source in sources if not source.is_file()]
     if missing:
         raise SystemExit("Missing thumbnail masters: " + ", ".join(missing))
 
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     total = 0
-    for project, source in zip(PROJECTS, sources):
+    for project, source in zip(projects, sources):
         with Image.open(source) as master:
             master = ImageOps.exif_transpose(master).convert("RGB")
             for width in WIDTHS:
@@ -33,7 +40,7 @@ def main():
                 thumbnail = ImageOps.fit(
                     master, (width, height), method=Image.Resampling.LANCZOS
                 )
-                output = OUTPUT_DIR / f"{project}-{width}.webp"
+                output = OUTPUT_DIR / f"{project}{suffix}-{width}.webp"
                 thumbnail.save(output, "WEBP", quality=86, method=6)
                 size = output.stat().st_size
                 total += size

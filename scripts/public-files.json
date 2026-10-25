@@ -78,5 +78,18 @@
   "assets/images/project-thumbnails/optibelt-640.png",
   "assets/images/project-thumbnails/optibelt-1440.png",
   "css/md-replay.css",
-  "js/md-replay.js"
+  "js/md-replay.js",
+  "css/telemetry-preview.css",
+  "js/telemetry-preview.js",
+  "js/telemetry-data.js",
+  "assets/images/project-thumbnails/optibelt-illustration-640.webp",
+  "assets/images/project-thumbnails/optibelt-illustration-1440.webp",
+  "assets/images/project-thumbnails/mdhi-illustration-640.webp",
+  "assets/images/project-thumbnails/mdhi-illustration-1440.webp",
+  "assets/images/project-thumbnails/cnc-simulator-illustration-640.webp",
+  "assets/images/project-thumbnails/cnc-simulator-illustration-1440.webp",
+  "assets/images/project-thumbnails/telemetry-illustration-640.webp",
+  "assets/images/project-thumbnails/telemetry-illustration-1440.webp",
+  "assets/images/project-thumbnails/bible-quest-illustration-640.webp",
+  "assets/images/project-thumbnails/bible-quest-illustration-1440.webp"
 ]

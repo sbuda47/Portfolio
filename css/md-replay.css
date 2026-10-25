@@ -1,4 +1,4 @@
-.md-replay-wrap { margin-top: 2.5rem; }
+.md-replay-wrap { margin-top: 0; }
 .md-replay { border: 1px solid #555746; border-radius: 14px; background: #151815; overflow: hidden; }
 .md-replay [hidden] { display: none !important; }
 .md-replay-head { display: flex; justify-content: space-between; align-items: center; gap: 24px; padding: 26px 28px; }
