@@ -5,14 +5,14 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; media-src 'self'; connect-src 'self' https://formspree.io; form-action https://formspree.io; object-src 'none'; base-uri 'self'">
     <meta name="referrer" content="strict-origin-when-cross-origin">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Case study for the Mahalanobis Distance Health Index project: industrial fault detection, MATLAB validation, and embedded streaming results.">
+  <meta name="description" content="I modelled and tested MD-HI in MATLAB, then rebuilt it in Python. The numerical outputs match to six decimal places; this is not a detection-performance result.">
   <title>Mahalanobis Distance Health Index — Project</title>
   <link rel="stylesheet" href="../css/style.css?v=20261025-spacing">
   <link rel="stylesheet" href="../css/md-replay.css?v=20261025-spacing">
     <link rel="canonical" href="https://sbuda47.github.io/Portfolio/projects/project-md-hi.html">
     <link rel="icon" href="../favicon.ico">
     <meta property="og:title" content="Mahalanobis Distance Health Index — Project">
-    <meta property="og:description" content="Case study for the Mahalanobis Distance Health Index project: industrial fault detection, MATLAB validation, and embedded streaming results.">
+    <meta property="og:description" content="I modelled and tested MD-HI in MATLAB, then rebuilt it in Python. The numerical outputs match to six decimal places; this is not a detection-performance result.">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://sbuda47.github.io/Portfolio/projects/project-md-hi.html">
     <meta property="og:image" content="https://sbuda47.github.io/Portfolio/assets/images/project-thumbnails/mdhi-1440.webp">
@@ -49,7 +49,7 @@
       <div class="mb-12" data-reveal>
       <span class="project-label">Industrial condition monitoring</span>
       <h1 class="section-heading font-gothic mb-4">Mahalanobis Distance Health Index (MD-HI)</h1>
-      <p class="text-lg text-brandOffwhite/70 max-w-3xl leading-relaxed mb-8">A statistical fault-detection framework built to catch conveyor and motor faults before they cause downtime — validated to six decimal places against a MATLAB reference implementation.</p>
+      <p class="text-lg text-brandOffwhite/70 max-w-3xl leading-relaxed mb-8">A condition-monitoring health index that combines sensor readings to flag developing motor and conveyor faults. I first modelled and tested MD-HI in MATLAB, then rebuilt it in Python for the actual system. The Python output matches my MATLAB model to six decimal places. This checks numerical agreement, not fault-detection performance.</p>
     </div>
 
       <section class="md-replay-wrap mb-12" aria-label="Animated motor health-index demonstration">
@@ -88,17 +88,21 @@
       <div class="project-stat-grid">
         <div class="project-card project-stat-card">
           <div class="project-stat-value">6,594</div>
-          <p class="text-brandOffwhite/70">windows validated</p>
+          <p class="text-brandOffwhite/70">windows compared with MATLAB</p>
         </div>
         <div class="project-card project-stat-card">
           <div class="project-stat-value">5.1%</div>
-          <p class="text-brandOffwhite/70">mean detection error</p>
+          <p class="text-brandOffwhite/70">false alarms</p>
         </div>
         <div class="project-card project-stat-card">
           <div class="project-stat-value">49</div>
           <p class="text-brandOffwhite/70">sensor features</p>
         </div>
       </div>
+
+      <p class="text-brandOffwhite/70 leading-relaxed mt-4">The 6,594 windows are short sections of motor data from the offline replay, used to compare Python health-index values with my MATLAB model. The saved comparison log reports a maximum absolute difference of 0.000000. This checks the implementation, not fault-detection accuracy.</p>
+
+      <p class="text-brandOffwhite/70 leading-relaxed mt-4">Misalignment is a known limitation: vibration can rise above the healthy baseline, then fall back within it. The model can label those lower-vibration windows healthy even during a misalignment run.</p>
 
       <div class="project-badges">
         <span class="project-badge">Python</span>
@@ -112,13 +116,13 @@
         <div class="space-y-8">
           <div class="project-card">
           <h2 class="text-xl font-gothic text-brandYellow mb-4">What it is</h2>
-          <p class="text-brandOffwhite/70 leading-relaxed">MD-HI is a multivariate health index that measures how machine sensor values move together, rather than treating each signal separately. By combining Mahalanobis distance with EWMA smoothing and per-load calibration, the system delivers stable fault detection for conveyors and rotating equipment, even as operating conditions shift.</p>
+          <p class="text-brandOffwhite/70 leading-relaxed">MD-HI is a multivariate health index that measures how machine sensor values move together, rather than treating each signal separately. It combines Mahalanobis distance with EWMA smoothing and per-load calibration, designed to reduce noise-driven alerts and account for changes in operating load.</p>
         </div>
 
         <div class="project-card">
           <h2 class="text-xl font-gothic text-brandYellow mb-4">The approach</h2>
-          <p class="text-brandOffwhite/70 leading-relaxed mb-4">Motor and conveyor faults rarely announce themselves as a single bad reading — they appear as a change in correlation across many sensor channels. I reimplemented the MATLAB Mahalanobis-distance reference in Python, then added EWMA smoothing and load-aware thresholding so the health index stays stable across different machine loads.</p>
-          <p class="text-brandOffwhite/70 leading-relaxed">Once the core pipeline was validated, I built the UART streaming layer to relay live index values and alarms to embedded controllers on the line, making the system suitable for real-time condition monitoring.</p>
+          <p class="text-brandOffwhite/70 leading-relaxed mb-4">Motor and conveyor faults can change the relationship between sensor readings. I used MATLAB to model and test MD-HI before building it for the actual system. I then rebuilt MD-HI in Python, using EWMA smoothing and load-aware thresholding to account for noise and different machine loads.</p>
+          <p class="text-brandOffwhite/70 leading-relaxed">After checking the Python output against my MATLAB model, I built UART streaming tools to send health-index values and alarms to embedded controllers.</p>
         </div>
       </div>
 
@@ -126,7 +130,7 @@
         <div class="project-card">
           <h2 class="text-xl font-gothic text-brandYellow mb-4">My role</h2>
           <ul class="list-disc list-inside text-brandOffwhite/80 leading-relaxed">
-            <li>Reimplemented MATLAB reference logic in Python for numerical parity</li>
+            <li>Modelled and tested MD-HI in MATLAB, then rebuilt it in Python and checked that the numerical outputs matched</li>
             <li>Designed EWMA smoothing and per-load calibration to reduce false positives</li>
             <li>Built streaming tools for UART delivery to embedded controllers</li>
             <li>Prepared validation figures and documentation for journal submission</li>
@@ -136,9 +140,9 @@
         <div class="project-card">
           <h3 class="font-gothic text-brandYellow mb-4">Outcome</h3>
           <ul class="list-disc list-inside text-brandOffwhite/80 leading-relaxed">
-            <li>Per-load thresholding cut false positives and improved operational trust</li>
+            <li>Per-load thresholding is designed to reduce false positives across loads</li>
             <li>Streaming pipeline feeds embedded alarms directly to controllers</li>
-            <li>Validation figures prepared for journal review and stakeholder sign-off</li>
+            <li>Validation figures and documentation prepared for journal submission</li>
           </ul>
           </div>
         </div>
@@ -157,6 +161,9 @@
           </a>
           <a class="contact-social-link" href="https://wa.me/26775365156" target="_blank" rel="noopener noreferrer" aria-label="Message Sibusiso on WhatsApp" title="WhatsApp">
               <span class="contact-social-icon" data-social="whatsapp" aria-hidden="true"></span>
+          </a>
+          <a class="contact-social-link" href="https://github.com/sbuda47/Portfolio" target="_blank" rel="noopener noreferrer" aria-label="Sibusiso on GitHub" title="GitHub">
+              <span class="contact-social-icon" data-social="github" aria-hidden="true"></span>
           </a>
       </nav>
       <p class="site-privacy-link"><a href="../privacy.html">Privacy notice</a></p>

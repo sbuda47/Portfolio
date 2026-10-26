@@ -92,7 +92,8 @@ class PublishingTests(unittest.TestCase):
 
         expected = ["mailto:s.mpofu.m.01@gmail.com",
                     "https://www.linkedin.com/in/sibusiso-mpofu-595b492bb",
-                    "https://wa.me/26775365156"]
+                    "https://wa.me/26775365156",
+                    "https://github.com/sbuda47/Portfolio"]
         for name in builder.load_manifest(builder.ROOT / "scripts/public-files.json"):
             if not name.endswith(".html"):
                 continue
@@ -106,7 +107,7 @@ class PublishingTests(unittest.TestCase):
                 self.assertEqual([link["href"] for link in parsed.links], expected)
                 self.assertTrue(all(link.get("aria-label") for link in parsed.links))
                 self.assertEqual([icon["data-social"] for icon in parsed.icons],
-                                 ["email", "linkedin", "whatsapp"])
+                                 ["email", "linkedin", "whatsapp", "github"])
                 self.assertTrue(all(icon.get("aria-hidden") == "true" for icon in parsed.icons))
                 self.assertEqual("contact-footer-label" in markup, name == "contact.html")
 
